@@ -2,7 +2,7 @@
  * 
  */
 
-package org.questionairemanager.core;
+package org.questionairemanager.engine;
 
 import java.util.Stack;
 

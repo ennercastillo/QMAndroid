@@ -1,7 +1,7 @@
 /**
  * 
  */
-package org.questionairemanager.core;
+package org.questionairemanager.engine;
 
 /**
  * Represents a Procedure or Action to perform

@@ -1,10 +1,10 @@
 /**
  * 
  */
-package org.questionairemanager.core;
+package org.questionairemanager.engine;
 
-import org.questionairemanager.engine.data.ObjectStoreUtility;
-import org.questionairemanager.engine.data.StoreObject;
+import org.questionairemanager.core.ObjectStoreUtility;
+import org.questionairemanager.core.StoreObject;
 
 /**
  * Evaluates the current screen to determinate

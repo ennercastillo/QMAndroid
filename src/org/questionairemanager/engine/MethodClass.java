@@ -1,7 +1,7 @@
 /**
  * 
  */
-package org.questionairemanager.core;
+package org.questionairemanager.engine;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;

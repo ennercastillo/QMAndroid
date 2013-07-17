@@ -1,8 +1,8 @@
 /**
  * 
  */
-package org.questionairemanager.core;
-import org.questionairemanager.engine.data.*;
+package org.questionairemanager.engine;
+import org.questionairemanager.core.*;
 import java.util.ArrayList;
 import java.util.Dictionary;
 import java.util.HashMap;

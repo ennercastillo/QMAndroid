@@ -1,4 +1,4 @@
-package org.questionairemanager.engine.data;
+package org.questionairemanager.core;
 
 public class Constants {
 	public static class SHAREDPREFS {

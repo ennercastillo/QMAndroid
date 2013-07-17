@@ -1,7 +1,7 @@
 /**
  * 
  */
-package org.questionairemanager.core;
+package org.questionairemanager.engine;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;

@@ -1,7 +1,7 @@
 /**
  * 
  */
-package org.questionairemanager.core;
+package org.questionairemanager.engine;
 
 /**
  * Represents a Section of a Questionnaire
@@ -107,12 +107,14 @@ public class Section {
      * @return
      */
     public Boolean HasRecord(){
+        return bModifiable;
         
         // TODO: Pendiente agregar la informaci—n del datarecord
         
     }
     
     public Boolean IsComplete (){
+        return bModifiable;
         
     }
 

@@ -1,7 +1,7 @@
 /**
  * 
  */
-package org.questionairemanager.core;
+package org.questionairemanager.engine;
 
 import java.util.ArrayList;
 import java.util.Date;

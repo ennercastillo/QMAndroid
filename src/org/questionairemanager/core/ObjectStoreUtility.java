@@ -1,5 +1,5 @@
 
-package org.questionairemanager.engine.data;
+package org.questionairemanager.core;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

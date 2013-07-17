@@ -1,8 +1,8 @@
 /**
  * 
  */
-package org.questionairemanager.core;
-import org.questionairemanager.engine.data.*;
+package org.questionairemanager.engine;
+import org.questionairemanager.core.*;
 
 /**
  * Provides general purpose data access functions and 

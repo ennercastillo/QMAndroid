@@ -1,7 +1,7 @@
 /**
  * 
  */
-package org.questionairemanager.core;
+package org.questionairemanager.engine;
 
 import java.util.ArrayList;
 
@@ -90,7 +90,7 @@ public class Transition {
      */
     public ArrayList<Integer> GetAll (){
         
-        ArrayList<Integer> listOfTransition;
+        ArrayList<Integer> listOfTransition = null;
         
         // TODO: DA.Transition.GetAll(ScreenId);
         
