@@ -18,16 +18,13 @@ import java.util.HashMap;
  */
 public class Screen {
 
-    public enum VariableLocation {
-        SUBJECT,
-        RECORD
-    }
-    
+
     // Static data
+    // QUESTIONNAIRE TYPE = 1
+    // GROUP TYPE = 2
     public enum VariableScopeType {
-        SUBJECT (2),
-        QUESTIONNAIRE ( 3),
-        SECTION ( 4);
+        QUESTIONNAIRE (1),
+        GROUP (2);
         
         private Integer iValue;
         
@@ -39,10 +36,11 @@ public class Screen {
             return iValue; 
         } 
     }
+
     
     //private variables
-    private Integer iScreenId;
-    private Integer iSectionId;
+    private Integer iScreenId; 
+    private Integer iGroupId;
     private String sName;
     private String sType;
     private String sNumber;
@@ -51,6 +49,7 @@ public class Screen {
     private Integer iVariableScope;
     private String sVariableName;
     private String sDataType; 
+    
     private String sMainText;
     private String sMainTextColor;
     private String sOtherText1;
@@ -60,11 +59,13 @@ public class Screen {
     private String sOtherText3;
     private String sOtherText3Color;
     private String sHelpText;
+    
     private boolean bRequired;
     private boolean bAbsAdmin;
     private boolean bAbsMax;
     private boolean bPromptUnder;
     private boolean bPromptOver;
+    
     private String sLegalValueTable;
     private boolean bCustomValidation;
     private String sCustomValidationFailMessage;
@@ -81,26 +82,24 @@ public class Screen {
     private Variable vVariable;
     
     private ArrayList<Transition> alTransitions;
+    
     private HashMap hmArgumentsDictionary;
     
-    /**
-     * @return the subject
-     */
-    public static VariableScopeType getSubject() {
-        return VariableScopeType.SUBJECT;
-    }
+
     /**
      * @return the questionnaire
      */
     public static VariableScopeType getQuestionnaire() {
         return VariableScopeType.QUESTIONNAIRE;
     }
+    
     /**
      * @return the section
      */
     public static VariableScopeType getSection() {
-        return VariableScopeType.SECTION;
+        return VariableScopeType.GROUP;
     }
+    
     /**
      * @return the iScreenId
      */
@@ -111,7 +110,7 @@ public class Screen {
      * @return the iSectionId
      */
     public Integer getiSectionId() {
-        return iSectionId;
+        return iGroupId;
     }
     /**
      * @return the sName
@@ -342,22 +341,24 @@ public class Screen {
     }
     
     /**
-     * This property expectos to find an arguments string in the _arguments field
+     * This property expect to find an arguments string in the _arguments field
      * of the following form: key1=value1; key2=value2; key3=value3
      * @author Enner Escobedo C. <email>enner.castillo@centrikal.com</email>
      * <date>15/07/2013</date>
      * @return the hmArgumentsDictionary
      */
+    @SuppressWarnings("rawtypes")
     public HashMap getHmArgumentsDictionary(String hmArgumentToSearch) {
         if (this.hmArgumentsDictionary.isEmpty())
             return null;
         else
-            return  (HashMap) this.hmArgumentsDictionary.get(hmArgumentToSearch);
+            return  (HashMap)this.hmArgumentsDictionary.get(hmArgumentToSearch);
     }
     
     public Integer getScreen (Integer pScreenId){
         //Obtener informaci—n de la pantalla de la base de datos
         // DataRow = DA.Screen.GetSingle (pScreenId)
+        // Get data with class StoreObject DAL
         return pScreenId;
     }
     
@@ -452,15 +453,10 @@ public class Screen {
                         //Context.CurrentSection(pVariableName) , add to 2 
               
                    
-                if (this.getiVariableScope() == VariableScopeType.SECTION.getValue())
+                if (this.getiVariableScope() == VariableScopeType.GROUP.getValue())
                     return VariableScopeType.values();
                         // return Context.CurrentQuestionnaire (pVariableName)
                 
-                
-                if (this.getiVariableScope() == VariableScopeType.SUBJECT.getValue())
-                    return VariableScopeType.values();
-                    // return Context.CurrentSubject (variableName)
-               
             }
             return pVariableName;
             
@@ -549,7 +545,7 @@ public class Screen {
 //    }
     
     
-    //TODO: Add for the next
+/*    //TODO: Add for the next
     public Boolean EvaluateCustomValidation (Object oInputValue){
         if (this.bCustomValidation){
             
@@ -560,9 +556,9 @@ public class Screen {
         }
         
         return false;
-    }
+    }*/
     
-    public void ExecuteOnChangeProcedure (){
+/*    public void ExecuteOnChangeProcedure (){
         
         if (this.bOnChange){
             Procedure.Execute(Context.EventsDotNetClassName, "OnChange" & Context.MethodNameSufix, Nothing);
@@ -571,7 +567,7 @@ public class Screen {
         
         
     }
-    
+    */
     
     
     

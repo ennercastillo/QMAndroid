@@ -14,13 +14,73 @@ import java.util.ArrayList;
 public class Transition {
     
     private Integer iScreenId;
-    private Integer iOrder;
+    //private Integer iOrder;
     private Integer iDestinationScreenId;
     private Integer iOnTransitionProcedureId;
     private Boolean bCondition;
     
-
     private Screen scrDestinationScreen;
+
+
+    /**
+     * @return the scrDestinationScreen
+     */
+    public Screen getScrDestinationScreen() {
+        
+        if (scrDestinationScreen == null)
+            this.scrDestinationScreen = new Screen (this.iDestinationScreenId);
+        
+        return this.scrDestinationScreen;
+        return scrDestinationScreen;
+    }
+
+
+    /**
+     * @param scrDestinationScreen the scrDestinationScreen to set
+     */
+    public void setScrDestinationScreen(Screen scrDestinationScreen) {
+        this.scrDestinationScreen = scrDestinationScreen;
+    }
+
+
+    /**
+     * @param iScreenId the iScreenId to set
+     */
+    public void setiScreenId(Integer iScreenId) {
+        this.iScreenId = iScreenId;
+    }
+
+
+//    /**
+//     * @param iOrder the iOrder to set
+//     */
+//    public void setiOrder(Integer iOrder) {
+//        this.iOrder = iOrder;
+//    }
+
+
+    /**
+     * @param iDestinationScreenId the iDestinationScreenId to set
+     */
+    public void setiDestinationScreenId(Integer iDestinationScreenId) {
+        this.iDestinationScreenId = iDestinationScreenId;
+    }
+
+
+    /**
+     * @param iOnTransitionProcedureId the iOnTransitionProcedureId to set
+     */
+    public void setiOnTransitionProcedureId(Integer iOnTransitionProcedureId) {
+        this.iOnTransitionProcedureId = iOnTransitionProcedureId;
+    }
+
+
+    /**
+     * @param bCondition the bCondition to set
+     */
+    public void setbCondition(Boolean bCondition) {
+        this.bCondition = bCondition;
+    }
 
 
     /**
@@ -34,13 +94,13 @@ public class Transition {
     }
 
 
-    /**
-     * Return the screen order
-     * @return the iOrder, Order number
-     */
-    public Integer getiOrder() {
-        return iOrder;
-    }
+//    /**
+//     * Return the screen order
+//     * @return the iOrder, Order number
+//     */
+//    public Integer getiOrder() {
+//        return iOrder;
+//    }
 
 
     /**
@@ -69,18 +129,6 @@ public class Transition {
         return bCondition;
     }
 
-
-    /**
-     * Return destination screen
-     * @return the scrDestinationScreen
-     */
-    public Screen getscrDestinationScreen() {
-        
-        if (this.scrDestinationScreen == null)
-            this.scrDestinationScreen = new Screen (this.iDestinationScreenId);
-        
-        return this.scrDestinationScreen;
-    }
     
     /**
      * Get all the transitions a specific screen can have
@@ -88,15 +136,19 @@ public class Transition {
      * <date>Jul 2, 2013</date>
      * @return listOfTransition, A list of screen transitions
      */
-    public ArrayList<Integer> GetAll (){
+    public ArrayList<Object> GetAll (){
         
-        ArrayList<Integer> listOfTransition = null;
+        ArrayList<Object> listOfTransition = null;
         
-        // TODO: DA.Transition.GetAll(ScreenId);
+        // TODO: Get all transition on code by Julios
+        
+        
         
         return listOfTransition;
     }
-    
+   
+    /**
+     * TODO: Agregar c—digo para evaluar condici—n en la transici—n
     public Boolean EvaluateCondition(){
         
         return this.bCondition ? Evaluator.EvaluateCondition() : false;
@@ -107,22 +159,22 @@ public class Transition {
         if (this.iOnTransitionProcedureId != null)
             Procedure.Execute(this.iOnTransitionProcedureId);
     }
-
+     */
 
     /**
      * Constructor class Transition
      * @param iScreenId, Screen identifier
-     * @param iOrder, order
+     //  @ param iOrder, order
      * @param iDestinationScreenId, Destination screen identifier
      * @param iOnTransitionProcedureId, on Transition procedure identifier
      * @param bCondition, Condition transition
      * @param scrDestinationScreen, Destination screen source
      */
-    public Transition(Integer iScreenId, Integer iOrder, Integer iDestinationScreenId,
+    public Transition(Integer iScreenId, /* Integer iOrder, */ Integer iDestinationScreenId,
             Integer iOnTransitionProcedureId, Boolean bCondition, Screen scrDestinationScreen) {
         super();
         this.iScreenId = iScreenId;
-        this.iOrder = iOrder;
+        //this.iOrder = iOrder;
         this.iDestinationScreenId = iDestinationScreenId;
         
         this.bCondition = bCondition;

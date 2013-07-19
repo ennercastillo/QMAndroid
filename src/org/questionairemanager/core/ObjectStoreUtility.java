@@ -11,7 +11,13 @@ import android.preference.PreferenceManager;
 import android.provider.Settings.Secure;
 import android.telephony.TelephonyManager;
 
+/**
+ * Obtiene los métodos del dispositivo
+ * @author Julio
+ *
+ */
 public class ObjectStoreUtility {
+    
     public static String getGUID() {
         String guid = UUID.randomUUID().toString();
         return guid;
@@ -23,10 +29,13 @@ public class ObjectStoreUtility {
     }
 
     public static String getDevice(Context ctx) {
+        
         String device = "";
+        
         if (!Secure.getString(ctx.getContentResolver(), Secure.ANDROID_ID).equals("")) {
             device = Secure.getString(ctx.getContentResolver(), Secure.ANDROID_ID);
         }
+        
         if ((TelephonyManager) ctx.getSystemService(Context.TELEPHONY_SERVICE) != null) {
             TelephonyManager tm = (TelephonyManager) ctx
                     .getSystemService(Context.TELEPHONY_SERVICE);
@@ -38,12 +47,15 @@ public class ObjectStoreUtility {
 
             device = tmDevice + "-" + tmSerial + "-" + androidId;
         }
+        
         return device;
     }
 
     public static String getUser(Context ctx) {
+        
         SharedPreferences p = PreferenceManager.getDefaultSharedPreferences(ctx);
         String user = p.getString(Constants.SHAREDPREFS.USER_NAME, "");
         return user;
+        
     }
 }
