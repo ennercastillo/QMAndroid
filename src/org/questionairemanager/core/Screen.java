@@ -66,12 +66,29 @@ public class Screen {
 
 	
 	public void GenerateData (){
+	    
+	    
 		if (alScreen == null){
+		    
+
+            
+		    
 			
 		}
 	}
 	
+	
 	/**
+	 * Constructor of class
+	 */
+	public Screen (){
+	    this.iScreenId = Integer.valueOf(0);
+	    this.iQuestionId = Integer.valueOf(0);
+	    this.alTransition = new ArrayList<Transition>();
+	}
+	
+	/**
+	 * Constructor of class with data [OVERRIDE]
 	 * @param iScreenId
 	 * @param iQuestionId
 	 * @param alTransition

@@ -14,20 +14,23 @@ import java.util.Date;
  */
 public class Study {
     
-    private String sStudyId;
-    private String sSecurityFile;
-    private String sConfigFile;
-    private String sDataFile;
-    
+    private String sStudyGuid;
     private String sShortName;
-    private String sName;
     private String sVersion;
     private String sDesignerVersion;
-    private String sGeneratorVersion;
     private Date dCreationDateTime;
     private Date dLastModificationDateTime;
-    private Date dGenerationDateTime;
+    private Integer iCurrentLanguageId;
+    private String sExclusive;
+    private Boolean bSorted;
+    private String sSchema;
+    private String sLogSchema;
+    private String sLVSSchema;
+    private String sAnalysisSchema;
+    private String sSearchVariables;
+    private Boolean bConfirmVariables;
     
+        
     //private ListArray<QuestionnaireSet> lstQuestionnaireSets;
     private ArrayList<Report> lstReports;
     private String sReportsSiteCode;
@@ -38,38 +41,17 @@ public class Study {
      * @return the sStudyId
      */
     public String getsStudyId() {
-        return sStudyId;
+        return sStudyGuid;
     }
-    /**
-     * @return the sSecurityFile
-     */
-    public String getsSecurityFile() {
-        return sSecurityFile;
-    }
-    /**
-     * @return the sConfigFile
-     */
-    public String getsConfigFile() {
-        return sConfigFile;
-    }
-    /**
-     * @return the sDataFile
-     */
-    public String getsDataFile() {
-        return sDataFile;
-    }
+
+
     /**
      * @return the sShortName
      */
     public String getsShortName() {
         return sShortName;
     }
-    /**
-     * @return the sName
-     */
-    public String getsName() {
-        return sName;
-    }
+
     /**
      * @return the sVersion
      */
@@ -82,12 +64,7 @@ public class Study {
     public String getsDesignerVersion() {
         return sDesignerVersion;
     }
-    /**
-     * @return the sGeneratorVersion
-     */
-    public String getsGeneratorVersion() {
-        return sGeneratorVersion;
-    }
+
     /**
      * @return the dCreationDateTime
      */
@@ -101,23 +78,238 @@ public class Study {
         return dLastModificationDateTime;
     }
     /**
-     * @return the dGenerationDateTime
+     * @return the sStudyGuid
      */
-    public Date getdGenerationDateTime() {
-        return dGenerationDateTime;
+    public String getsStudyGuid() {
+        return sStudyGuid;
     }
+
+
     /**
-     * @return the lstQuestionnaireSets
+     * @param sStudyGuid the sStudyGuid to set
      */
-//    public ListArray<QuestionnaireSet> getLstQuestionnaireSets() {
-//        
-//        
-//        
-//        if (this.lstQuestionnaireSets == null)
-//            return null;
-//        else
-//            return lstQuestionnaireSets;
-//    }
+    public void setsStudyGuid(String sStudyGuid) {
+        this.sStudyGuid = sStudyGuid;
+    }
+
+
+    /**
+     * @return the iCurrentLanguageId
+     */
+    public Integer getiCurrentLanguageId() {
+        return iCurrentLanguageId;
+    }
+
+
+    /**
+     * @param iCurrentLanguageId the iCurrentLanguageId to set
+     */
+    public void setiCurrentLanguageId(Integer iCurrentLanguageId) {
+        this.iCurrentLanguageId = iCurrentLanguageId;
+    }
+
+
+    /**
+     * @return the sExclusive
+     */
+    public String getsExclusive() {
+        return sExclusive;
+    }
+
+
+    /**
+     * @param sExclusive the sExclusive to set
+     */
+    public void setsExclusive(String sExclusive) {
+        this.sExclusive = sExclusive;
+    }
+
+
+    /**
+     * @return the bSorted
+     */
+    public Boolean getbSorted() {
+        return bSorted;
+    }
+
+
+    /**
+     * @param bSorted the bSorted to set
+     */
+    public void setbSorted(Boolean bSorted) {
+        this.bSorted = bSorted;
+    }
+
+
+    /**
+     * @return the sSchema
+     */
+    public String getsSchema() {
+        return sSchema;
+    }
+
+
+    /**
+     * @param sSchema the sSchema to set
+     */
+    public void setsSchema(String sSchema) {
+        this.sSchema = sSchema;
+    }
+
+
+    /**
+     * @return the sLogSchema
+     */
+    public String getsLogSchema() {
+        return sLogSchema;
+    }
+
+
+    /**
+     * @param sLogSchema the sLogSchema to set
+     */
+    public void setsLogSchema(String sLogSchema) {
+        this.sLogSchema = sLogSchema;
+    }
+
+
+    /**
+     * @return the sLVSSchema
+     */
+    public String getsLVSSchema() {
+        return sLVSSchema;
+    }
+
+
+    /**
+     * @param sLVSSchema the sLVSSchema to set
+     */
+    public void setsLVSSchema(String sLVSSchema) {
+        this.sLVSSchema = sLVSSchema;
+    }
+
+
+    /**
+     * @return the sAnalysisSchema
+     */
+    public String getsAnalysisSchema() {
+        return sAnalysisSchema;
+    }
+
+
+    /**
+     * @param sAnalysisSchema the sAnalysisSchema to set
+     */
+    public void setsAnalysisSchema(String sAnalysisSchema) {
+        this.sAnalysisSchema = sAnalysisSchema;
+    }
+
+
+    /**
+     * @return the sSearchVariables
+     */
+    public String getsSearchVariables() {
+        return sSearchVariables;
+    }
+
+
+    /**
+     * @param sSearchVariables the sSearchVariables to set
+     */
+    public void setsSearchVariables(String sSearchVariables) {
+        this.sSearchVariables = sSearchVariables;
+    }
+
+
+    /**
+     * @return the bConfirmVariables
+     */
+    public Boolean getbConfirmVariables() {
+        return bConfirmVariables;
+    }
+
+
+    /**
+     * @param bConfirmVariables the bConfirmVariables to set
+     */
+    public void setbConfirmVariables(Boolean bConfirmVariables) {
+        this.bConfirmVariables = bConfirmVariables;
+    }
+
+
+    /**
+     * @return the lstStudiesList
+     */
+    public ArrayList<Study> getLstStudiesList() {
+        return lstStudiesList;
+    }
+
+
+    /**
+     * @param lstStudiesList the lstStudiesList to set
+     */
+    public void setLstStudiesList(ArrayList<Study> lstStudiesList) {
+        this.lstStudiesList = lstStudiesList;
+    }
+
+
+    /**
+     * @param sShortName the sShortName to set
+     */
+    public void setsShortName(String sShortName) {
+        this.sShortName = sShortName;
+    }
+
+
+    /**
+     * @param sVersion the sVersion to set
+     */
+    public void setsVersion(String sVersion) {
+        this.sVersion = sVersion;
+    }
+
+
+    /**
+     * @param sDesignerVersion the sDesignerVersion to set
+     */
+    public void setsDesignerVersion(String sDesignerVersion) {
+        this.sDesignerVersion = sDesignerVersion;
+    }
+
+
+    /**
+     * @param dCreationDateTime the dCreationDateTime to set
+     */
+    public void setdCreationDateTime(Date dCreationDateTime) {
+        this.dCreationDateTime = dCreationDateTime;
+    }
+
+
+    /**
+     * @param dLastModificationDateTime the dLastModificationDateTime to set
+     */
+    public void setdLastModificationDateTime(Date dLastModificationDateTime) {
+        this.dLastModificationDateTime = dLastModificationDateTime;
+    }
+
+
+    /**
+     * @param lstReports the lstReports to set
+     */
+    public void setLstReports(ArrayList<Report> lstReports) {
+        this.lstReports = lstReports;
+    }
+
+
+    /**
+     * @param sReportsSiteCode the sReportsSiteCode to set
+     */
+    public void setsReportsSiteCode(String sReportsSiteCode) {
+        this.sReportsSiteCode = sReportsSiteCode;
+    }    
+    
+    
+
     
     /**
      * Get all reports for this study
@@ -276,18 +468,15 @@ public class Study {
             String sGeneratorVersion, Date dCreationDateTime, Date dLastModificationDateTime,
             Date dGenerationDateTime, /*ArrayList<QuestionnaireSet> lstQuestionnaireSets, */
             ArrayList<Report> lstReports, String sReportsSiteCode) {
-        this.sStudyId = sStudyId;
-        this.sSecurityFile = sSecurityFile;
-        this.sConfigFile = sConfigFile;
-        this.sDataFile = sDataFile;
+        this.sStudyGuid = sStudyId;
+
         this.sShortName = sShortName;
-        this.sName = sName;
+
         this.sVersion = sVersion;
         this.sDesignerVersion = sDesignerVersion;
-        this.sGeneratorVersion = sGeneratorVersion;
+
         this.dCreationDateTime = dCreationDateTime;
         this.dLastModificationDateTime = dLastModificationDateTime;
-        this.dGenerationDateTime = dGenerationDateTime;
         // this.lstQuestionnaireSets = lstQuestionnaireSets;
         // this.lstReports = lstReports;
         this.sReportsSiteCode = sReportsSiteCode;
@@ -300,6 +489,9 @@ public class Study {
         //.
         //.
     }
+
+
+
     
     
 
