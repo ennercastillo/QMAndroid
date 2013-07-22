@@ -6,7 +6,7 @@ package org.questionairemanager.engine;
 import java.util.ArrayList;
 
 /**
- * Get the address of the screen
+ * Gets the address of the screen
  * @author Enner Escobedo C. <email>eriec.42@gmail.com</email>
  * <date>Jul 04, 2013</date>
  *
@@ -29,11 +29,19 @@ public class ScreenTemplate {
         return sDotNetClassName;
     }
     
+    /**
+     * Set the properties values if the screen template id is correct
+     * @param iScreenTemplateId, The screen template id
+     */
     public ScreenTemplate (Integer iScreenTemplateId){
         
         ArrayList<Object> alRow = null;
         //TODO: DA.ScreenTemplate.GetSingle(iScreenTemplateId)
         PopulateProperties (alRow);
+    }
+    
+    private ScreenTemplate (ArrayList<Object> alRow){
+    	PopulateProperties (alRow);
     }
     
     
@@ -44,10 +52,9 @@ public class ScreenTemplate {
      * @param alRow, Array list with the data 
      */
     private void PopulateProperties(ArrayList<Object> alRow) {
-        // TODO Auto-generated method stub
+        
         for(Object scrTemplate : alRow){
-
-            
+           
             this.iScreenTemplateId = ((ScreenTemplate)scrTemplate).getiScreenTemplateId();
             this.sDotNetClassName = ((ScreenTemplate)scrTemplate).getsDotNetClassName();
         }

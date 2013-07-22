@@ -20,13 +20,13 @@ public class Common {
      * @param sTable
      * @param iValue
      */
-    public void GetLegalValueTableItem(String sTable, Integer iValue){
+    public static void GetLegalValueTableItem(String sTable, Integer iValue){
         
         //TODO: return DA.common.GetLegalValueTableItem (sTable, iValue);
         
     }
     
-    public void GetLevalValueTableItems (String sTable, StoreObject soGroup){
+    public static void GetLevalValueTableItems (String sTable, StoreObject soGroup){
         
       //TODO: return DA.common.GetLegalValueTableItems(sTable, soGroup);
     }
