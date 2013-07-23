@@ -1,5 +1,6 @@
 package org.questionairemanager.data;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 public class Study {
@@ -20,6 +21,8 @@ public class Study {
     private String sAnalysisSchema;
     private String sSearchVariables;
     private Boolean bConfirmVariables;
+    
+    private ArrayList<Questionnaire> alQuestionnaires;
 
 
     /**

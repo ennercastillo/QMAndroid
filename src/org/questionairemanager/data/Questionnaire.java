@@ -4,6 +4,8 @@
 
 package org.questionairemanager.data;
 
+import java.util.ArrayList;
+
 /**
  * @author ennercastillo
  */
@@ -22,6 +24,8 @@ public class Questionnaire {
     private Boolean bConfirmVariables;
     private Boolean bRequired;
     private Boolean Unique;
+    
+    private ArrayList<Study> alStudies;
 
     /**
      * @return the sQuestionnaireGuid
@@ -258,7 +262,21 @@ public class Questionnaire {
         this.sSearchVariables = sSearchVariables;
         this.bConfirmVariables = bConfirmVariables;
         this.bRequired = bRequired;
-        Unique = unique;
+        this.Unique = unique;
+    }
+
+    /**
+     * @return the alStudies
+     */
+    public ArrayList<Study> getAlStudies() {
+        return alStudies;
+    }
+
+    /**
+     * @param alStudies the alStudies to set
+     */
+    public void setAlStudies(ArrayList<Study> alStudies) {
+        this.alStudies = alStudies;
     }
 
 }
