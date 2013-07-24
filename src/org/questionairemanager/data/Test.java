@@ -4,6 +4,7 @@
 
 package org.questionairemanager.data;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -39,6 +40,15 @@ public class Test {
         sStudy.setsSearchVariables("uno");
         sStudy.setbConfirmVariables (true);
         
+        
+        Questionnaire qQuestInfo;
+        qQuestInfo = new Questionnaire ("qguid", "short name q", "new", false, "mult string", "mult inst abs min", "mult inst abs max", "prompt under", "promptover", "a1", true, true, true);
+        
+        ArrayList<Questionnaire> alQuestionnaire = new ArrayList<Questionnaire>();
+        alQuestionnaire.add(qQuestInfo);
+        
+        //Agdd the questionnaire
+        sStudy.setAlQuestionnaires(alQuestionnaire);
         
 
     }

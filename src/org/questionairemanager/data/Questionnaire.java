@@ -6,6 +6,7 @@ package org.questionairemanager.data;
 
 import java.util.ArrayList;
 
+
 /**
  * @author ennercastillo
  */
@@ -25,9 +26,35 @@ public class Questionnaire {
     private Boolean bRequired;
     private Boolean Unique;
     
-    private ArrayList<Study> alStudies;
+    private Study sStudy;
+    
+    
+    // Cuenta con muchas pantallas
+    private ArrayList<Screen> alScreens;
+    
 
     /**
+	 * @return the alScreens
+	 */
+	public ArrayList<Screen> getAlScreens() {
+		return alScreens;
+	}
+
+	/**
+	 * @param alScreens the alScreens to set
+	 */
+	public void setAlScreens(ArrayList<Screen> alScreens) {
+		this.alScreens = alScreens;
+	}
+
+	/**
+	 * @return the sStudy
+	 */
+	public Study getsStudy() {
+		return sStudy;
+	}
+
+	/**
      * @return the sQuestionnaireGuid
      */
     public String getsQuestionnaireGuid() {
@@ -263,20 +290,6 @@ public class Questionnaire {
         this.bConfirmVariables = bConfirmVariables;
         this.bRequired = bRequired;
         this.Unique = unique;
-    }
-
-    /**
-     * @return the alStudies
-     */
-    public ArrayList<Study> getAlStudies() {
-        return alStudies;
-    }
-
-    /**
-     * @param alStudies the alStudies to set
-     */
-    public void setAlStudies(ArrayList<Study> alStudies) {
-        this.alStudies = alStudies;
     }
 
 }

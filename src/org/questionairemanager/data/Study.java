@@ -329,8 +329,18 @@ public class Study {
         this.sAnalysisSchema = ((Study)oData).getsAnalysisSchema();
         this.sSearchVariables = ((Study)oData).getsSearchVariables();
         this.bConfirmVariables = ((Study)oData).getbConfirmVariables();
-        
+             
     }
+
+
+	public ArrayList<Questionnaire> getAlQuestionnaires() {
+		return alQuestionnaires;
+	}
+
+
+	public void setAlQuestionnaires(ArrayList<Questionnaire> alQuestionnaires) {
+		this.alQuestionnaires = alQuestionnaires;
+	}
 
 
 
