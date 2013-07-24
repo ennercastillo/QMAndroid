@@ -11,8 +11,8 @@ public class Checkpoint {
 
     private String sCheckPointGuid;
     private String sCondition;
-    private String sBranchIf;
-    private Boolean bOnBranch;
+    private Boolean bBranchIf;
+    private String sOnBranch;
 
     /**
      * @return the sCheckPointGuid
@@ -45,29 +45,29 @@ public class Checkpoint {
     /**
      * @return the sBranchIf
      */
-    public String getsBranchIf() {
-        return sBranchIf;
+    public Boolean getbBranchIf() {
+        return bBranchIf;
     }
 
     /**
      * @param sBranchIf the sBranchIf to set
      */
-    public void setsBranchIf(String sBranchIf) {
-        this.sBranchIf = sBranchIf;
+    public void setbBranchIf(Boolean sBranchIf) {
+        this.bBranchIf = sBranchIf;
     }
 
     /**
      * @return the bOnBranch
      */
-    public Boolean getbOnBranch() {
-        return bOnBranch;
+    public String getsOnBranch() {
+        return sOnBranch;
     }
 
     /**
      * @param bOnBranch the bOnBranch to set
      */
-    public void setbOnBranch(Boolean bOnBranch) {
-        this.bOnBranch = bOnBranch;
+    public void setsOnBranch(String sOnBranch) {
+        this.sOnBranch = sOnBranch;
     }
 
     /**
@@ -76,11 +76,11 @@ public class Checkpoint {
      * @param sBranchIf
      * @param bOnBranch
      */
-    public Checkpoint(String sCheckPointGuid, String sCondition, String sBranchIf, Boolean bOnBranch) {
+    public Checkpoint(String sCheckPointGuid, String sCondition, Boolean bBranchIf, String sOnBranch) {
         this.sCheckPointGuid = sCheckPointGuid;
         this.sCondition = sCondition;
-        this.sBranchIf = sBranchIf;
-        this.bOnBranch = bOnBranch;
+        this.bBranchIf = bBranchIf;
+        this.sOnBranch = sOnBranch;
     }
 
     /**
@@ -89,8 +89,8 @@ public class Checkpoint {
     public Checkpoint() {
         this.sCheckPointGuid = "";
         this.sCondition = "";
-        this.sBranchIf = "";
-        this.bOnBranch = false;
+        this.bBranchIf = false;
+        this.sOnBranch = "";
     }
 
 }

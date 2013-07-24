@@ -12,15 +12,15 @@ public class Study {
     private String sDesignerVersion;
     private Date dCreationDateTime;
     private Date dLastModificationDateTime;
-    private Integer iCurrentLanguageId;
-    private String sExclusive;
+    private String sCurrentLanguageId;
+    private Boolean bExclusive;
     private Boolean bSorted;
     private String sSchema;
     private String sLogSchema;
     private String sLVSSchema;
     private String sAnalysisSchema;
     private String sSearchVariables;
-    private Boolean bConfirmVariables;
+    private String sConfirmVariables;
     
     private ArrayList<Questionnaire> alQuestionnaires;
 
@@ -34,26 +34,10 @@ public class Study {
 
 
     /**
-     * @param sStudyGuid the sStudyGuid to set
-     */
-    public void setsStudyGuid(String sStudyGuid) {
-        this.sStudyGuid = sStudyGuid;
-    }
-
-
-    /**
      * @return the sShortName
      */
     public String getsShortName() {
         return sShortName;
-    }
-
-
-    /**
-     * @param sShortName the sShortName to set
-     */
-    public void setsShortName(String sShortName) {
-        this.sShortName = sShortName;
     }
 
 
@@ -66,26 +50,10 @@ public class Study {
 
 
     /**
-     * @param sVersion the sVersion to set
-     */
-    public void setsVersion(String sVersion) {
-        this.sVersion = sVersion;
-    }
-
-
-    /**
      * @return the sDesignerVersion
      */
     public String getsDesignerVersion() {
         return sDesignerVersion;
-    }
-
-
-    /**
-     * @param sDesignerVersion the sDesignerVersion to set
-     */
-    public void setsDesignerVersion(String sDesignerVersion) {
-        this.sDesignerVersion = sDesignerVersion;
     }
 
 
@@ -96,15 +64,6 @@ public class Study {
         return dCreationDateTime;
     }
 
-
-    /**
-     * @param dCreationDateTime the dCreationDateTime to set
-     */
-    public void setdCreationDateTime(Date dCreationDateTime) {
-        this.dCreationDateTime = dCreationDateTime;
-    }
-
-
     /**
      * @return the dLastModificationDateTime
      */
@@ -114,42 +73,26 @@ public class Study {
 
 
     /**
-     * @param dLastModificationDateTime the dLastModificationDateTime to set
-     */
-    public void setdLastModificationDateTime(Date dLastModificationDateTime) {
-        this.dLastModificationDateTime = dLastModificationDateTime;
-    }
-
-
-    /**
      * @return the iCurrentLanguageId
      */
-    public Integer getiCurrentLanguageId() {
-        return iCurrentLanguageId;
-    }
-
-
-    /**
-     * @param iCurrentLanguageId the iCurrentLanguageId to set
-     */
-    public void setiCurrentLanguageId(Integer iCurrentLanguageId) {
-        this.iCurrentLanguageId = iCurrentLanguageId;
+    public String getsCurrentLanguageId() {
+        return sCurrentLanguageId;
     }
 
 
     /**
      * @return the sExclusive
      */
-    public String getsExclusive() {
-        return sExclusive;
+    public Boolean getbExclusive() {
+        return bExclusive;
     }
 
 
     /**
      * @param sExclusive the sExclusive to set
      */
-    public void setsExclusive(String sExclusive) {
-        this.sExclusive = sExclusive;
+    public void setbExclusive(Boolean bExclusive) {
+        this.bExclusive = bExclusive;
     }
 
 
@@ -178,26 +121,10 @@ public class Study {
 
 
     /**
-     * @param sSchema the sSchema to set
-     */
-    public void setsSchema(String sSchema) {
-        this.sSchema = sSchema;
-    }
-
-
-    /**
      * @return the sLogSchema
      */
     public String getsLogSchema() {
         return sLogSchema;
-    }
-
-
-    /**
-     * @param sLogSchema the sLogSchema to set
-     */
-    public void setsLogSchema(String sLogSchema) {
-        this.sLogSchema = sLogSchema;
     }
 
 
@@ -210,26 +137,10 @@ public class Study {
 
 
     /**
-     * @param sLVSSchema the sLVSSchema to set
-     */
-    public void setsLVSSchema(String sLVSSchema) {
-        this.sLVSSchema = sLVSSchema;
-    }
-
-
-    /**
      * @return the sAnalysisSchema
      */
     public String getsAnalysisSchema() {
         return sAnalysisSchema;
-    }
-
-
-    /**
-     * @param sAnalysisSchema the sAnalysisSchema to set
-     */
-    public void setsAnalysisSchema(String sAnalysisSchema) {
-        this.sAnalysisSchema = sAnalysisSchema;
     }
 
 
@@ -242,26 +153,10 @@ public class Study {
 
 
     /**
-     * @param sSearchVariables the sSearchVariables to set
+     * @return the sConfirmVariables
      */
-    public void setsSearchVariables(String sSearchVariables) {
-        this.sSearchVariables = sSearchVariables;
-    }
-
-
-    /**
-     * @return the bConfirmVariables
-     */
-    public Boolean getbConfirmVariables() {
-        return bConfirmVariables;
-    }
-
-
-    /**
-     * @param bConfirmVariables the bConfirmVariables to set
-     */
-    public void setbConfirmVariables(Boolean bConfirmVariables) {
-        this.bConfirmVariables = bConfirmVariables;
+    public String getsConfirmVariables() {
+        return sConfirmVariables;
     }
 
 
@@ -273,15 +168,15 @@ public class Study {
      * @param sDesignerVersion
      * @param dCreationDateTime
      * @param dLastModificationDateTime
-     * @param iCurrentLanguageId
-     * @param sExclusive
+     * @param sCurrentLanguageId
+     * @param bExclusive
      * @param bSorted
      * @param sSchema
      * @param sLogSchema
      * @param sLVSSchema
      * @param sAnalysisSchema
      * @param sSearchVariables
-     * @param bConfirmVariables
+     * @param sConfirmVariables
      */
     public Study() {
 
@@ -295,43 +190,16 @@ public class Study {
         this.dCreationDateTime = date;
         this.dLastModificationDateTime = date;
         
-        this.iCurrentLanguageId = Integer.valueOf(0);
-        this.sExclusive = "";
+        this.sCurrentLanguageId = "";
+        this.bExclusive = false;
         this.bSorted = false;
         this.sSchema = "";
         this.sLogSchema = "";
         this.sLVSSchema = "";
         this.sAnalysisSchema = "";
         this.sSearchVariables = "";
-        this.bConfirmVariables = false;
+        this.sConfirmVariables = "";
     }
-
-    /**
-     * Add elements this class
-     * @param oData
-     */
-    public void Add(Object oData){
-        
-        this.sStudyGuid = ((Study)oData).getsStudyGuid();
-        this.sShortName = ((Study)oData).getsShortName();
-        this.sVersion = ((Study)oData).getsVersion();
-        
-        this.sDesignerVersion = ((Study)oData).getsDesignerVersion();
-        this.dCreationDateTime = ((Study)oData).getdCreationDateTime();
-        this.dLastModificationDateTime = ((Study)oData).getdLastModificationDateTime();
-        
-        this.iCurrentLanguageId = ((Study)oData).getiCurrentLanguageId();
-        this.sExclusive = ((Study)oData).getsExclusive();
-        this.bSorted = ((Study)oData).getbSorted();
-        this.sSchema = ((Study)oData).getsSchema();
-        this.sLogSchema = ((Study)oData).getsLogSchema();
-        this.sLVSSchema = ((Study)oData).getsLVSSchema();
-        this.sAnalysisSchema = ((Study)oData).getsAnalysisSchema();
-        this.sSearchVariables = ((Study)oData).getsSearchVariables();
-        this.bConfirmVariables = ((Study)oData).getbConfirmVariables();
-             
-    }
-
 
 	public ArrayList<Questionnaire> getAlQuestionnaires() {
 		return alQuestionnaires;
@@ -341,6 +209,49 @@ public class Study {
 	public void setAlQuestionnaires(ArrayList<Questionnaire> alQuestionnaires) {
 		this.alQuestionnaires = alQuestionnaires;
 	}
+
+
+    /**
+     * @param sStudyGuid
+     * @param sShortName
+     * @param sVersion
+     * @param sDesignerVersion
+     * @param dCreationDateTime
+     * @param dLastModificationDateTime
+     * @param sCurrentLanguageId
+     * @param bExclusive
+     * @param bSorted
+     * @param sSchema
+     * @param sLogSchema
+     * @param sLVSSchema
+     * @param sAnalysisSchema
+     * @param sSearchVariables
+     * @param sConfirmVariables
+     * @param alQuestionnaires
+     */
+    public Study(String sStudyGuid, String sShortName, String sVersion, String sDesignerVersion,
+            Date dCreationDateTime, Date dLastModificationDateTime, String sCurrentLanguageId,
+            Boolean bExclusive, Boolean bSorted, String sSchema, String sLogSchema,
+            String sLVSSchema, String sAnalysisSchema, String sSearchVariables,
+            String sConfirmVariables, ArrayList<Questionnaire> alQuestionnaires) {
+        
+        this.sStudyGuid = sStudyGuid;
+        this.sShortName = sShortName;
+        this.sVersion = sVersion;
+        this.sDesignerVersion = sDesignerVersion;
+        this.dCreationDateTime = dCreationDateTime;
+        this.dLastModificationDateTime = dLastModificationDateTime;
+        this.sCurrentLanguageId = sCurrentLanguageId;
+        this.bExclusive = bExclusive;
+        this.bSorted = bSorted;
+        this.sSchema = sSchema;
+        this.sLogSchema = sLogSchema;
+        this.sLVSSchema = sLVSSchema;
+        this.sAnalysisSchema = sAnalysisSchema;
+        this.sSearchVariables = sSearchVariables;
+        this.sConfirmVariables = sConfirmVariables;
+        this.alQuestionnaires = alQuestionnaires;
+    }
 
 
 

@@ -10,6 +10,7 @@ public class LegalValueItem {
     private String sTag;
     private Boolean bHidden;
     private String sReportLabel;
+    
     /**
      * @return the sLegalValueItemGuid
      */
@@ -119,6 +120,7 @@ public class LegalValueItem {
      */
     public LegalValueItem(String sLegalValueItemGuid, String sLegalValueTableGuid, String sValue,
             String sOrdinal, String sShortName, String sTag, Boolean bHidden, String sReportLabel) {
+        
         this.sLegalValueItemGuid = sLegalValueItemGuid;
         this.sLegalValueTableGuid = sLegalValueTableGuid;
         this.sValue = sValue;

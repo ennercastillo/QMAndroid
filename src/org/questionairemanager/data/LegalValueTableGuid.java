@@ -1,5 +1,5 @@
 /**
- * 
+ * TODO: Que informaci—n toma Legal Value
  */
 package org.questionairemanager.data;
 
@@ -19,22 +19,10 @@ public class LegalValueTableGuid {
         return sLegalValueTableGuid;
     }
     /**
-     * @param sLegalValueTableGuid the sLegalValueTableGuid to set
-     */
-    public void setsLegalValueTableGuid(String sLegalValueTableGuid) {
-        this.sLegalValueTableGuid = sLegalValueTableGuid;
-    }
-    /**
      * @return the sDataType
      */
     public String getsDataType() {
         return sDataType;
-    }
-    /**
-     * @param sDataType the sDataType to set
-     */
-    public void setsDataType(String sDataType) {
-        this.sDataType = sDataType;
     }
     
     /**

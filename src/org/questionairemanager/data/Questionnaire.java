@@ -16,20 +16,20 @@ public class Questionnaire {
     private String sShortName;
     private String sOnNew;
     private Boolean bModifiable;
-    private String sMultipleInstance;
+    private Boolean bMultipleInstance;
     private String sMultipleInstanceAbsMin;
     private String sMultipleInstanceAbsMax;
     private String sMultipleInstancePromptUnder;
     private String sMultipleInstancePromptOver;
     private String sSearchVariables;
-    private Boolean bConfirmVariables;
+    private String sConfirmVariables;
     private Boolean bRequired;
-    private Boolean Unique;
+    private String sUnique;
     
-    private Study sStudy;
+    private ArrayList<Question> alQuestions;
     
     
-    // Cuenta con muchas pantallas
+    // Screens this questionnaire
     private ArrayList<Screen> alScreens;
     
 
@@ -47,12 +47,6 @@ public class Questionnaire {
 		this.alScreens = alScreens;
 	}
 
-	/**
-	 * @return the sStudy
-	 */
-	public Study getsStudy() {
-		return sStudy;
-	}
 
 	/**
      * @return the sQuestionnaireGuid
@@ -113,15 +107,15 @@ public class Questionnaire {
     /**
      * @return the sMultipleInstance
      */
-    public String getsMultipleInstance() {
-        return sMultipleInstance;
+    public Boolean getbMultipleInstance() {
+        return bMultipleInstance;
     }
 
     /**
      * @param sMultipleInstance the sMultipleInstance to set
      */
-    public void setsMultipleInstance(String sMultipleInstance) {
-        this.sMultipleInstance = sMultipleInstance;
+    public void setsMultipleInstance(Boolean bMultipleInstance) {
+        this.bMultipleInstance = bMultipleInstance;
     }
 
     /**
@@ -198,15 +192,15 @@ public class Questionnaire {
     /**
      * @return the bConfirmVariables
      */
-    public Boolean getbConfirmVariables() {
-        return bConfirmVariables;
+    public String getsConfirmVariables() {
+        return sConfirmVariables;
     }
 
     /**
      * @param bConfirmVariables the bConfirmVariables to set
      */
-    public void setbConfirmVariables(Boolean bConfirmVariables) {
-        this.bConfirmVariables = bConfirmVariables;
+    public void setbConfirmVariables(String sConfirmVariables) {
+        this.sConfirmVariables = sConfirmVariables;
     }
 
     /**
@@ -226,15 +220,22 @@ public class Questionnaire {
     /**
      * @return the unique
      */
-    public Boolean getUnique() {
-        return Unique;
+    public String getsUnique() {
+        return sUnique;
     }
 
     /**
      * @param unique the unique to set
      */
-    public void setUnique(Boolean unique) {
-        Unique = unique;
+    public void setUnique(String sUnique) {
+        this.sUnique = sUnique;
+    }
+    
+    /**
+     * @return the alQuestions
+     */
+    public ArrayList<Question> getAlQuestions() {
+        return alQuestions;
     }
 
     /**
@@ -245,51 +246,56 @@ public class Questionnaire {
         this.sShortName = "";
         this.sOnNew = "";
         this.bModifiable = false;
-        this.sMultipleInstance = "";
+        this.bMultipleInstance = false;
         this.sMultipleInstanceAbsMin = "";
         this.sMultipleInstanceAbsMax = "";
         this.sMultipleInstancePromptUnder = "";
         this.sMultipleInstancePromptOver = "";
         this.sSearchVariables = "";
-        this.bConfirmVariables = false;
+        this.sConfirmVariables = "";
         this.bRequired = false;
-        this.Unique = false;
+        this.sUnique = "";
+        this.alQuestions = null;
     }
 
     /**
+     * 
      * @param sQuestionnaireGuid
      * @param sShortName
      * @param sOnNew
      * @param bModifiable
-     * @param sMultipleInstance
+     * @param bMultipleInstance
      * @param sMultipleInstanceAbsMin
      * @param sMultipleInstanceAbsMax
      * @param sMultipleInstancePromptUnder
      * @param sMultipleInstancePromptOver
      * @param sSearchVariables
-     * @param bConfirmVariables
+     * @param sConfirmVariables
      * @param bRequired
-     * @param unique
+     * @param sUnique
      */
     public Questionnaire(String sQuestionnaireGuid, String sShortName, String sOnNew,
-            Boolean bModifiable, String sMultipleInstance, String sMultipleInstanceAbsMin,
+            Boolean bModifiable, Boolean bMultipleInstance, String sMultipleInstanceAbsMin,
             String sMultipleInstanceAbsMax, String sMultipleInstancePromptUnder,
-            String sMultipleInstancePromptOver, String sSearchVariables, Boolean bConfirmVariables,
-            Boolean bRequired, Boolean unique) {
+            String sMultipleInstancePromptOver, String sSearchVariables, String sConfirmVariables,
+            Boolean bRequired, String sUnique, ArrayList<Question> alQuestions) {
 
         this.sQuestionnaireGuid = sQuestionnaireGuid;
         this.sShortName = sShortName;
         this.sOnNew = sOnNew;
         this.bModifiable = bModifiable;
-        this.sMultipleInstance = sMultipleInstance;
+        this.bMultipleInstance = bMultipleInstance;
         this.sMultipleInstanceAbsMin = sMultipleInstanceAbsMin;
         this.sMultipleInstanceAbsMax = sMultipleInstanceAbsMax;
         this.sMultipleInstancePromptUnder = sMultipleInstancePromptUnder;
         this.sMultipleInstancePromptOver = sMultipleInstancePromptOver;
         this.sSearchVariables = sSearchVariables;
-        this.bConfirmVariables = bConfirmVariables;
+        this.sConfirmVariables = sConfirmVariables;
         this.bRequired = bRequired;
-        this.Unique = unique;
+        this.sUnique = sUnique;
+        this.alQuestions = alQuestions;
     }
+
+    
 
 }
