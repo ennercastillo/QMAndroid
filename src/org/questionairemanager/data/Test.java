@@ -20,6 +20,27 @@ public class Test {
     public static void main(String[] args) {
 
         
+    	
+    	// Node with information
+    	ArrayList<Node> nodes = new ArrayList<Node>();
+    	
+    	//Tipos de Nodos
+    	// ST Study, QG QuestionnaireGroup, QU, Questionnaire
+    	// GR Group, CH checkpoint, IN Information, Q Question, Ex
+    	
+    	
+    	//Debe verificar que no exista el nodo ingresado
+    	nodes.add(new Node("a", null, (TypeNode)"QU".toString(), "0", true, "num", true, true, true, true, "onload", "unload", "comment"));
+    	nodes.add(new Node("b", "a", "QU", "0", true, "num", true, true, true, true, "onload", "unload", "comment"));
+    	nodes.add(new Node("c", "a", "QU", "0", true, "num", true, true, true, true, "onload", "unload", "comment"));
+    	nodes.add(new Node("d", "b", "QU", "0", true, "num", true, true, true, true, "onload", "unload", "comment"));
+    	nodes.add(new Node("e", "c", "QU", "0", true, "num", true, true, true, true, "onload", "unload", "comment"));
+    	nodes.add(new Node("f", "e", "QU", "0", true, "num", true, true, true, true, "onload", "unload", "comment"));
+    	nodes.add(new Node("g", "f", "QU", "0", true, "num", true, true, true, true, "onload", "unload", "comment"));
+    	
+    	// Se debe generar un camino a seguir, 
+    	// Listado de pantallas a crear
+    	
         
         // Define date
         Date date = new Date();
