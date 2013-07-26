@@ -7,7 +7,7 @@ package org.questionairemanager.data;
  * @author ennercastillo
  *
  */
-public class LegalValueTableGuid {
+public class LegalValueTableGuidData {
 
     private String sLegalValueTableGuid;
     private String sDataType;
@@ -29,12 +29,12 @@ public class LegalValueTableGuid {
      * @param sLegalValueTableGuid
      * @param sDataType
      */
-    public LegalValueTableGuid(String sLegalValueTableGuid, String sDataType) {
+    public LegalValueTableGuidData(String sLegalValueTableGuid, String sDataType) {
         this.sLegalValueTableGuid = sLegalValueTableGuid;
         this.sDataType = sDataType;
     }
     
-    public LegalValueTableGuid() {
+    public LegalValueTableGuidData() {
         this.sLegalValueTableGuid = "";
         this.sDataType = "";
     }

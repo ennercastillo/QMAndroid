@@ -7,7 +7,7 @@ package org.questionairemanager.data;
 /**
  * @author ennercastillo
  */
-public class Checkpoint {
+public class CheckpointData {
 
     private String sCheckPointGuid;
     private String sCondition;
@@ -76,7 +76,7 @@ public class Checkpoint {
      * @param sBranchIf
      * @param bOnBranch
      */
-    public Checkpoint(String sCheckPointGuid, String sCondition, Boolean bBranchIf, String sOnBranch) {
+    public CheckpointData(String sCheckPointGuid, String sCondition, Boolean bBranchIf, String sOnBranch) {
         this.sCheckPointGuid = sCheckPointGuid;
         this.sCondition = sCondition;
         this.bBranchIf = bBranchIf;
@@ -86,7 +86,7 @@ public class Checkpoint {
     /**
      * 
      */
-    public Checkpoint() {
+    public CheckpointData() {
         this.sCheckPointGuid = "";
         this.sCondition = "";
         this.bBranchIf = false;

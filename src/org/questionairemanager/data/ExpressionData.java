@@ -7,7 +7,7 @@ package org.questionairemanager.data;
  * @author ennercastillo
  *
  */
-public class Expression {
+public class ExpressionData {
 
     private String sExpressionGuid;
     private String sVariableName;
@@ -45,7 +45,7 @@ public class Expression {
      * @param sDataType
      * @param bAutoTriggered
      */
-    public Expression(String sExpressionGuid, String sVariableName, String sDataType,
+    public ExpressionData(String sExpressionGuid, String sVariableName, String sDataType,
             Boolean bAutoTriggered) {
         this.sExpressionGuid = sExpressionGuid;
         this.sVariableName = sVariableName;
@@ -53,7 +53,7 @@ public class Expression {
         this.bAutoTriggered = bAutoTriggered;
     }
     
-    public Expression (){
+    public ExpressionData (){
         this.sExpressionGuid = "";
         this.sVariableName = "";
         this.sDataType = "";

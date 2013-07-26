@@ -7,7 +7,7 @@ package org.questionairemanager.data;
 /**
  * @author ennercastillo
  */
-public class Question {
+public class QuestionData {
 
     private String sQuestionGuid;
     private String sLegalValueTableGuid;
@@ -117,7 +117,7 @@ public class Question {
     /**
      * Constructor without data
      */
-    public Question() {
+    public QuestionData() {
         
         this.sQuestionGuid = "";
         this.sLegalValueTableGuid = "";
@@ -152,7 +152,7 @@ public class Question {
      * @param sOnChange
      * @param sUnique
      */
-    public Question(String sQuestionGuid, String sLegalValueTableGuid, String sVariableName,
+    public QuestionData(String sQuestionGuid, String sLegalValueTableGuid, String sVariableName,
             String sScreenTemplateGuid, String sArguments, Boolean bRequired, String sAbsMin,
             String sAbsMax, String sPromptUnder, String sPromptOver,
             String sCustomValidationExpressionGuid, String sOnChange, String sUnique) {

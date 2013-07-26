@@ -4,33 +4,33 @@ public enum TypeNode {
 
 	ST, QG, QU, GR, CH, IN, Q, EX;
 	
-	public String toString(){
+	public String ToString(){
 		switch (this){
 		
 		
 		case ST:
-			return "Study";
+			return "st";
 		
 		case QG:
-			return "Questionnaire Group";
+			return "qg";
 			
 		case QU:
-			return "Questionnaire";
+			return "qu";
 			
 		case GR:
-			return "Group";
+			return "gr";
 			
 		case CH:
-			return "Checkpoint";
+			return "ch";
 			
 		case IN:
-			return "Information";
+			return "in";
 			
 		case Q:
-			return "Question";
+			return "q";
 			
 		case EX:
-			return "Expression";
+			return "ex";
 		
 		default:
 			return "unspecified";

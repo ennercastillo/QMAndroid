@@ -2,14 +2,14 @@ package org.questionairemanager.data;
 
 import java.util.Stack;
 
-public class Transition {
+public class TransitionData {
 	
 	private Stack stckDataTransition;
 
 	/**
 	 * Class constructor of Transition
 	 */
-	public Transition() {
+	public TransitionData() {
 	}
 	
 

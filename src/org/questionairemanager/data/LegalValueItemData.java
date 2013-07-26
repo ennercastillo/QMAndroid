@@ -1,6 +1,6 @@
 package org.questionairemanager.data;
 
-public class LegalValueItem {
+public class LegalValueItemData {
     
     private String sLegalValueItemGuid;
     private String sLegalValueTableGuid;
@@ -118,7 +118,7 @@ public class LegalValueItem {
      * @param bHidden
      * @param sReportLabel
      */
-    public LegalValueItem(String sLegalValueItemGuid, String sLegalValueTableGuid, String sValue,
+    public LegalValueItemData(String sLegalValueItemGuid, String sLegalValueTableGuid, String sValue,
             String sOrdinal, String sShortName, String sTag, Boolean bHidden, String sReportLabel) {
         
         this.sLegalValueItemGuid = sLegalValueItemGuid;
@@ -135,7 +135,7 @@ public class LegalValueItem {
     /**
      * 
      */
-    public LegalValueItem() {
+    public LegalValueItemData() {
     }
     
     

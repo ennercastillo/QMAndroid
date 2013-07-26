@@ -3,8 +3,13 @@
  */
 package org.questionairemanager.data;
 
+import java.util.Locale;
+
 /**
- * @author ennercastillo
+ * Dummy class for node.
+ * Node get all information to Question Manager
+ * @author Enner Escobedo C. <email>enner.castillo@centrikal.com</email>
+ * <date>Jul, 25 2013</date>
  * 
  */
 public class Node {
@@ -13,7 +18,7 @@ public class Node {
 	private String sNodeguid;
 
 	private String sParentGuid;
-	private TypeNode tnType;
+	private TypeNode tnTypeNode;
 	private String sOrdinal;
 	private Boolean bVisible;
 	private String sNumber;
@@ -41,34 +46,36 @@ public class Node {
 		this.sOnLoad = "";
 		this.sOnUnload = "";
 		this.sComment = "";
+		this.tnTypeNode = null;
 	}
 
 	/**
 	 * Constructor class with data
 	 * 
-	 * @param sNodeguid
-	 * @param sParentGuid
-	 * @param sType
-	 * @param sOrdinal
-	 * @param bVisible
-	 * @param sNumber
-	 * @param bHideNext
-	 * @param bHideBack
-	 * @param bConfirmNext
-	 * @param bConfirmBack
-	 * @param sOnLoad
-	 * @param sOnUnload
-	 * @param sComment
+	 * @param sNodeguid, Guid of node
+	 * @param sParentGuid, Guid of parent node
+	 * @param sType, Type of node
+	 * @param sOrdinal, Orden for brothers
+	 * @param bVisible, it is visible 
+	 * @param sNumber, number
+	 * @param bHideNext, is hide next
+	 * @param bHideBack, is hide back
+	 * @param bConfirmNext, is confirm next
+	 * @param bConfirmBack, is confirm back
+	 * @param sOnLoad, value of load
+	 * @param sOnUnload, value of unload
+	 * @param sComment, comment to node
 	 */
-	public Node(String sNodeguid, String sParentGuid, TypeNode tnType,
+	public Node(String sNodeguid, String sParentGuid, String sTypeNode,
 			String sOrdinal, Boolean bVisible, String sNumber,
 			Boolean bHideNext, Boolean bHideBack, Boolean bConfirmNext,
 			Boolean bConfirmBack, String sOnLoad, String sOnUnload,
 			String sComment) {
 
+	    
+	    this.tnTypeNode = GetTypeNodeOfString(sTypeNode);
 		this.sNodeguid = sNodeguid;
 		this.sParentGuid = sParentGuid;
-		this.tnType = tnType;
 		this.sOrdinal = sOrdinal;
 		this.bVisible = bVisible;
 		this.sNumber = sNumber;
@@ -82,6 +89,54 @@ public class Node {
 	}
 
 	/**
+	 * Get type node of string to compare.
+	 * @param sTypeNode, String to search 
+	 * @return TypeNode, string with equivalent string inserted.
+	 */
+    public TypeNode GetTypeNodeOfString(String sToCompare) {
+        
+	    // Convert string to lower case
+	    sToCompare = sToCompare.toLowerCase(Locale.ENGLISH);
+	    
+	    // Get equivalent TypeNode
+	    
+	    // ST = Study
+	    if (sToCompare.equals(TypeNode.ST.ToString()))
+	        return TypeNode.ST;    
+	    
+	    // QG = Questionnaire Group
+	    if (sToCompare.equals(TypeNode.QG.ToString()))
+            return TypeNode.QG;
+	    
+	    
+	    // QU = Questionnaire
+	    if (sToCompare.equals(TypeNode.QU.ToString()))
+            return TypeNode.QU;
+	    
+	    // GR = Group
+	    if (sToCompare.equals(TypeNode.GR.ToString()))
+            return TypeNode.GR;
+	    
+	    // CH = Check point
+	    if (sToCompare.equals(TypeNode.CH.ToString()))
+            return TypeNode.CH;
+	    
+	    // IN = Info
+	    if (sToCompare.equals(TypeNode.IN.ToString()))
+            return TypeNode.IN;
+	    
+	    // Q = Question
+	    if (sToCompare.equals(TypeNode.Q.ToString()))
+            return TypeNode.Q;
+	    
+	    // EX = Expression
+	    if (sToCompare.equals(TypeNode.EX.ToString()))
+            return TypeNode.EX;
+	    
+	    return null;
+    }
+
+    /**
 	 * @return the sNodeguid
 	 */
 	public String getsNodeguid() {
@@ -98,8 +153,8 @@ public class Node {
 	/**
 	 * @return the sType
 	 */
-	public TypeNode gettnType() {
-		return tnType;
+	public TypeNode gettnTypeNode() {
+		return tnTypeNode;
 	}
 
 	/**

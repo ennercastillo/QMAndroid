@@ -10,7 +10,7 @@ import java.util.ArrayList;
 /**
  * @author ennercastillo
  */
-public class Questionnaire {
+public class QuestionnaireData {
 
     private String sQuestionnaireGuid;
     private String sShortName;
@@ -26,24 +26,24 @@ public class Questionnaire {
     private Boolean bRequired;
     private String sUnique;
     
-    private ArrayList<Question> alQuestions;
+    private ArrayList<QuestionData> alQuestions;
     
     
     // Screens this questionnaire
-    private ArrayList<Screen> alScreens;
+    private ArrayList<ScreenData> alScreens;
     
 
     /**
 	 * @return the alScreens
 	 */
-	public ArrayList<Screen> getAlScreens() {
+	public ArrayList<ScreenData> getAlScreens() {
 		return alScreens;
 	}
 
 	/**
 	 * @param alScreens the alScreens to set
 	 */
-	public void setAlScreens(ArrayList<Screen> alScreens) {
+	public void setAlScreens(ArrayList<ScreenData> alScreens) {
 		this.alScreens = alScreens;
 	}
 
@@ -234,14 +234,14 @@ public class Questionnaire {
     /**
      * @return the alQuestions
      */
-    public ArrayList<Question> getAlQuestions() {
+    public ArrayList<QuestionData> getAlQuestions() {
         return alQuestions;
     }
 
     /**
      * Constructor class
      */
-    public Questionnaire() {
+    public QuestionnaireData() {
         this.sQuestionnaireGuid = "";
         this.sShortName = "";
         this.sOnNew = "";
@@ -274,11 +274,11 @@ public class Questionnaire {
      * @param bRequired
      * @param sUnique
      */
-    public Questionnaire(String sQuestionnaireGuid, String sShortName, String sOnNew,
+    public QuestionnaireData(String sQuestionnaireGuid, String sShortName, String sOnNew,
             Boolean bModifiable, Boolean bMultipleInstance, String sMultipleInstanceAbsMin,
             String sMultipleInstanceAbsMax, String sMultipleInstancePromptUnder,
             String sMultipleInstancePromptOver, String sSearchVariables, String sConfirmVariables,
-            Boolean bRequired, String sUnique, ArrayList<Question> alQuestions) {
+            Boolean bRequired, String sUnique, ArrayList<QuestionData> alQuestions) {
 
         this.sQuestionnaireGuid = sQuestionnaireGuid;
         this.sShortName = sShortName;

@@ -1,6 +1,6 @@
 package org.questionairemanager.data;
 
-public class ScreenTemplate {
+public class ScreenTemplateData {
     
     private String sScreenTemplateGuid;
     private String sScreenTemplateName;
@@ -45,7 +45,7 @@ public class ScreenTemplate {
      * @param sReference
      * @param sVariableNameReq
      */
-    public ScreenTemplate(String sScreenTemplateGuid, String sScreenTemplateName, String sDataType,
+    public ScreenTemplateData(String sScreenTemplateGuid, String sScreenTemplateName, String sDataType,
             String sReference, Boolean bVariableNameReq) {
         this.sScreenTemplateGuid = sScreenTemplateGuid;
         this.sScreenTemplateName = sScreenTemplateName;
@@ -57,7 +57,7 @@ public class ScreenTemplate {
     /**
      * 
      */
-    public ScreenTemplate (){
+    public ScreenTemplateData (){
         this.sScreenTemplateGuid = "";
         this.sScreenTemplateName = "";
         this.sDataType = "";

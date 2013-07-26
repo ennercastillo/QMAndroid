@@ -3,7 +3,7 @@ package org.questionairemanager.data;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class Study {
+public class StudyData {
 
     
     private String sStudyGuid;
@@ -22,7 +22,7 @@ public class Study {
     private String sSearchVariables;
     private String sConfirmVariables;
     
-    private ArrayList<Questionnaire> alQuestionnaires;
+    private ArrayList<QuestionnaireData> alQuestionnaires;
 
 
     /**
@@ -178,7 +178,7 @@ public class Study {
      * @param sSearchVariables
      * @param sConfirmVariables
      */
-    public Study() {
+    public StudyData() {
 
         Date date = new Date();
     
@@ -201,12 +201,12 @@ public class Study {
         this.sConfirmVariables = "";
     }
 
-	public ArrayList<Questionnaire> getAlQuestionnaires() {
+	public ArrayList<QuestionnaireData> getAlQuestionnaires() {
 		return alQuestionnaires;
 	}
 
 
-	public void setAlQuestionnaires(ArrayList<Questionnaire> alQuestionnaires) {
+	public void setAlQuestionnaires(ArrayList<QuestionnaireData> alQuestionnaires) {
 		this.alQuestionnaires = alQuestionnaires;
 	}
 
@@ -229,11 +229,11 @@ public class Study {
      * @param sConfirmVariables
      * @param alQuestionnaires
      */
-    public Study(String sStudyGuid, String sShortName, String sVersion, String sDesignerVersion,
+    public StudyData(String sStudyGuid, String sShortName, String sVersion, String sDesignerVersion,
             Date dCreationDateTime, Date dLastModificationDateTime, String sCurrentLanguageId,
             Boolean bExclusive, Boolean bSorted, String sSchema, String sLogSchema,
             String sLVSSchema, String sAnalysisSchema, String sSearchVariables,
-            String sConfirmVariables, ArrayList<Questionnaire> alQuestionnaires) {
+            String sConfirmVariables, ArrayList<QuestionnaireData> alQuestionnaires) {
         
         this.sStudyGuid = sStudyGuid;
         this.sShortName = sShortName;

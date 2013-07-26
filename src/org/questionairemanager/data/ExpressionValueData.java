@@ -1,6 +1,6 @@
 package org.questionairemanager.data;
 
-public class ExpressionValue {
+public class ExpressionValueData {
 
     private String sExpressionValueGuid;
     private String sValue;
@@ -23,12 +23,12 @@ public class ExpressionValue {
      * @param sExpressionValueGuid
      * @param sValue
      */
-    public ExpressionValue(String sExpressionValueGuid, String sValue) {
+    public ExpressionValueData(String sExpressionValueGuid, String sValue) {
         this.sExpressionValueGuid = sExpressionValueGuid;
         this.sValue = sValue;
     }
     
-    public ExpressionValue(){
+    public ExpressionValueData(){
         this.sExpressionValueGuid = "";
         this.sValue = "";
     }
