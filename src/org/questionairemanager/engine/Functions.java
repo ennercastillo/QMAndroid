@@ -10,7 +10,7 @@ package org.questionairemanager.engine;
  */
 public class Functions {
 
-	public static ClearSectionVariable(String sVariableName){
+/*	public static ClearSectionVariable(String sVariableName){
 		Context.CurrentSection(sVariableName) = null;
 	}
 	
@@ -33,5 +33,5 @@ public class Functions {
 
 	public static AssignSubjectVariable (String sVariableName, Object oValue){
 		Context.CurrentSubject(sVariableName) = oValue;
-	}
+	}*/
 }

@@ -500,17 +500,17 @@ public class Screen {
             //Context.CurrentQuestionnaire = oValue;
   
        
-    if (this.getiVariableScope() == VariableScopeType.SECTION.getValue())
+    /*if (this.getiVariableScope() == VariableScopeType.SECTION.getValue())
         return;
         //return VariableScopeType.values();
             // return Context.CurrentSection  = oValue;
+*/    
     
-    
-    if (this.getiVariableScope() == VariableScopeType.SUBJECT.getValue())
+/*    if (this.getiVariableScope() == VariableScopeType.SUBJECT.getValue())
         return;
         //return VariableScopeType.values();
         // return Context.CurrentSubject = oValue;
-    }
+    }*/
     
     /**
      * Evaluates the custom validation and returns the result
@@ -570,5 +570,5 @@ public class Screen {
     */
     
     
-    
+    }  
 }

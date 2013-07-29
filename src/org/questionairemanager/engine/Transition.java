@@ -25,14 +25,14 @@ public class Transition {
     /**
      * @return the scrDestinationScreen
      */
-    public Screen getScrDestinationScreen() {
+/*    public Screen getScrDestinationScreen() {
         
         if (scrDestinationScreen == null)
             this.scrDestinationScreen = new Screen (this.iDestinationScreenId);
         
         return this.scrDestinationScreen;
         return scrDestinationScreen;
-    }
+    }*/
 
 
     /**

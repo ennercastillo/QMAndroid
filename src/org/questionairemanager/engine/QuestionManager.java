@@ -23,10 +23,14 @@ public class QuestionManager {
 
     }
 
-    // Get information all nodes
 
-    public ArrayList<Node> GetListNodes() {
-
+    public void SetListOfStudies (){
+        
+        
+        
+        
+        // TODO: Get all studies of Data Access
+        
         /*** INFO ADICIONAL ***/
 
         // Define date
@@ -132,9 +136,9 @@ public class QuestionManager {
         /*** FIN INFO ADICIONAL ***/
         
         
-        alNodes.add(new Node("guidst", null, "ST", "0", true, "num", true, true, true, true,
+        this.alNodes.add(new Node("guidst", null, "ST", "0", true, "num", true, true, true, true,
                 "onload", "unload", "comment"));
-        alNodes.add(new Node("guidqu", "guidst", "QU", "0", true, "num", true, true, true, true,
+        /*alNodes.add(new Node("guidqu", "guidst", "QU", "0", true, "num", true, true, true, true,
                 "onload", "unload", "comment"));
         alNodes.add(new Node("guidq1", "guidqu", "Q", "0", true, "num", true, true, true, true,
                 "onload", "unload", "comment"));
@@ -145,21 +149,48 @@ public class QuestionManager {
         alNodes.add(new Node("guidq4", "guidqu", "Q", "3", true, "num", true, true, true, true,
                 "onload", "unload", "comment"));
         alNodes.add(new Node("guidq5", "guidqu", "Q", "4", true, "num", true, true, true, true,
-                "onload", "unload", "comment"));
-
-        return alNodes;
-    }
-
-    public void OperateNodeList(ArrayList<Node> alNodeData) {
-
-        for (Iterator<Node> itNode = alNodeData.iterator(); itNode.hasNext();) {
-            Node node = (Node) itNode.next();
-
-            ValueVerifyType(node);
-
+                "onload", "unload", "comment"));*/
+        
+        
+        for (Iterator<Node> iNode = alNodes.iterator(); iNode.hasNext();) {
+            Node nNodeInfo = (Node) iNode.next();
+            
+            nNodeInfo.PrintNodeInformation();
+            
         }
-
+        
     }
+    
+    
+    /**
+     * Return all studies for this QM
+     * @author Enner Escobedo C. <email>enner.castillo@centrikal.com</email>
+     * <date>Jul, 29 2013</date>
+     * 
+     * @return ArrayList<Node>, List of Studies
+     */
+    public ArrayList<Node> GetListOfStudies() {
+
+        //TODO: Return all studies of Data Access
+        return this.alNodes;
+    }
+
+    
+    public void GetElementByGuid(Node nInfoNode){
+        
+        // TODO: Get element type node
+        
+        if (nInfoNode.gettnTypeNode().equals(TypeNode.QU)){
+            // TODO: Get first node by this Questionnaire
+        }
+        else
+            if (nInfoNode.gettnTypeNode().equals(TypeNode.QG)){
+                //TODO: Get all elements of this GUID (QG)
+            }
+        
+        
+    }
+    
 
     /**
      * private String sNodeguid; private String sParentGuid; private TypeNode
@@ -183,19 +214,6 @@ public class QuestionManager {
 
         }
 
-        if (pNodeToVerify.gettnTypeNode().equals(TypeNode.CH)) {
-            // Insert element Checkpoint to class
-        }
-
-        if (pNodeToVerify.gettnTypeNode().equals(TypeNode.GR)) {
-            // Insert element Group to class
-        }
-        
-        if (pNodeToVerify.gettnTypeNode().equals(TypeNode.Q)){
-            // Insert element Question
-            QuestionData qQuestionData = new QuestionData();
-            
-        }
         
         if (pNodeToVerify.gettnTypeNode().equals(TypeNode.ST)){
             // Get elements of Study
@@ -212,7 +230,7 @@ public class QuestionManager {
                     "confirmvar", alQuData, 
                     alReports, "report site god");
             
-      
+            
             
             
         }

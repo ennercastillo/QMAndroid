@@ -168,10 +168,10 @@ public class QuestionnaireSet {
      * <date>Jul 10, 2013</date>
      * @return Subject created
      */
-    public function CreateSubject() {
+/*    public function CreateSubject() {
         return Subject.Create(this, Context.CurrentSite);
     }
-    
+    */
     
     
 }

@@ -88,6 +88,25 @@ public class Node {
 		this.sComment = sComment;
 	}
 
+	public void PrintNodeInformation(){
+	    
+	    System.out.println("tipo nodo " + tnTypeNode);
+	    System.out.println("guid nodo " + sNodeguid);
+	    System.out.println("parent guid " + sParentGuid);
+	    System.out.println("ordinal # " + sOrdinal);
+	    System.out.println("is visible " + bVisible);
+	    System.out.println("number " + sNumber);
+	    System.out.println("hide next " + bHideNext);
+	    System.out.println("hide back " + bHideBack);
+	    System.out.println("conf next " + bConfirmNext);
+	    System.out.println("conf back " + bConfirmBack);
+	    System.out.println("on load " + sOnLoad);
+	    System.out.println("on unload " + sOnUnload);
+	    System.out.println("comment " + sComment); 
+
+	    
+	}
+	
 	/**
 	 * Get type node of string to compare.
 	 * @param sTypeNode, String to search 

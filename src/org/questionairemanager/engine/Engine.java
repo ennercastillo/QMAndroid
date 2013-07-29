@@ -70,7 +70,7 @@ public class Engine {
             //If the sequence was interrupted by the user...
             
             //Store the last screen used
-            this.cContext.sbjCurrentSubject("SubjectLastScreenId") = this.cContext.getScrCurrentScreen();
+            //TODO: TO CORRECT this.cContext.sbjCurrentSubject("SubjectLastScreenId") = this.cContext.getScrCurrentScreen();
             
         }
         
