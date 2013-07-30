@@ -24,16 +24,24 @@ public class Test {
      * @param args
      */
     public static void main(String[] args) {
-        // TODO Auto-generated method stub
-        System.out.println("hola mundo");
         
-        //QuestionManager qm = new QuestionManager();
-        //ArrayList<Node> alNodes = null;
+        QuestionManager qm = new QuestionManager();
+        ArrayList<Node> alNodes = null;
         
-        //qm.SetListOfStudies();
-        //alNodes = qm.GetListOfStudies();
+        qm.SetListOfStudies(); // Almacena el listado de todos los nodos de DA
+        alNodes = qm.GetListOfStudies(); // Devuelve el listado de todos los nodos
         
+        ArrayList<Node> alNodeInfo2 = qm.GetElementByGuid("guidq4");
         
+        if (!alNodeInfo2.isEmpty()) {
+        	System.out.println("hay info");
+        for (Node node : alNodeInfo2) {
+			node.PrintNodeInformation();
+		}
+        }
+        else
+        	System.out.println("NO hay nodo");
+        System.out.println("fin");
     }
 
 }

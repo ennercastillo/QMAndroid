@@ -1,6 +1,6 @@
 package org.questionairemanager.engine;
 
-import android.os.Bundle;
+/*import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
 
@@ -19,4 +19,4 @@ public class MainActivityde extends Activity {
 		return true;
 	}
 
-}
+}*/
