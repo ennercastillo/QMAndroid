@@ -7,7 +7,6 @@ package org.questionairemanager.engine;
 import java.util.ArrayList;
 import java.util.Date;
 
-import org.questionairemanager.data.QuestionnaireData;
 
 /**
  * Represents a Study
@@ -225,17 +224,6 @@ public class Study {
         return !(pStudy1.equals(pStudy2));
     }
 
-    /**
-     * @author Enner Escobedo C. <email>enner.castillo@centrikal.com</email>
-     *         <date>Jul 11, 2013</date>
-     */
-    private void PopulateDatabaseProperties() {
-        // TODO Auto-generated method stub
-        // get elements of an arry list
-
-        this.sShortName = "";
-
-    }
 
     /**
      * @param sStudyGuid
@@ -283,5 +271,26 @@ public class Study {
         this.lstReports = lstReports;
         this.sReportsSiteCode = sReportsSiteCode;
     }
+
+	public Study() {
+		this.sStudyGuid = "";
+        this.sShortName = "";
+        this.sVersion = "";
+        this.sDesignerVersion = "";
+        this.dCreationDateTime = new Date();
+        this.dLastModificationDateTime = new Date();
+        this.sCurrentLanguageId = "";
+        this.bExclusive = false;
+        this.bSorted = false;
+        this.sSchema = "";
+        this.sLogSchema = "";
+        this.sLVSSchema = "";
+        this.sAnalysisSchema = "";
+        this.sSearchVariables = "";
+        this.sConfirmVariables = "";
+        this.alQuestionnaires = new ArrayList<Questionnaire>();
+        this.lstReports = new ArrayList<Report>();
+        this.sReportsSiteCode = "";
+	}
 
 }
