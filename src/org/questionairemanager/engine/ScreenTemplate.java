@@ -1,60 +1,77 @@
 /**
  * 
  */
+
 package org.questionairemanager.engine;
 
 /**
  * Gets the type of this screen
  * 
- * @author Enner Escobedo C. <email>eriec.42@gmail.com</email> 
- * <date>Jul 04,2013</date>
- * 
+ * @author Enner Escobedo C. <email>eriec.42@gmail.com</email> <date>Jul 04,2013</date>
  */
 public class ScreenTemplate {
 
-	private String sScreenTemplateGuid;
-	private String sScreenTemplateName;
-	private ScreenTemplateTypes sttDataType;
+    private String sScreenTemplateGuid;
+    private String sScreenTemplateName;
+    private String sDataType;
+    private String sReference;
+    private Boolean bVariableNameReq;
+    /**
+     * @return the sScreenTemplateGuid
+     */
+    public String getsScreenTemplateGuid() {
+        return sScreenTemplateGuid;
+    }
+    /**
+     * @return the sScreenTemplateName
+     */
+    public String getsScreenTemplateName() {
+        return sScreenTemplateName;
+    }
+    /**
+     * @return the sDataType
+     */
+    public String getsDataType() {
+        return sDataType;
+    }
+    /**
+     * @return the sReference
+     */
+    public String getsReference() {
+        return sReference;
+    }
+    /**
+     * @return the sVariableNameReq
+     */
+    public Boolean getbVariableNameReq() {
+        return bVariableNameReq;
+    }
 
-	// / TODO: Pendientes para uso futuro
-	private String Reference;
-	private String VariableNameReq;
-
-	/**
-	 * @return the screenTemplateGuid
-	 */
-	public String getScreenTemplateGuid() {
-		return sScreenTemplateGuid;
-	}
-
-	/**
-	 * @return the screenTemplateName
-	 */
-	public String getScreenTemplateName() {
-		return sScreenTemplateName;
-	}
-
-	/**
-	 * @return the dataType
-	 */
-	public String getDataType() {
-		return sttDataType.ToString();
-	}
-
-	/**
-	 * Class constructor
-	 * @param screenTemplateGuid, Identifier for this Object
-	 * @param screenTemplateName, Name of ScreenTemplate
-	 * @param dataType, Data type of this Screen Template
-	 */
-	public ScreenTemplate(String screenTemplateGuid, String screenTemplateName,
-			ScreenTemplateTypes dataType) {
-		
-		sScreenTemplateGuid = screenTemplateGuid; // GUID of this class
-		sScreenTemplateName = screenTemplateName; // Name of this Screen Template
-		sttDataType = dataType; // Datatype of this screen
-	}
-	
-	
+    /**
+     * @param sScreenTemplateGuid
+     * @param sScreenTemplateName
+     * @param sDataType
+     * @param sReference
+     * @param sVariableNameReq
+     */
+    public ScreenTemplate(String sScreenTemplateGuid, String sScreenTemplateName, String sDataType,
+            String sReference, Boolean bVariableNameReq) {
+        this.sScreenTemplateGuid = sScreenTemplateGuid;
+        this.sScreenTemplateName = sScreenTemplateName;
+        this.sDataType = sDataType;
+        this.sReference = sReference;
+        this.bVariableNameReq = bVariableNameReq;
+    }
+    
+    /**
+     * 
+     */
+    public ScreenTemplate(){
+        this.sScreenTemplateGuid = "";
+        this.sScreenTemplateName = "";
+        this.sDataType = "";
+        this.sReference = "";
+        this.bVariableNameReq = false;
+    }
 
 }
