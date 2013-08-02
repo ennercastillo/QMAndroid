@@ -2,10 +2,10 @@
  * 
  */
 package org.questionairemanager.engine;
-
+/*
 import org.questionairemanager.core.ObjectStoreUtility;
 import org.questionairemanager.core.StoreObject;
-
+*/
 /**
  * Evaluates the current screen to determinate
  * the previous or next screen
@@ -40,9 +40,9 @@ public class Engine {
     /**
      * @return the osPendingSubjectId
      */
-    public String getOsPendingSubjectId() {
+/*    public String getOsPendingSubjectId() {
         return ObjectStoreUtility.getGUID();
-    }
+    }*/
     
     /**
      * Performes initialization tasks

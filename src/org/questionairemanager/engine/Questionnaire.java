@@ -9,7 +9,7 @@ import java.util.ArrayList;
  * @author ennercastillo
  *
  */
-public class Questionnaire {
+public class Questionnaire extends Node{
     
     private String sQuestionnaireGuid; // GUID Questionnaire
     private String sShortName; // Name of Questionnaire
@@ -193,8 +193,14 @@ public class Questionnaire {
         this.bRequired = bRequired;
         this.sUnique = sUnique;
         this.alQuestions = alQuestions;
+
     }
 
+    public String getsOrdinal(){
+	String hola = null;
+	
+	return hola;
+    }
 
 
 }

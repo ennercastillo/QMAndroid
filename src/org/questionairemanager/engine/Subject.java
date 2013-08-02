@@ -3,8 +3,8 @@
  */
 package org.questionairemanager.engine;
 
-import org.questionairemanager.core.ObjectStoreUtility;
-import org.questionairemanager.core.StoreObject;
+/*import org.questionairemanager.core.ObjectStoreUtility;
+import org.questionairemanager.core.StoreObject;*/
 
 /**
  * Represets the Subject of a studey
@@ -29,9 +29,9 @@ public class Subject {
      * <date>Jul, 12 2013</date>
      * @return the gSubjectId (GUID)
      */
-    public String getSubjectId() {
+/*    public String getSubjectId() {
         return ObjectStoreUtility.getGUID();
-    }
+    }*/
     
     /**
      * @return the drDataRecord

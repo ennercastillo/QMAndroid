@@ -8,8 +8,6 @@ import java.util.Stack;
 
 import org.questionairemanager.data.ExpressionData;
 import org.questionairemanager.data.ExpressionValueData;
-import org.questionairemanager.data.Node;
-import org.questionairemanager.data.TypeNode;
 
 public class QuestionManager {
 
@@ -116,6 +114,25 @@ public class QuestionManager {
 	Study sStudy = new Study("guidst", "study short name", "1.0", "1.0", date, date, "currentid", false, true, "schema", "logschema", "lvsschema",
 		"analysisschema", "searchvars", "confirmvar", alQuestionnaire, null, "report id");
 
+	/**
+	 *     private String sNodeguid;
+
+    private String sParentGuid;
+    private TypeNode tnTypeNode;
+    private String sOrdinal;
+    private Boolean bVisible;
+    private String sNumber;
+    private Boolean bHideNext;
+    private Boolean bHideBack;
+    private Boolean bConfirmNext;
+    private Boolean bConfirmBack;
+    private String sOnLoad;
+    private String sOnUnload;
+    private String sComment;
+	 * 
+	 */
+	
+	
 	Node n = new Node("guidst", null, "ST", "0", true, "num", true, true, true, true, "onload", "unload", "comment");
 
 	this.alStudies.add(n);
@@ -163,51 +180,58 @@ public class QuestionManager {
 	/******** INFO NODES BEGIN ******/
 	ArrayList<Node> alNode2 = new ArrayList<Node>();
 	alNode2.add(new Node("guidqu", "guidst", "Q", "0", true, "num", true, true, true, true, "onload", "unload", "comment"));
-	alNode2.add(new Node("guidq1", "guidst1", "Q", "0", true, "num", true, true, true, true, "onload", "unload", "comment"));
+	alNode2.add(new Node("guidq1", "guidsta", "Q", "0", true, "num", true, true, true, true, "onload", "unload", "comment"));
 	alNode2.add(new Node("guidq2", "guidqu", "QG", "1", true, "num", true, true, true, true, "onload", "unload", "comment"));
 	alNode2.add(new Node("guidq3", "guidqu", "QG", "2", true, "num", true, true, true, true, "onload", "unload", "comment"));
-	alNode2.add(new Node("guidq4", "guidst1", "QG", "3", true, "num", true, true, true, true, "onload", "unload", "comment"));
-	alNode2.add(new Node("guidq5", "guidst1", "QG", "4", true, "num", true, true, true, true, "onload", "unload", "comment"));
+	alNode2.add(new Node("guidq4", "guidst", "QG", "3", true, "num", true, true, true, true, "onload", "unload", "comment"));
+	alNode2.add(new Node("guidq5", "guidst", "QG", "4", true, "num", true, true, true, true, "onload", "unload", "comment"));
 
-	ArrayList<Node> alInfoData = new ArrayList<Node>();
+	ArrayList<Node> alInfoData = new ArrayList<Node>();	//Elements with sguid equals to inserted
+	ArrayList<Node> nQuestionnaire = new ArrayList<Node>(); // Element questionnaire
+	
+	// Get the elements with the guid parent equals to guidstudy inserted
+	for (Iterator<Node> iNode = alNode2.iterator(); iNode.hasNext();) {
+	    Node nNodeInfo = (Node) iNode.next();
+
+	    if (nNodeInfo.getsParentGuid().equalsIgnoreCase(sGuidStudy)) alInfoData.add(nNodeInfo);
+
+	}
+	
 	/******** END INFO NODES *********/
 
 	// Get length of this array list
 
 	// Verify data return DA
-	if (alNode2.isEmpty()) {
+	if (alInfoData == null || alInfoData.isEmpty() ) {
 
 	    System.out.println("is null");
 
-	    return null;
+	    return alInfoData;
 
 	} else {
-	    ArrayList<Node> nQuestionnaire = new ArrayList<Node>();
+	    
 
 	    // Get size
 	    int iPositionArray = 0;
-	    iPositionArray = alNode2.size();
+	    iPositionArray = alInfoData.size();
 	    if (iPositionArray == 1) {
 
-		// TODO: Verify type (Q || QG)
-		nQuestionnaire = this.GetElementsQuestionnaire(alNode2.get(iPositionArray - 1).getsNodeguid());
-
-		// TODO: Verify type of elements
-		// /// TODO:
-
+		// TODO: Verify type (Q || QG), when is a one element of questionnaire type
+		nQuestionnaire = this.GetElementsQuestionnaire(alInfoData.get(iPositionArray - 1).getsNodeguid());
+		
+		// Get the first data
+		
+		System.out.println(alInfoData.get(iPositionArray-1).getsNodeguid());
+		
 		System.out.println("tiene solo un dato");
 		// Get elements of this Study
 
 	    } else {
-
+ 
+		System.out.println("cuantos elementos tiene ? " + iPositionArray);
 		// Get all elements of this study
 		// TODO: Get element type node (DA)
-		for (Iterator<Node> iNode = alNode2.iterator(); iNode.hasNext();) {
-		    Node nNodeInfo = (Node) iNode.next();
-
-		    if (nNodeInfo.getsNodeguid().equalsIgnoreCase(sGuidStudy)) alInfoData.add(nNodeInfo);
-
-		}
+		
 
 	    }
 	}
@@ -253,12 +277,14 @@ public class QuestionManager {
 	// Get elements
 	for (Node node : alQuestions) {
 	    
+	    if (node.getsParentGuid() != null) {
 	    if (node.getsParentGuid().equals(sElementSearch)) {
 		
 		System.out.println("elemento del cuestionario " + node.getsNodeguid());
 		alQuestionsWithParentGuid.add(node);
 		
-	    } else System.out.println("no es elemento del cuestionario ");
+	    } 
+	    }
 	}
 
 	return alQuestionsWithParentGuid;

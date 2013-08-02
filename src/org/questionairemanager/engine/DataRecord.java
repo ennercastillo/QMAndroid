@@ -2,7 +2,7 @@
  * 
  */
 package org.questionairemanager.engine;
-import org.questionairemanager.core.*;
+//import org.questionairemanager.core.*;
 import java.util.ArrayList;
 import java.util.Dictionary;
 import java.util.HashMap;
@@ -54,7 +54,7 @@ public class DataRecord {
         //TODO: Se obtiene de la base de datos, campo "PDALastModifDate"
         this.bGhostRecord = false;
         
-        sGuid = ObjectStoreUtility.getGUID();
+        //sGuid = ObjectStoreUtility.getGUID();
     }
 
     
@@ -152,7 +152,7 @@ public class DataRecord {
         
     }
     
-    public DataRecord (String sDataTableName, StoreObject soSubjectId, Byte bSubjectQuestionnaireInstanceId){
+   /* public DataRecord (String sDataTableName, StoreObject soSubjectId, Byte bSubjectQuestionnaireInstanceId){
         
         // Get the elements to the DataBAse
         // TODO: 
@@ -161,5 +161,5 @@ public class DataRecord {
         
         // Add the elements to this object
         //this.sDataTableName = name;
-    }
+    }*/
 }

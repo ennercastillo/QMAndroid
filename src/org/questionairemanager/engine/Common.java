@@ -2,7 +2,7 @@
  * 
  */
 package org.questionairemanager.engine;
-import org.questionairemanager.core.*;
+//import org.questionairemanager.core.*;
 
 /**
  * Provides general purpose data access functions and 
@@ -26,10 +26,10 @@ public class Common {
         
     }
     
-    public static void GetLevalValueTableItems (String sTable, StoreObject soGroup){
+    /*public static void GetLevalValueTableItems (String sTable, StoreObject soGroup){
         
       //TODO: return DA.common.GetLegalValueTableItems(sTable, soGroup);
-    }
+    }*/
     
     
 }
