@@ -26,7 +26,7 @@ public class Test {
 
 	QuestionManager qm = new QuestionManager();
 	ArrayList<Node> alNodes = new ArrayList<Node>();
-	ArrayList<Node> alQuestion = new ArrayList<Node>();
+	Node alQuestion = new Node();
 
 	qm.SetListOfStudies(); // Almacena el listado de todos los nodos de DA
 	alNodes = qm.GetListOfStudies(); // Devuelve el listado de todos los nodos
@@ -46,29 +46,82 @@ public class Test {
 	}
 
 	// Get Elements by GUID
-	ArrayList<Node> alNodeInfo2 = qm.GetElementsOfStudyByGuid("guidst");
+	ArrayList<Node> alNodeInfo2 = qm.GetElementsOfStudyByGuid(nNodeStudy);
+	Node nFirstElementQuestion = new Node();
 
 	if (!(alNodeInfo2 == null) && !alNodeInfo2.isEmpty()) {
 
+	    System.out.println("INFORMACION DE LOS HIJOS DE GUIDST ");
 	    for (Node node : alNodeInfo2) {
+		System.out.println("-------- inicio hijo \n");
 		node.PrintNodeInformation();
+		System.out.println("-------- fin hijo \n");
 
-		System.out.println("hola mundo!!!!");
-		System.out.println("\n");
+		if (node.getsNodeguid().equalsIgnoreCase("guidqu")) {
+		    try {
+			nFirstElementQuestion = (Node) node.clone();
 
+		    } catch (CloneNotSupportedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		    }
+		}
 	    }
 
-	    System.out.println("inicio!!!! \n");
-	    nNodeStudy.PrintNodeInformation();
+	    // Get the first node for the questionnaire
+	    // No se ha verificado si pertenece al tipo Q o QG
+	    alQuestion = qm.GetFirstChildQuestionnaire(nFirstElementQuestion);
 
-	    System.out.println("INICIO INFORMACION ------");
+	    if (alQuestion == null) {
+		System.out.println("no hay informacion de un hijo ");
+	    } else {
+		alQuestion.PrintNodeInformation();
+		Node nTemp = new Node();
+		
+		System.out.println("first!!!!! \n");		
+		nTemp = qm.GetNextChildQuestionnaire(alQuestion);
+		
+		if (nTemp != null)
+		    nTemp.PrintNodeInformation();
+		else
+		    System.out.println("its null first");
+		
+		System.out.println("second!!!! \n");
+		nTemp = qm.GetNextChildQuestionnaire(nTemp);
+		if (nTemp != null)
+		    nTemp.PrintNodeInformation();
+		else
+		    System.out.println("its null second");
+		
+		System.out.println("third!!!! \n");
+		nTemp = qm.GetNextChildQuestionnaire(nTemp);
+		if (nTemp != null)
+		    nTemp.PrintNodeInformation();
+		else
+		    System.out.println("its null third");
+		
+		
+		System.out.println("fourth!!!! \n");
+		nTemp = qm.GetNextChildQuestionnaire(nTemp);
+		if (nTemp != null)
+		    nTemp.PrintNodeInformation();
+		else
+		    System.out.println("its null fourth!");
+		
+		System.out.println("fifth!!!! \n"); //TODO: RETURN NULL ELEMENT
+		nTemp = qm.GetNextChildQuestionnaire(nTemp);
+		if (nTemp != null)
+		    nTemp.PrintNodeInformation();
+		else
+		    System.out.println("its null fifth");
+	    }
 
 	    // Ac‡ debe enviar el dato
 	    // Se debe validar de que tipo es (Q / QG)
 	    // Si es Q debe traer la primera pregunta
 	    // si es QG debe traer todos sus elementos
 
-	    alQuestion = qm.GetElementsQuestionnaire("guidst");
+	    // alQuestion = qm.GetElementsQuestionnaire("guidst");
 
 	} else System.out.println("No hay nodo");
 
