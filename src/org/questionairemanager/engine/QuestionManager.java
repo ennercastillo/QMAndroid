@@ -3,22 +3,129 @@ package org.questionairemanager.engine;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Stack;
-
-import org.questionairemanager.data.ExpressionData;
-import org.questionairemanager.data.ExpressionValueData;
 
 public class QuestionManager {
 
     private ArrayList<Node> alStudies;
     private Stack<String> stScreens;
 
+    private ArrayList<Dictionary> alDictionary;
+    
     public QuestionManager() {
 
 	alStudies = new ArrayList<Node>();
 	stScreens = new Stack<String>();
+	this.alDictionary = new ArrayList<Dictionary>();
     }
+
+    public void SetDataLanguages() {
+
+	ArrayList<Language> alLanguages = new ArrayList<Language>();
+	HashMap<String, String> hmLanguages = null;
+
+	hmLanguages.put("lsp", "Spanish");
+	hmLanguages.put("len", "English");
+	
+	
+	hmLanguages.containsKey("lsp");
+	
+	
+	alLanguages.add(new Language("lsp", "Spanish"));
+	alLanguages.add(new Language("len", "English"));
+    }
+
+    public void SetDataDictionary() {
+
+	alDictionary.add(new Dictionary("loginguid", "lsp", "Main Text", "Login"));
+	alDictionary.add(new Dictionary("loginguid", "len", "Main Text", "Login"));
+	alDictionary.add(new Dictionary("studyguid", "lsp", "Main Text", "Estudio"));
+	alDictionary.add(new Dictionary("studyguid", "len", "Main Text", "Study"));
+	alDictionary.add(new Dictionary("qgguid1", "lsp", "Main Text", "Grupo de Cuestionario 1"));
+	alDictionary.add(new Dictionary("qgguid1", "len", "Main Text", "Questionnaire Group 1"));
+	alDictionary.add(new Dictionary("qgguid2", "lsp", "Main Text", "Grupo de Cuestionario 2"));
+	alDictionary.add(new Dictionary("qgguid2", "len", "Main Text", "Questionnaire Group 2"));
+	alDictionary.add(new Dictionary("qgguid3", "lsp", "Main Text", "Grupo de Cuestionario 3"));
+	alDictionary.add(new Dictionary("qgguid4", "len", "Main Text", "Questionnaire Group 3"));
+	alDictionary.add(new Dictionary("quguid1", "lsp", "Main Text", "Cuestionario 1"));
+	alDictionary.add(new Dictionary("quguid1", "len", "Main Text", "Questionnaire 1"));
+	alDictionary.add(new Dictionary("quguid2", "lsp", "Main Text", "Cuestionario 2"));
+	alDictionary.add(new Dictionary("quguid2", "len", "Main Text", "Questionnaire 2"));
+	alDictionary.add(new Dictionary("quguid3", "lsp", "Main Text", "Cuestionario 3"));
+	alDictionary.add(new Dictionary("quguid3", "len", "Main Text", "Questionnaire 3"));
+	alDictionary.add(new Dictionary("qguid1", "lsp", "Main Text", "Texto pregunta 1"));
+	alDictionary.add(new Dictionary("qguid1", "len", "Main Text", "Text question 1"));
+	alDictionary.add(new Dictionary("qguid2", "lsp", "Main Text", "Texto pregunta 2"));
+	alDictionary.add(new Dictionary("qguid2", "len", "Main Text", "Text question 2"));
+	alDictionary.add(new Dictionary("qguid3", "lsp", "Main Text", "Texto pregunta 3"));
+	alDictionary.add(new Dictionary("qguid3", "len", "Main Text", "Text question 3"));
+	alDictionary.add(new Dictionary("qguid4", "lsp", "Main Text", "Texto pregunta 4"));
+	alDictionary.add(new Dictionary("qguid4", "len", "Main Text", "Text question 4"));
+	alDictionary.add(new Dictionary("qguid5", "lsp", "Main Text", "Texto pregunta 5"));
+	alDictionary.add(new Dictionary("qguid5", "len", "Main Text", "Text question 5"));
+	alDictionary.add(new Dictionary("qguid6", "lsp", "Main Text", "Texto pregunta 6"));
+	alDictionary.add(new Dictionary("qguid6", "len", "Main Text", "Text question 6"));
+	
+	alDictionary.add(new Dictionary("iguid1", "lsp", "Main Text", "Pantalla de info 1"));
+	alDictionary.add(new Dictionary("iguid1", "len", "Main Text", "Info Screen 1"));
+	alDictionary.add(new Dictionary("iguid2", "lsp", "Main Text", "Pantalla de info 2"));
+	alDictionary.add(new Dictionary("iguid2", "len", "Main Text", "Info Screen 2"));
+	alDictionary.add(new Dictionary("iguid3", "lsp", "Main Text", "Pantalla de info 3"));
+	alDictionary.add(new Dictionary("iguid3", "len", "Main Text", "Info Screen 3"));
+	alDictionary.add(new Dictionary("iguid4", "lsp", "Main Text", "Pantalla de info 4"));
+	alDictionary.add(new Dictionary("iguid4", "len", "Main Text", "Info Screen 4"));
+	alDictionary.add(new Dictionary("iguid5", "lsp", "Main Text", "Pantalla de info 5"));
+	alDictionary.add(new Dictionary("iguid5", "len", "Main Text", "Info Screen 5"));
+	
+	// TODO: Checkpoint
+	// alDictionary.add(new Dictionary("checkpont", "lsp", "Main Text", "Texto pregunta 1"));
+	// alDictionary.add(new Dictionary("qguid1", "len", "Main Text", "Text question 1"));
+	// alDictionary.add(new Dictionary("qguid1", "lsp", "Main Text", "Texto pregunta 1"));
+	// alDictionary.add(new Dictionary("qguid1", "len", "Main Text", "Text question 1"));
+	// alDictionary.add(new Dictionary("qguid1", "lsp", "Main Text", "Texto pregunta 1"));
+	// alDictionary.add(new Dictionary("qguid1", "len", "Main Text", "Text question 1"));
+	
+
+    }
+    
+    /**
+     * Get list of words of all elements of this project
+     * @author Enner Escobedo C. <email>enner.castillo@centrikal.com</email>
+     * <date>Aug 07, 2013</date>
+     * @return ArrayList<Dictionary>, all elements of this dictionary
+     */
+    public ArrayList<Dictionary> getDataDictionary(){
+	return this.alDictionary;
+    }
+    
+    /**
+     * Search element in dictionary
+     * @author Enner Escobedo C. <email>enner.castillo@centrikal.com</email>
+     * <date>Aug 7, 2013</date>
+     *
+     * @param sGuidDictionarySearch, Guid dictionary
+     * @param sGuidLanguageSearch, guid language
+     * @param sPropertyName, property name to search
+     */
+    public void SearchElementDictionary(String sGuidDictionarySearch, String sGuidLanguageSearch, String sPropertyNameSearch){
+	
+	String sGuidDictionary;
+	String sGuidLanguageId;
+	String sPropertyName;
+	
+	for (Dictionary infoDictionary : this.alDictionary) {
+	    
+	    sGuidDictionary = infoDictionary.getsGuid();
+	    sGuidLanguageId = infoDictionary.getsLanguageId();
+	    sPropertyName = infoDictionary.getsProperty();
+	    
+	}
+	
+	
+    }
+    
 
     /**
      * Get all studies of data access
@@ -27,26 +134,24 @@ public class QuestionManager {
      */
     public void SetListOfStudies() {
 
-	// TODO: Get all studies of Data Access
-
 	/*** INFO ADICIONAL ***/
 
 	// Define date
 	Date date = new Date();
 
 	// TODO: Expression Value
-	ExpressionValueData expVal1 = new ExpressionValueData("expval1", "val1");
-	ExpressionValueData expVal2 = new ExpressionValueData("expval2", "val2");
-	ExpressionValueData expVal3 = new ExpressionValueData("expval3", "val3");
-	ExpressionValueData expVal4 = new ExpressionValueData("expval4", "val4");
-
-	// TODO: Verificar como usan expression
-	ExpressionData exp1 = new ExpressionData("exp1", "var1", "int", true);
-	ExpressionData exp2 = new ExpressionData("exp2", "var2", "int", true);
-	ExpressionData exp3 = new ExpressionData("exp3", "var3", "int", true);
-	ExpressionData exp4 = new ExpressionData("exp4", "var4", "int", true);
-	ExpressionData exp5 = new ExpressionData("exp5", "var5", "int", true);
-	ExpressionData exp6 = new ExpressionData("exp6", "var6", "int", true);
+	// ExpressionValueData expVal1 = new ExpressionValueData("expval1", "val1");
+	// ExpressionValueData expVal2 = new ExpressionValueData("expval2", "val2");
+	// ExpressionValueData expVal3 = new ExpressionValueData("expval3", "val3");
+	// ExpressionValueData expVal4 = new ExpressionValueData("expval4", "val4");
+	//
+	// // TODO: Verificar como usan expression
+	// ExpressionData exp1 = new ExpressionData("exp1", "var1", "int", true);
+	// ExpressionData exp2 = new ExpressionData("exp2", "var2", "int", true);
+	// ExpressionData exp3 = new ExpressionData("exp3", "var3", "int", true);
+	// ExpressionData exp4 = new ExpressionData("exp4", "var4", "int", true);
+	// ExpressionData exp5 = new ExpressionData("exp5", "var5", "int", true);
+	// ExpressionData exp6 = new ExpressionData("exp6", "var6", "int", true);
 
 	// TODO: Verificar si se incluye la clase en Legal Value
 	LegalValueTable lvt1 = new LegalValueTable("lvt1", "dt1", null);
@@ -166,17 +271,26 @@ public class QuestionManager {
 	    // PUSH element to Stack
 	    stScreens.push(sGuidStudy);
 
+	    System.out.println("STACK!!!!!! _________ " + stScreens.size() + " ---- \n " + stScreens);
+
 	    /******** INFO NODES BEGIN ******/
 	    ArrayList<Node> alNode2 = new ArrayList<Node>();
-	    alNode2.add(new Node("guidqu", "guidst", "Q", "0", true, "num", true, true, true, true, "onload", "unload", "comment"));
-	    alNode2.add(new Node("guidq1", "guidsta", "Q", "0", true, "num", true, true, true, true, "onload", "unload", "comment"));
+	    alNode2.add(new Node("guidqu", "guidst", "QU", "0", true, "num", true, true, true, true, "onload", "unload", "comment"));
+	    alNode2.add(new Node("guidq1", "guidsta", "QU", "0", true, "num", true, true, true, true, "onload", "unload", "comment"));
 	    alNode2.add(new Node("guidq2", "guidqu", "QG", "1", true, "num", true, true, true, true, "onload", "unload", "comment"));
 	    alNode2.add(new Node("guidq3", "guidqu", "QG", "2", true, "num", true, true, true, true, "onload", "unload", "comment"));
 	    alNode2.add(new Node("guidq4", "guidst", "QG", "3", true, "num", true, true, true, true, "onload", "unload", "comment"));
 	    alNode2.add(new Node("guidq5", "guidst", "QG", "4", true, "num", true, true, true, true, "onload", "unload", "comment"));
 
+	    alNode2.add(new Node("guidq6", "guidq5", "QU", "0", true, "num", true, true, true, true, "onload", "unload", "comment"));
+	    alNode2.add(new Node("guidq7", "guidq5", "QU", "1", true, "num", true, true, true, true, "onload", "unload", "comment"));
+	    alNode2.add(new Node("guidq8", "guidq5", "QG", "2", true, "num", true, true, true, true, "onload", "unload", "comment"));
+	    alNode2.add(new Node("guidq9", "guidq5", "QG", "3", true, "num", true, true, true, true, "onload", "unload", "comment"));
+	    alNode2.add(new Node("guidq10", "guidst1", "QG", "4", true, "num", true, true, true, true, "onload", "unload", "comment"));
+	    alNode2.add(new Node("guidq11", "guidst1", "QG", "5", true, "num", true, true, true, true, "onload", "unload", "comment"));
+
 	    ArrayList<Node> alInfoData = new ArrayList<Node>();	// Elements with sguid equals to inserted
-	    ArrayList<Node> nQuestionnaire = new ArrayList<Node>(); // Element questionnaire
+	    // ArrayList<Node> nQuestionnaire = new ArrayList<Node>(); // Element questionnaire
 
 	    // Get the elements with the guid parent equals to guidstudy inserted
 	    for (Iterator<Node> iNode = alNode2.iterator(); iNode.hasNext();) {
@@ -206,7 +320,7 @@ public class QuestionManager {
 		if (iPositionArray == 1) {
 
 		    // TODO: Verify type (Q || QG), when is a one element of questionnaire type
-		    //nQuestionnaire = this.GetFirstChild(alInfoData.get(iPositionArray - 1));
+		    // nQuestionnaire = this.GetFirstChild(alInfoData.get(iPositionArray - 1));
 
 		    // Get the first data
 
@@ -233,32 +347,41 @@ public class QuestionManager {
 	return null;
     }
 
-    
-    
-    public Node VerifyElement(Node nElementToVerify){
-	
-	
-	
-	if (nElementToVerify == null)
-	    return null;
+    /**
+     * Verify type of node
+     * 
+     * @author Enner Escobedo C. <email>enner.castillo@centrikal.com</email> <date>Aug 6, 2013</date>
+     * @param nElementToVerify, Node to verify
+     * @return Node, if questionnaire is true return first child, else if questionnaire group is true return all your elements
+     */
+    public ArrayList<Node> GetElementsOfQuestionnaireOrQuestionnaireGroup(Node nElementToVerify) {
+
+	ArrayList<Node> alNodes = new ArrayList<Node>();
+
+	if (nElementToVerify == null) return null;
 	else {
-	
-	    Node nNodeVerified = new Node();
-	    
-	    
-	    switch (nElementToVerify.gettnTypeNode().ToString()){
-		
-		case TypeNode.QG:
-		    break;
-		    
+
+	    /**
+	     * Type equals to Questionnaire, Get the first son
+	     */
+	    if (nElementToVerify.gettnTypeNode().equals(TypeNode.QU)) {
+		System.out.println(" is a questionnaire !");
+		alNodes.add(this.GetFirstChildQuestionnaire(nElementToVerify));
+
+	    } else {
+		/**
+		 * Type equals to QuestionnaireGroup, get the elements return all elements of questionnaire group
+		 */
+		if (nElementToVerify.gettnTypeNode().equals(TypeNode.QG)) {
+		    System.out.println("is a questionnairegroup!");
+		    alNodes = GetElementsOfStudyByGuid(nElementToVerify);
+		}
 	    }
-	    
-	    
-	    return nNodeVerified;
+
 	}
+	return alNodes;
     }
-    
-    
+
     /**
      * Return the first element of this Questionnaire
      * 
@@ -308,6 +431,9 @@ public class QuestionManager {
 	    } else return null;
 	}
 
+	// TODO: Verify type of elemenent
+	// Is Question ? info ? or checkpoint?
+
 	// Return value of node
 	return (nFirstElement.getsNodeguid().isEmpty()) ? null : nFirstElement;
     }
@@ -323,9 +449,9 @@ public class QuestionManager {
 
 	// Get guid of this node
 	String sElementSearch = nSearchNext.getsParentGuid();
-	
+
 	System.out.println("node guid " + sElementSearch);
-	
+
 	ArrayList<Node> alQuestions = new ArrayList<Node>();
 	Node nNextElement = new Node();
 
@@ -350,10 +476,9 @@ public class QuestionManager {
 	alQuestions.add(new Node("guidq4", "guidqu", "CH", "3", true, "num", true, true, true, true, "onload", "unload", "comment"));
 	alQuestions.add(new Node("guidq5", "guidqu", "IN", "4", true, "num", true, true, true, true, "onload", "unload", "comment"));
 
-	
 	Integer iNextElement = Integer.parseInt(nSearchNext.getsOrdinal().toString());
 	iNextElement++;
-	
+
 	for (Node node : alQuestions) {
 
 	    if (node.getsParentGuid() != null) {
@@ -371,42 +496,48 @@ public class QuestionManager {
     }
 
     /**
+     * Verify type of basic element of questionnaire. (Q = question, IN = info, CH = checkpoint)
+     * 
      * @author Enner Escobedo C. <email>enner.castillo@centrikal.com</email> <date>Aug 1, 2013</date>
-     * @param pNodeToVerify
+     * @param nElementRoot, Element node, search title or execute operation
      */
-    public void ValueVerifyType(Node pNodeToVerify) {
+    public void GetTextOfElement(Node nElementRoot) {
 
-	if (pNodeToVerify.gettnTypeNode().equals(TypeNode.QU)) {
-	    // insert elements to class study
-	    Questionnaire qQuestionnaire = new Questionnaire();
-	    // TODO: Get info for Questionnaire
+	Object oData = new Object();
+	// Is a screen question
+	if (nElementRoot.gettnTypeNode().equals(TypeNode.Q)) {
 
-	}
-
-	if (pNodeToVerify.gettnTypeNode().equals(TypeNode.ST)) {
-	    // Get elements of Study
-
-	    Date date = new Date();
-	    ArrayList<Questionnaire> alQuData = null;
-	    ArrayList<Report> alReports = null;
-
-	    Study sStudy = new Study("guidst", "study shortname", "1.0", "1.0", date, date, "currentid", false, true, "schema", "logschema", "lvsschema",
-		    "analysisschema", "searchvars", "confirmvar", alQuData, alReports, "report site god");
+	    oData = SearchElementsOfQuestion(nElementRoot);
 
 	}
 
-	if (pNodeToVerify.gettnTypeNode().equals(TypeNode.QG)) {
+	// Is a screen checkpoint
+	if (nElementRoot.gettnTypeNode().equals(TypeNode.CH)) {
+	    oData = SearchElementsOfInfo(nElementRoot);
+	}
+
+	// Is a screen info
+	if (nElementRoot.gettnTypeNode().equals(TypeNode.IN)) {
+	    oData = SearchElementsOfCH(nElementRoot);
 	    // Insert element Questionnaire Group
 	}
 
-	if (pNodeToVerify.gettnTypeNode().equals(TypeNode.EX)) {
-	    // Insert element Study
-	}
+    }
 
-	if (pNodeToVerify.gettnTypeNode().equals(TypeNode.IN)) {
-	    // Insert element Questionnaire Group
-	}
+    /**
+     * Search element by question. Text of question, type of question, answers for that question
+     * 
+     * @param nElementRoot, Question root to search data
+     * @return
+     */
+    private Object SearchElementsOfQuestion(Node nElementRoot) {
 
+	// TODO: Get elements Table items, get legal value table
+	// get legal value item, screen template
+
+	// SEARCH info of questions
+
+	return null;
     }
 
 }

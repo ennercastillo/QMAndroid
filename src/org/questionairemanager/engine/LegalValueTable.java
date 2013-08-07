@@ -45,9 +45,7 @@ public class LegalValueTable {
 		this.sDatatype = "";
 		this.alItems = new ArrayList<LegalValueItem>();
 	}
-	
-	
-	
+
 	/**
 	 * Class constructor
 	 * @param sLegalValueTableGuid, GUID 

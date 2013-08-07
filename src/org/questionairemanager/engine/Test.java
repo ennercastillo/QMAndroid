@@ -5,6 +5,7 @@
 package org.questionairemanager.engine;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
  * @author ennercastillo
@@ -57,7 +58,9 @@ public class Test {
 		node.PrintNodeInformation();
 		System.out.println("-------- fin hijo \n");
 
+		//if (node.getsNodeguid().equalsIgnoreCase("guidq5")) {
 		if (node.getsNodeguid().equalsIgnoreCase("guidqu")) {
+			  
 		    try {
 			nFirstElementQuestion = (Node) node.clone();
 
@@ -68,7 +71,39 @@ public class Test {
 		}
 	    }
 
-	    // Get the first node for the questionnaire
+	    nFirstElementQuestion.PrintNodeInformation();
+	    System.out.println("end first element questionnaire!!!!!!!-----");
+	    ArrayList<Node> alQuestions = new ArrayList<Node>();
+	    System.out.println();
+	    
+	    alQuestions = qm.GetElementsOfQuestionnaireOrQuestionnaireGroup(nFirstElementQuestion);
+	    
+	    for (Iterator<Node> questionnaire = alQuestions.iterator(); questionnaire.hasNext();) {
+		Node node = (Node) questionnaire.next();
+		
+		if (node.gettnTypeNode().equals(TypeNode.QG)){
+		    System.out.println("it is a questionnaire group****");
+		    node.PrintNodeInformation();
+		    System.out.println("end line \n\n");
+		}
+		
+		if (node.gettnTypeNode().equals(TypeNode.QU)){
+		    System.out.println("it is a questionnaire!!!!");
+		    node.PrintNodeInformation();
+		    System.out.println("\n");
+		}
+		
+		if (node.gettnTypeNode().equals(TypeNode.Q)){
+		    System.out.println("it is a question----");
+		    node.PrintNodeInformation();
+		    System.out.println("\n");
+		}
+		
+	    }
+		    
+	    
+	    
+	    /*// Get the first node for the questionnaire
 	    // No se ha verificado si pertenece al tipo Q o QG
 	    alQuestion = qm.GetFirstChildQuestionnaire(nFirstElementQuestion);
 
@@ -114,7 +149,7 @@ public class Test {
 		    nTemp.PrintNodeInformation();
 		else
 		    System.out.println("its null fifth");
-	    }
+	    }*/
 
 	    // Ac‡ debe enviar el dato
 	    // Se debe validar de que tipo es (Q / QG)
