@@ -47,6 +47,46 @@ public class ScreenTemplate {
         return bVariableNameReq;
     }
 
+
+    /**
+     * @param sScreenTemplateGuid the sScreenTemplateGuid to set
+     */
+    public void setsScreenTemplateGuid(String sScreenTemplateGuid) {
+    
+        this.sScreenTemplateGuid = sScreenTemplateGuid;
+    }
+    
+    /**
+     * @param sScreenTemplateName the sScreenTemplateName to set
+     */
+    public void setsScreenTemplateName(String sScreenTemplateName) {
+    
+        this.sScreenTemplateName = sScreenTemplateName;
+    }
+    
+    /**
+     * @param sDataType the sDataType to set
+     */
+    public void setsDataType(String sDataType) {
+    
+        this.sDataType = sDataType;
+    }
+    
+    /**
+     * @param sReference the sReference to set
+     */
+    public void setsReference(String sReference) {
+    
+        this.sReference = sReference;
+    }
+    
+    /**
+     * @param bVariableNameReq the bVariableNameReq to set
+     */
+    public void setbVariableNameReq(Boolean bVariableNameReq) {
+    
+        this.bVariableNameReq = bVariableNameReq;
+    }
     /**
      * @param sScreenTemplateGuid
      * @param sScreenTemplateName

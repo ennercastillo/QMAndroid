@@ -92,6 +92,12 @@ public class Dictionary {
 	this.sText = sText;
     }
 
+    
+    public getDataText (String guid, String guidlang, String text){
+	
+    }
+    
+    //Manejar un hashmap para emparejar valores
     public Dictionary() {
 
     }

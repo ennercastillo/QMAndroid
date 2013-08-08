@@ -2,11 +2,12 @@ package org.questionairemanager.engine;
 
 public class Question {
 
-    private String sQuestionGuid;
-    private String sLegalValueTableGuid;
-    private String sVariableName;
-    private String sScreenTemplateGuid;
-    private String sArguments;
+    private String sQuestionGuid;	//Guid de Question
+    private String sLegalValueTableGuid;	// Guid del legal value table, para cuando son elementos del tipo RADIOBUTTON, CHECKBOX Y DROPDOWN
+    // Solo con los anteriores es requeridos, else debe ser null
+    private String sVariableName;		// Nombre de la variable
+    private String sScreenTemplateGuid;		// valor del elemento a buscar en el Screen Template
+    private String sArguments;			// Argumentos
     private Boolean bRequired;
     private String sAbsMin;
     private String sAbsMax;
@@ -15,6 +16,11 @@ public class Question {
     private String sCustomValidationExpressionGuid;
     private String sOnChange;
     private String sUnique;
+    
+    
+    // Elementos agregados!
+    private String sMainText;	// Se trae del diccionario
+    private String sHelpText;	// Se trae del diccionario
 
     /**
      * @return the sQuestionGuid
