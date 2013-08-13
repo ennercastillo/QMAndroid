@@ -12,59 +12,127 @@ public enum ScreenTemplateTypes {
 
     TEXTBOX, TEXTAREA, DROPDOWN, RADIOBUTTON, INTEGER, DECIMAL, DATETIME, DATE, TIME, CHECKBOX, GRID, NAME, GPSREADING, INFO, SECTIONEXITSCREEN;
 
-    public String ToString() {
+    /**
+     * Return signified of element enum type.
+     * @author Enner Escobedo C. <email>enner.castillo@centrikal.com</email>
+     * <date>12/08/2013</date>
+     *
+     * @return String with description in lowercase.
+     */
+    public String toString() {
 
 	switch (this) {
 
 	    case TEXTBOX:
-		return "guidtb"; // nvarchar (50)
-		
+		return "textbox"; // nvarchar (50)
+
 	    case TEXTAREA:
-		return "guidta"; // nvarchar(255)
-		
+		return "textarea"; // nvarchar(255)
+
 	    case DROPDOWN:
-		return "guiddd"; // integer
-		
+		return "dropdown"; // integer
+
 	    case RADIOBUTTON:
-		return "guidrb"; // integer
-		
+		return "radiobutton"; // integer
+
 	    case INTEGER:
-		return "guidin"; // integer
-		
+		return "integer"; // integer
+
 	    case DECIMAL:
-		return "guidde"; // numeric
-		
+		return "decimal"; // numeric
+
 	    case DATETIME:
-		return "guiddt"; // datetime
-		
+		return "datetime"; // datetime
+
 	    case DATE:
-		return "guiddt"; // datetime
-		
+		return "date"; // datetime
+
 	    case TIME:
-		return "guiddt"; // datetime
-		
+		return "time"; // datetime
+
 	    case CHECKBOX:
-		return "guidcb"; // bit
-		
+		return "checkbox"; // bit
+
 	    case GRID:
-		return "guidgr"; // null
-		
+		return "grid"; // null
+
 	    case NAME:
-		return "buidna"; // nvarchar (50)
-		
+		return "name"; // nvarchar (50)
+
 	    case GPSREADING:
-		return "guidgp"; // null
-		
+		return "gpsreading"; // null
+
 	    case INFO:
-		return "guidif"; // null
-		
+		return "info"; // null
+
 	    case SECTIONEXITSCREEN:
-		return "guidse"; // null
-		
+		return "exitscreen"; // null
+
 	    default:
 		return "unspecified"; // ERROR
 
 	}
 
+    }
+
+    /**
+     * Return guid of element
+     * @author Enner Escobedo C. <email>enner.castillo@centrikal.com</email>
+     * <date>12/08/2013</date>
+     *
+     * @return String GUID of element
+     */
+    public String getGuid() {
+
+	switch (this) {
+
+	    case TEXTBOX:
+		return "guidtb"; // nvarchar (50)
+
+	    case TEXTAREA:
+		return "guidta"; // nvarchar(255)
+
+	    case DROPDOWN:
+		return "guiddd"; // integer
+
+	    case RADIOBUTTON:
+		return "guidrb"; // integer
+
+	    case INTEGER:
+		return "guidin"; // integer
+
+	    case DECIMAL:
+		return "guidde"; // numeric
+
+	    case DATETIME:
+		return "guiddt"; // datetime
+
+	    case DATE:
+		return "guiddt"; // datetime
+
+	    case TIME:
+		return "guiddt"; // datetime
+
+	    case CHECKBOX:
+		return "guidcb"; // bit
+
+	    case GRID:
+		return "guidgr"; // null
+
+	    case NAME:
+		return "buidna"; // nvarchar (50)
+
+	    case GPSREADING:
+		return "guidgp"; // null
+
+	    case INFO:
+		return "guidif"; // null
+
+	    case SECTIONEXITSCREEN:
+		return "guidse"; // null
+
+	    default:
+		return "unspecified"; // ERROR
+	}
     }
 }

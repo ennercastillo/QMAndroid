@@ -5,7 +5,6 @@
 package org.questionairemanager.engine;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 
 /**
  * @author ennercastillo
@@ -13,32 +12,29 @@ import java.util.Iterator;
 public class Test {
 
     /**
-     * 
-     */
-    public Test() {
-
-	// TODO Auto-generated constructor stub
-    }
-
-    /**
      * @param args
      */
     public static void main(String[] args) {
 
 	QuestionManager qm = new QuestionManager();
-	ArrayList<Node> alNodes = new ArrayList<Node>();
+	ArrayList<Study> alStudies = new ArrayList<>();
+
 	Node alQuestion = new Node();
 
 	qm.SetListOfStudies(); // Almacena el listado de todos los nodos de DA
-	alNodes = qm.GetListOfStudies(); // Devuelve el listado de todos los nodos
+
+	// TODO: Verify list of studies
+	alStudies = qm.GetListOfStudies(); // Devuelve el listado de todos los nodos
 
 	Node nNodeStudy = new Node();
 
-	for (Node node : alNodes) {
+	for (Study node : alStudies) {
 	    if (node.getsNodeguid().equalsIgnoreCase("GUIDSt")) {
 		try {
-		    node.PrintNodeInformation();
-		    nNodeStudy = (Node) node.clone();
+		    // node.PrintNodeInformation();
+
+		    node.ShowInformation();
+		    nNodeStudy = (Study) node.clone();
 		} catch (CloneNotSupportedException e) {
 		    // TODO Auto-generated catch block
 		    e.printStackTrace();
@@ -58,9 +54,9 @@ public class Test {
 		node.PrintNodeInformation();
 		System.out.println("-------- fin hijo \n");
 
-		//if (node.getsNodeguid().equalsIgnoreCase("guidq5")) {
+		// if (node.getsNodeguid().equalsIgnoreCase("guidq5")) {
 		if (node.getsNodeguid().equalsIgnoreCase("guidqu")) {
-			  
+
 		    try {
 			nFirstElementQuestion = (Node) node.clone();
 
@@ -71,94 +67,92 @@ public class Test {
 		}
 	    }
 
-	    nFirstElementQuestion.PrintNodeInformation();
-	    System.out.println("end first element questionnaire!!!!!!!-----");
-	    ArrayList<Node> alQuestions = new ArrayList<Node>();
-	    System.out.println();
-	    
-	    alQuestions = qm.GetElementsOfQuestionnaireOrQuestionnaireGroup(nFirstElementQuestion);
-	    
-	    for (Iterator<Node> questionnaire = alQuestions.iterator(); questionnaire.hasNext();) {
-		Node node = (Node) questionnaire.next();
-		
-		if (node.gettnTypeNode().equals(TypeNode.QG)){
-		    System.out.println("it is a questionnaire group****");
-		    node.PrintNodeInformation();
-		    System.out.println("end line \n\n");
-		}
-		
-		if (node.gettnTypeNode().equals(TypeNode.QU)){
-		    System.out.println("it is a questionnaire!!!!");
-		    node.PrintNodeInformation();
-		    System.out.println("\n");
-		}
-		
-		if (node.gettnTypeNode().equals(TypeNode.Q)){
-		    System.out.println("it is a question----");
-		    node.PrintNodeInformation();
-		    System.out.println("\n");
-		}
-		
-	    }
-		    
-	    
-	    
-	    /*// Get the first node for the questionnaire
-	    // No se ha verificado si pertenece al tipo Q o QG
-	    alQuestion = qm.GetFirstChildQuestionnaire(nFirstElementQuestion);
+	    // nFirstElementQuestion.PrintNodeInformation();
+	    // System.out.println("end first element questionnaire!!!!!!!-----");
+	    // ArrayList<Node> alQuestions = new ArrayList<Node>();
+	    // System.out.println();
+	    //
+	    // alQuestions = qm.GetElementsOfQuestionnaireOrQuestionnaireGroup(nFirstElementQuestion);
+	    //
+	    // for (Iterator<Node> questionnaire = alQuestions.iterator(); questionnaire.hasNext();) {
+	    // Node node = (Node) questionnaire.next();
+	    //
+	    // if (node.gettnTypeNode().equals(TypeNode.QG)){
+	    // System.out.println("it is a questionnaire group****");
+	    // node.PrintNodeInformation();
+	    // System.out.println("end line \n\n");
+	    // }
+	    //
+	    // if (node.gettnTypeNode().equals(TypeNode.QU)){
+	    // System.out.println("it is a questionnaire!!!!");
+	    // node.PrintNodeInformation();
+	    // System.out.println("\n");
+	    // }
+	    //
+	    // if (node.gettnTypeNode().equals(TypeNode.Q)){
+	    // System.out.println("it is a question----");
+	    // node.PrintNodeInformation();
+	    // System.out.println("\n");
+	    // }
+	    //
+	}
 
-	    if (alQuestion == null) {
-		System.out.println("no hay informacion de un hijo ");
-	    } else {
-		alQuestion.PrintNodeInformation();
-		Node nTemp = new Node();
-		
-		System.out.println("first!!!!! \n");		
-		nTemp = qm.GetNextChildQuestionnaire(alQuestion);
-		
-		if (nTemp != null)
-		    nTemp.PrintNodeInformation();
-		else
-		    System.out.println("its null first");
-		
-		System.out.println("second!!!! \n");
-		nTemp = qm.GetNextChildQuestionnaire(nTemp);
-		if (nTemp != null)
-		    nTemp.PrintNodeInformation();
-		else
-		    System.out.println("its null second");
-		
-		System.out.println("third!!!! \n");
-		nTemp = qm.GetNextChildQuestionnaire(nTemp);
-		if (nTemp != null)
-		    nTemp.PrintNodeInformation();
-		else
-		    System.out.println("its null third");
-		
-		
-		System.out.println("fourth!!!! \n");
-		nTemp = qm.GetNextChildQuestionnaire(nTemp);
-		if (nTemp != null)
-		    nTemp.PrintNodeInformation();
-		else
-		    System.out.println("its null fourth!");
-		
-		System.out.println("fifth!!!! \n"); //TODO: RETURN NULL ELEMENT
-		nTemp = qm.GetNextChildQuestionnaire(nTemp);
-		if (nTemp != null)
-		    nTemp.PrintNodeInformation();
-		else
-		    System.out.println("its null fifth");
-	    }*/
+	/*// Get the first node for the questionnaire
+	// No se ha verificado si pertenece al tipo Q o QG
+	alQuestion = qm.GetFirstChildQuestionnaire(nFirstElementQuestion);
 
-	    // Ac‡ debe enviar el dato
-	    // Se debe validar de que tipo es (Q / QG)
-	    // Si es Q debe traer la primera pregunta
-	    // si es QG debe traer todos sus elementos
+	if (alQuestion == null) {
+	System.out.println("no hay informacion de un hijo ");
+	} else {
+	alQuestion.PrintNodeInformation();
+	Node nTemp = new Node();
+	
+	System.out.println("first!!!!! \n");		
+	nTemp = qm.GetNextChildQuestionnaire(alQuestion);
+	
+	if (nTemp != null)
+	    nTemp.PrintNodeInformation();
+	else
+	    System.out.println("its null first");
+	
+	System.out.println("second!!!! \n");
+	nTemp = qm.GetNextChildQuestionnaire(nTemp);
+	if (nTemp != null)
+	    nTemp.PrintNodeInformation();
+	else
+	    System.out.println("its null second");
+	
+	System.out.println("third!!!! \n");
+	nTemp = qm.GetNextChildQuestionnaire(nTemp);
+	if (nTemp != null)
+	    nTemp.PrintNodeInformation();
+	else
+	    System.out.println("its null third");
+	
+	
+	System.out.println("fourth!!!! \n");
+	nTemp = qm.GetNextChildQuestionnaire(nTemp);
+	if (nTemp != null)
+	    nTemp.PrintNodeInformation();
+	else
+	    System.out.println("its null fourth!");
+	
+	System.out.println("fifth!!!! \n"); //TODO: RETURN NULL ELEMENT
+	nTemp = qm.GetNextChildQuestionnaire(nTemp);
+	if (nTemp != null)
+	    nTemp.PrintNodeInformation();
+	else
+	    System.out.println("its null fifth");
+	}*/
 
-	    // alQuestion = qm.GetElementsQuestionnaire("guidst");
+	// Acï¿½ debe enviar el dato
+	// Se debe validar de que tipo es (Q / QG)
+	// Si es Q debe traer la primera pregunta
+	// si es QG debe traer todos sus elementos
 
-	} else System.out.println("No hay nodo");
+	// alQuestion = qm.GetElementsQuestionnaire("guidst");
+
+	// } else System.out.println("No hay nodo");
 
 	System.out.println("fin");
     }

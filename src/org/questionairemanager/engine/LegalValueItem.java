@@ -22,9 +22,6 @@ public class LegalValueItem {
 	private String sTag;
 	private Boolean bHidden;
 	private String sReportLabel;
-	
-	// Texto del item
-	private Dictionary dtyText;
 
 	/**
 	 * @return the sLegalValueItemGuid
@@ -82,12 +79,6 @@ public class LegalValueItem {
 		return sReportLabel;
 	}
 
-	public Dictionary getDtyText(){
-	    if (this.dtyText.getsLanguageId("spguid")){
-		
-	    }
-	}
-	
 	
 	/**
 	 * Constructor class

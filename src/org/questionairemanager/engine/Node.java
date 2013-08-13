@@ -6,13 +6,12 @@ package org.questionairemanager.engine;
 
 import java.util.Locale;
 
-
 /**
  * Dummy class for node. Node get all information to Question Manager
  * 
  * @author Enner Escobedo C. <email>enner.castillo@centrikal.com</email> <date>Jul, 25 2013</date>
  */
-public class Node implements Cloneable{
+public class Node implements Cloneable {
 
     // PK
     private String sNodeguid;
@@ -47,9 +46,9 @@ public class Node implements Cloneable{
     }
 
     /**
-     * @return the sType
+     * @return the tnTypeNode
      */
-    public TypeNode gettnTypeNode() {
+    public TypeNode getTnTypeNode() {
 
 	return tnTypeNode;
     }
@@ -153,7 +152,7 @@ public class Node implements Cloneable{
 	this.sComment = "";
 	this.tnTypeNode = null;
     }
-    
+
     /**
      * Constructor class with data
      * 
@@ -246,13 +245,34 @@ public class Node implements Cloneable{
 
 	return null;
     }
-    
-    
-    @Override
-    public Object clone() throws CloneNotSupportedException{
-	return super.clone();
-	
+
+    /**
+     * Constructor with information for Node
+     * 
+     * @param nData
+     */
+    public Node(Node nData) {
+
+	this.tnTypeNode = nData.getTnTypeNode();
+	this.sNodeguid = nData.getsNodeguid();
+	this.sParentGuid = nData.getsParentGuid();
+	this.sOrdinal = nData.getsOrdinal();
+	this.bVisible = nData.getbVisible();
+	this.sNumber = nData.getsNumber();
+	this.bHideNext = nData.getbHideNext();
+	this.bHideBack = nData.getbHideBack();
+	this.bConfirmNext = nData.getbConfirmNext();
+	this.bConfirmBack = nData.getbConfirmBack();
+	this.sOnLoad = nData.getsOnLoad();
+	this.sOnUnload = nData.getsOnUnload();
+	this.sComment = nData.getsComment();
     }
 
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+
+	return super.clone();
+
+    }
 
 }

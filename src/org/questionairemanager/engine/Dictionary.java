@@ -11,7 +11,7 @@ public class Dictionary {
 
     private String sGuid;
     private String sLanguageId;
-    private String sProperty;
+    private String sPropertyName;
     private String sText;
 
     /**
@@ -35,7 +35,7 @@ public class Dictionary {
      */
     public String getsProperty() {
 
-	return sProperty;
+	return sPropertyName;
     }
 
     /**
@@ -67,7 +67,7 @@ public class Dictionary {
      */
     public void setsProperty(String sProperty) {
 
-	this.sProperty = sProperty;
+	this.sPropertyName = sProperty;
     }
 
     /**
@@ -88,18 +88,29 @@ public class Dictionary {
 
 	this.sGuid = sGuid;
 	this.sLanguageId = sLanguageId;
-	this.sProperty = sProperty;
+	this.sPropertyName = sProperty;
 	this.sText = sText;
     }
 
-    
-    public getDataText (String guid, String guidlang, String text){
+    /**
+     * Return the element with text, if conditions are true
+     * @author Enner Escobedo C. <email>enner.castillo@centrikal.com</email>
+     * <date>Aug 9, 2013</date>
+     *
+     * @param guid, guid of dictionary
+     * @param guidlang, guid for language
+     * @return String with text or null in case condition is false.
+     */
+    public String getDataText (String guid, String guidlang){
+	
+	if (this.getsGuid().equalsIgnoreCase(guid) && this.getsLanguageId().equalsIgnoreCase(guidlang))
+	{
+	    return this.getsText();
+	}
+	
+	return null;
 	
     }
-    
-    //Manejar un hashmap para emparejar valores
-    public Dictionary() {
 
-    }
 
 }

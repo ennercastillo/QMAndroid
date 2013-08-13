@@ -3,36 +3,41 @@ package org.questionairemanager.engine;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Stack;
 
 public class QuestionManager {
 
-    private ArrayList<Node> alStudies;
+    private ArrayList<Study> alStudies;
     private Stack<String> stScreens;
 
+    // additional data
     private ArrayList<Dictionary> alDictionary;
-    
+    private ArrayList<ScreenTemplate> alScreenTemplate;
+    private ArrayList<LegalValueItem> alLegalValueItem;
+    private ArrayList<LegalValueTable> alLegalValueTable;
+
     public QuestionManager() {
 
-	alStudies = new ArrayList<Node>();
-	stScreens = new Stack<String>();
-	this.alDictionary = new ArrayList<Dictionary>();
+	alStudies = new ArrayList<>();
+	stScreens = new Stack<>();
+
+	// add data additional
+	this.alDictionary = new ArrayList<>();
+	this.alScreenTemplate = new ArrayList<>();
+	this.alLegalValueItem = new ArrayList<>();
+	this.alLegalValueTable = new ArrayList<>();
     }
 
+    /**
+     * Create languages for this project
+     * 
+     * @author Enner Escobedo C. <email>enner.castillo@centrikal.com</email> <date>Aug 9, 2013</date>
+     */
     public void SetDataLanguages() {
 
 	ArrayList<Language> alLanguages = new ArrayList<Language>();
-	HashMap<String, String> hmLanguages = null;
 
-	hmLanguages.put("lsp", "Spanish");
-	hmLanguages.put("len", "English");
-	
-	
-	hmLanguages.containsKey("lsp");
-	
-	
 	alLanguages.add(new Language("lsp", "Spanish"));
 	alLanguages.add(new Language("len", "English"));
     }
@@ -67,7 +72,7 @@ public class QuestionManager {
 	alDictionary.add(new Dictionary("qguid5", "len", "Main Text", "Text question 5"));
 	alDictionary.add(new Dictionary("qguid6", "lsp", "Main Text", "Texto pregunta 6"));
 	alDictionary.add(new Dictionary("qguid6", "len", "Main Text", "Text question 6"));
-	
+
 	alDictionary.add(new Dictionary("iguid1", "lsp", "Main Text", "Pantalla de info 1"));
 	alDictionary.add(new Dictionary("iguid1", "len", "Main Text", "Info Screen 1"));
 	alDictionary.add(new Dictionary("iguid2", "lsp", "Main Text", "Pantalla de info 2"));
@@ -78,7 +83,7 @@ public class QuestionManager {
 	alDictionary.add(new Dictionary("iguid4", "len", "Main Text", "Info Screen 4"));
 	alDictionary.add(new Dictionary("iguid5", "lsp", "Main Text", "Pantalla de info 5"));
 	alDictionary.add(new Dictionary("iguid5", "len", "Main Text", "Info Screen 5"));
-	
+
 	// TODO: Checkpoint
 	// alDictionary.add(new Dictionary("checkpont", "lsp", "Main Text", "Texto pregunta 1"));
 	// alDictionary.add(new Dictionary("qguid1", "len", "Main Text", "Text question 1"));
@@ -86,46 +91,202 @@ public class QuestionManager {
 	// alDictionary.add(new Dictionary("qguid1", "len", "Main Text", "Text question 1"));
 	// alDictionary.add(new Dictionary("qguid1", "lsp", "Main Text", "Texto pregunta 1"));
 	// alDictionary.add(new Dictionary("qguid1", "len", "Main Text", "Text question 1"));
-	
 
     }
-    
+
+    /**
+     * Load the all elements for this screen template
+     * 
+     * @author Enner Escobedo C. <email>enner.castillo@centrikal.com</email> <date>12/08/2013</date>
+     */
+    public void setScreenTemplates() {
+
+	/*
+	    
+	     TEXTBOX, TEXTAREA, DROPDOWN, RADIOBUTTON, INTEGER, DECIMAL, DATETIME, DATE, TIME, CHECKBOX, GRID, NAME, GPSREADING, INFO, SECTIONEXITSCREEN;
+	*/
+	this.alScreenTemplate.add(new ScreenTemplate(ScreenTemplateTypes.INTEGER.getGuid(), ScreenTemplateTypes.INTEGER.toString(), "int", null, true));
+	this.alScreenTemplate.add(new ScreenTemplate(ScreenTemplateTypes.TEXTBOX.getGuid(), ScreenTemplateTypes.TEXTBOX.toString(), "int", null, true));
+	this.alScreenTemplate.add(new ScreenTemplate(ScreenTemplateTypes.TEXTAREA.getGuid(), ScreenTemplateTypes.TEXTAREA.toString(), "int", null, true));
+	this.alScreenTemplate.add(new ScreenTemplate(ScreenTemplateTypes.DROPDOWN.getGuid(), ScreenTemplateTypes.DROPDOWN.toString(), "int", null, true));
+	this.alScreenTemplate.add(new ScreenTemplate(ScreenTemplateTypes.RADIOBUTTON.getGuid(), ScreenTemplateTypes.RADIOBUTTON.toString(), "int", null, true));
+	this.alScreenTemplate.add(new ScreenTemplate(ScreenTemplateTypes.DECIMAL.getGuid(), ScreenTemplateTypes.DECIMAL.toString(), "int", null, true));
+	this.alScreenTemplate.add(new ScreenTemplate(ScreenTemplateTypes.DATETIME.getGuid(), ScreenTemplateTypes.DATETIME.toString(), "int", null, true));
+	this.alScreenTemplate.add(new ScreenTemplate(ScreenTemplateTypes.DATE.getGuid(), ScreenTemplateTypes.DATE.toString(), "int", null, true));
+	this.alScreenTemplate.add(new ScreenTemplate(ScreenTemplateTypes.TIME.getGuid(), ScreenTemplateTypes.TIME.toString(), "int", null, true));
+	this.alScreenTemplate.add(new ScreenTemplate(ScreenTemplateTypes.CHECKBOX.getGuid(), ScreenTemplateTypes.CHECKBOX.toString(), "int", null, true));
+	this.alScreenTemplate.add(new ScreenTemplate(ScreenTemplateTypes.GRID.getGuid(), ScreenTemplateTypes.GRID.toString(), "int", null, true));
+	this.alScreenTemplate.add(new ScreenTemplate(ScreenTemplateTypes.NAME.getGuid(), ScreenTemplateTypes.NAME.toString(), "int", null, true));
+	this.alScreenTemplate.add(new ScreenTemplate(ScreenTemplateTypes.GPSREADING.getGuid(), ScreenTemplateTypes.GPSREADING.toString(), "int", null, true));
+	this.alScreenTemplate.add(new ScreenTemplate(ScreenTemplateTypes.INFO.getGuid(), ScreenTemplateTypes.INFO.toString(), "int", null, true));
+	this.alScreenTemplate.add(new ScreenTemplate(ScreenTemplateTypes.SECTIONEXITSCREEN.getGuid(), ScreenTemplateTypes.SECTIONEXITSCREEN.toString(), "int",
+		null, true));
+
+    }
+
+    /**
+     * Return all the elements of screen template
+     * 
+     * @author Enner Escobedo C. <email>enner.castillo@centrikal.com</email> <date>12/08/2013</date>
+     * @return ArrayList all screen templates
+     */
+    public ArrayList<ScreenTemplate> getScreenTemplates() {
+
+	return this.alScreenTemplate;
+    }
+
+    /**
+     * Search guid in all elements of type screen template
+     * 
+     * @author Enner Escobedo C. <email>enner.castillo@centrikal.com</email> <date>12/08/2013</date>
+     * @param sGuidToSearch, guid to search
+     * @return ScreenTemplate with the info for this guid
+     */
+    public ScreenTemplate searchScreenTemplate(String sGuidToSearch) {
+
+	for (ScreenTemplate scrTemplate : alScreenTemplate) {
+	    if (scrTemplate.getsScreenTemplateGuid().equals(sGuidToSearch)) return scrTemplate;
+	}
+
+	return null;
+
+    }
+
+    public void setLegalValueItem() {
+
+	/**
+	 * private String sLegalValueItemGuid; private String sLegalValueTableGuid; private String sValue; private String sOrdinal; private String sShortName; private String sTag; private Boolean bHidden; private String sReportLabel;
+	 */
+
+	// male or female
+	this.alLegalValueItem.add(new LegalValueItem("guidvi1", "guidt1", "0", "0", "m", null, false, null));
+	this.alLegalValueItem.add(new LegalValueItem("guidvi2", "guidt1", "0", "0", "f", null, false, null));
+
+	// weekday
+	this.alLegalValueItem.add(new LegalValueItem("guidvi3", "guidt2", "0", "0", "lu", null, false, null));
+	this.alLegalValueItem.add(new LegalValueItem("guidvi4", "guidt2", "0", "0", "ma", null, false, null));
+	this.alLegalValueItem.add(new LegalValueItem("guidvi5", "guidt2", "0", "0", "mi", null, false, null));
+	this.alLegalValueItem.add(new LegalValueItem("guidvi6", "guidt2", "0", "0", "ju", null, false, null));
+	this.alLegalValueItem.add(new LegalValueItem("guidvi7", "guidt2", "0", "0", "vi", null, false, null));
+	this.alLegalValueItem.add(new LegalValueItem("guidvi8", "guidt2", "0", "0", "sa", null, false, null));
+
+	// age range
+	this.alLegalValueItem.add(new LegalValueItem("guidvi9", "guidt3", "0", "0", "et1", null, false, null));
+	this.alLegalValueItem.add(new LegalValueItem("guidvi10", "guidt3", "0", "0", "et2", null, false, null));
+	this.alLegalValueItem.add(new LegalValueItem("guidvi11", "guidt3", "0", "0", "et3", null, false, null));
+	this.alLegalValueItem.add(new LegalValueItem("guidvi12", "guidt3", "0", "0", "et4", null, false, null));
+	this.alLegalValueItem.add(new LegalValueItem("guidvi13", "guidt3", "0", "0", "et5", null, false, null));
+
+    }
+
+    /**
+     * Get all elements from legal value items
+     * 
+     * @author Enner Escobedo C. <email>enner.castillo@centrikal.com</email> <date>12/08/2013</date>
+     * @return
+     */
+    public ArrayList<LegalValueItem> getLegalValueItem() {
+
+	return this.alLegalValueItem;
+    }
+
+    /**
+     * Search an element legal value item type
+     * 
+     * @author Enner Escobedo C. <email>enner.castillo@centrikal.com</email> <date>12/08/2013</date>
+     * @param sGuidToSearch
+     * @return
+     */
+    public LegalValueItem searchLegalValueItem(String sGuidToSearch) {
+
+	for (LegalValueItem legalValueItem : alLegalValueItem) {
+	    if (legalValueItem.getsLegalValueItemGuid().equalsIgnoreCase(sGuidToSearch)) return legalValueItem;
+	}
+
+	return null;
+
+    }
+
+    /**
+     * Set all data of legal value table
+     * 
+     * @author Enner Escobedo C. <email>enner.castillo@centrikal.com</email> <date>12/08/2013</date>
+     */
+    public void setLegalValueTable() {
+
+	this.alLegalValueTable.add(new LegalValueTable("guidt1", ScreenTemplateTypes.RADIOBUTTON.toString()));
+	this.alLegalValueTable.add(new LegalValueTable("guidt2", ScreenTemplateTypes.RADIOBUTTON.toString()));
+	this.alLegalValueTable.add(new LegalValueTable("guidt2", ScreenTemplateTypes.CHECKBOX.toString()));
+    }
+
+    /**
+     * Return all data of legal value table
+     * 
+     * @author Enner Escobedo C. <email>enner.castillo@centrikal.com</email> <date>12/08/2013</date>
+     * @return
+     */
+    public ArrayList<LegalValueTable> getLegalValueTable() {
+
+	return this.alLegalValueTable;
+    }
+
+    /**
+     * Return an element of type legal value table
+     * 
+     * @author Enner Escobedo C. <email>enner.castillo@centrikal.com</email> <date>12/08/2013</date>
+     * @return
+     */
+    public LegalValueTable searchLegalValueTable(String sGuidToSearch) {
+
+	for (LegalValueTable legalValue : this.alLegalValueTable) {
+	    if (legalValue.getsLegalValueTableGuid().equalsIgnoreCase(sGuidToSearch)) return legalValue;
+	}
+
+	return null;
+
+    }
+
     /**
      * Get list of words of all elements of this project
-     * @author Enner Escobedo C. <email>enner.castillo@centrikal.com</email>
-     * <date>Aug 07, 2013</date>
+     * 
+     * @author Enner Escobedo C. <email>enner.castillo@centrikal.com</email> <date>Aug 07, 2013</date>
      * @return ArrayList<Dictionary>, all elements of this dictionary
      */
-    public ArrayList<Dictionary> getDataDictionary(){
+    public ArrayList<Dictionary> getDataDictionary() {
+
 	return this.alDictionary;
     }
-    
+
     /**
      * Search element in dictionary
-     * @author Enner Escobedo C. <email>enner.castillo@centrikal.com</email>
-     * <date>Aug 7, 2013</date>
-     *
+     * 
+     * @author Enner Escobedo C. <email>enner.castillo@centrikal.com</email> <date>Aug 7, 2013</date>
      * @param sGuidDictionarySearch, Guid dictionary
      * @param sGuidLanguageSearch, guid language
      * @param sPropertyName, property name to search
      */
-    public void SearchElementDictionary(String sGuidDictionarySearch, String sGuidLanguageSearch, String sPropertyNameSearch){
-	
+    public String SearchElementDictionary(String sGuidDictionarySearch, String sGuidLanguageSearch, String sPropertyNameSearch) {
+
 	String sGuidDictionary;
 	String sGuidLanguageId;
-	String sPropertyName;
-	
+	String sText;
+
 	for (Dictionary infoDictionary : this.alDictionary) {
-	    
+
 	    sGuidDictionary = infoDictionary.getsGuid();
 	    sGuidLanguageId = infoDictionary.getsLanguageId();
-	    sPropertyName = infoDictionary.getsProperty();
-	    
+
+	    sText = infoDictionary.getDataText(sGuidDictionary, sGuidLanguageId);
+
+	    // Compare with null, is null fail in search.
+	    // Is not null, return value
+	    if (sText != null) return sText;
+
 	}
-	
-	
+
+	return null;
+
     }
-    
 
     /**
      * Get all studies of data access
@@ -153,22 +314,6 @@ public class QuestionManager {
 	// ExpressionData exp5 = new ExpressionData("exp5", "var5", "int", true);
 	// ExpressionData exp6 = new ExpressionData("exp6", "var6", "int", true);
 
-	// TODO: Verificar si se incluye la clase en Legal Value
-	LegalValueTable lvt1 = new LegalValueTable("lvt1", "dt1", null);
-	LegalValueTable lvt2 = new LegalValueTable("lvt2", "dt2", null);
-	LegalValueTable lvt3 = new LegalValueTable("lvt3", "dt3", null);
-	LegalValueTable lvt4 = new LegalValueTable("lvt4", "dt4", null);
-	LegalValueTable lvt5 = new LegalValueTable("lvt5", "dt5", null);
-	LegalValueTable lvt6 = new LegalValueTable("lvt6", "dt6", null);
-
-	// TODO: revisar si se agrega o no a Question la clase ScreenTemplate
-	ScreenTemplate scrTemplate1 = new ScreenTemplate("stg1", "template name 1", "datatype1", "ref1", true);
-	ScreenTemplate scrTemplate2 = new ScreenTemplate("stg2", "template name 2", "datatype2", "ref1", true);
-	ScreenTemplate scrTemplate3 = new ScreenTemplate("stg3", "template name 3", "datatype3", "ref1", true);
-	ScreenTemplate scrTemplate5 = new ScreenTemplate("stg5", "template name 5", "datatype5", "ref1", true);
-	ScreenTemplate scrTemplate4 = new ScreenTemplate("stg4", "template name 4", "datatype4", "ref1", true);
-	ScreenTemplate scrTemplate6 = new ScreenTemplate("stg6", "template name 6", "datatype6", "ref1", true);
-
 	// / Question
 	/*
 	 * public Question(String sQuestionGuid, String sLegalValueTableGuid,
@@ -178,15 +323,10 @@ public class QuestionManager {
 	 * sCustomValidationExpressionGuid, String sOnChange, String sUnique)
 	 */
 	Question q1 = new Question("guidq1", "lvt1", "q1", "stg1", "arg1", true, "absmin1", "absmax1", "pu1", "po1", "custom1", "change1", "qu1");
-
 	Question q2 = new Question("guidq2", "lvt2", "q2", "stg2", "arg2", true, "absmin2", "absmax2", "pu2", "po2", "custom2", "change2", "qu2");
-
 	Question q3 = new Question("guidq3", "lvt3", "q2", "stg3", "arg3", true, "absmin3", "absmax3", "pu3", "po3", "custom3", "change3", "qu3");
-
 	Question q4 = new Question("guidq4", "lvt4", "q2", "stg4", "arg4", true, "absmin4", "absmax4", "pu4", "po4", "custom4", "change4", "qu4");
-
 	Question q5 = new Question("guidq5", "lvt5", "q2", "stg5", "arg5", true, "absmin5", "absmax5", "pu5", "po5", "custom5", "change5", "qu5");
-
 	Question q6 = new Question("guidq6", "lvt6", "q2", "stg6", "arg6", true, "absmin6", "absmax6", "pu6", "po6", "custom6", "change6", "qu6");
 
 	// Questions list
@@ -199,11 +339,6 @@ public class QuestionManager {
 	alQuestions.add(q5);
 	alQuestions.add(q6);
 
-	// Questionnaire
-	Questionnaire qQuestInfo;
-	qQuestInfo = new Questionnaire("guidqu", "short name q", "new", false, false, "mult inst abs min", "mult inst abs max", "prompt under", "promptover",
-		"a1", "confirm vars", true, "unique string", alQuestions);
-
 	/*
 	 * Questionnaire qQuestionnaire = new Questionnaire("guidQuestionnaire",
 	 * "qshortname", "new", true, false, "multinstance", "absmax",
@@ -211,22 +346,22 @@ public class QuestionManager {
 	 */
 
 	// ArrayList <Questionnaire>
-	ArrayList<Questionnaire> alQuestionnaire = new ArrayList<Questionnaire>();
-	alQuestionnaire.add(qQuestInfo);
+	// ArrayList<Questionnaire> alQuestionnaire = new ArrayList<Questionnaire>();
+	// alQuestionnaire.add(qQuestInfo);
 	// alQuestionnaire.add(qQuestionnaire);
 
+	Node node1 = new Node("guidst", null, "ST", "0", true, "num", true, true, true, true, "onload", "unload", "comment");
+	Node node2 = new Node("guidst1", null, "ST", "1", true, "num", true, true, true, true, "onload", "unload", "comment");
+
 	// / Study
-	Study sStudy = new Study("guidst", "study short name", "1.0", "1.0", date, date, "currentid", false, true, "schema", "logschema", "lvsschema",
-		"analysisschema", "searchvars", "confirmvar", alQuestionnaire, null, "report id");
+	Study sStudy1 = new Study(node1, "study short name", "1.0", "1.0", date, date, "currentid", false, true, "schema", "logschema", "lvsschema",
+		"analysisschema", "searchvars", "confirmvar", null, "report id");
 
-	/**
-	 * private String sNodeguid; private String sParentGuid; private TypeNode tnTypeNode; private String sOrdinal; private Boolean bVisible; private String sNumber; private Boolean bHideNext; private Boolean bHideBack; private Boolean bConfirmNext; private Boolean bConfirmBack; private String sOnLoad; private String sOnUnload; private String sComment;
-	 */
+	Study sStudy2 = new Study(node2, "study 2 sn", "1.0", "1.0", date, date, "currentid", false, true, "schema", "logschema", "lvsschema",
+		"analysis schema", "searchvars", "confirm var", null, "reportid2");
 
-	Node n = new Node("guidst", null, "ST", "0", true, "num", true, true, true, true, "onload", "unload", "comment");
-
-	this.alStudies.add(n);
-	this.alStudies.add(new Node("guidst1", null, "ST", "1", true, "num", true, true, true, true, "onload", "unload", "comment"));
+	this.alStudies.add(sStudy1);
+	this.alStudies.add(sStudy2);
 
 	/**
 	 * Get studies and return here
@@ -240,15 +375,15 @@ public class QuestionManager {
      * @author Enner Escobedo C. <email>enner.castillo@centrikal.com</email> <date>Jul, 29 2013</date>
      * @return ArrayList<Node>, List of Studies
      */
-    public ArrayList<Node> GetListOfStudies() {
+    public ArrayList<Study> GetListOfStudies() {
 
-	for (Iterator<Node> iNode = alStudies.iterator(); iNode.hasNext();) {
-	    Node nNodeInfo = (Node) iNode.next();
-
-	    nNodeInfo.PrintNodeInformation();
-	    System.out.println("\n");
-
-	}
+	// for (Iterator<Study> iNode = alStudies.iterator(); iNode.hasNext();) {
+	// Node nNodeInfo = (Node) iNode.next();
+	//
+	// // nNodeInfo.PrintNodeInformation();
+	// // System.out.println("\n");
+	//
+	// }
 
 	// TODO: Return all studies of Data Access
 	return this.alStudies;
@@ -267,6 +402,8 @@ public class QuestionManager {
 
 	    String sGuidStudy = nStudy.getsNodeguid().toString();
 
+	    // TODO: Add elements of type questionnaire
+
 	    // TODO: verify, is string ?
 	    // PUSH element to Stack
 	    stScreens.push(sGuidStudy);
@@ -274,7 +411,7 @@ public class QuestionManager {
 	    System.out.println("STACK!!!!!! _________ " + stScreens.size() + " ---- \n " + stScreens);
 
 	    /******** INFO NODES BEGIN ******/
-	    ArrayList<Node> alNode2 = new ArrayList<Node>();
+	    ArrayList<Node> alNode2 = new ArrayList<>();
 	    alNode2.add(new Node("guidqu", "guidst", "QU", "0", true, "num", true, true, true, true, "onload", "unload", "comment"));
 	    alNode2.add(new Node("guidq1", "guidsta", "QU", "0", true, "num", true, true, true, true, "onload", "unload", "comment"));
 	    alNode2.add(new Node("guidq2", "guidqu", "QG", "1", true, "num", true, true, true, true, "onload", "unload", "comment"));
@@ -289,6 +426,32 @@ public class QuestionManager {
 	    alNode2.add(new Node("guidq10", "guidst1", "QG", "4", true, "num", true, true, true, true, "onload", "unload", "comment"));
 	    alNode2.add(new Node("guidq11", "guidst1", "QG", "5", true, "num", true, true, true, true, "onload", "unload", "comment"));
 
+	    /***
+	     * ELEMENTS QUESTIONNAIRE WITH DATA
+	     */
+	    // Questionnaire
+	    ArrayList<Questionnaire> alQuestionnaires = new ArrayList<>();
+
+	    Questionnaire qQuest1;
+	    qQuest1 = new Questionnaire(alNode2.get(0), "guidqu2", "short name q2", "new", false, false, "mult inst abs min", "mult inst abs max",
+		    "prompt under", "promptover", "a1", "confirm vars", true, "unique string");
+
+	    Questionnaire qQuest2;
+	    qQuest2 = new Questionnaire(alNode2.get(1), "guidqu3", "short name q3", "new", false, false, "mult inst abs min", "mult inst abs max",
+		    "prompt under", "promptover", "a1", "confirm vars", true, "unique string");
+	    Questionnaire qQuest3;
+	    qQuest3 = new Questionnaire(alNode2.get(6), "guidqu4", "short name q4", "new", false, false, "mult inst abs min", "mult inst abs max",
+		    "prompt under", "promptover", "a1", "confirm vars", true, "unique string");
+	    Questionnaire qQuest4;
+	    qQuest4 = new Questionnaire(alNode2.get(7), "guidqu5", "short name q5", "new", false, false, "mult inst abs min", "mult inst abs max",
+		    "prompt under", "promptover", "a1", "confirm vars", true, "unique string");
+
+	    alQuestionnaires.add(qQuest1);
+	    alQuestionnaires.add(qQuest2);
+	    alQuestionnaires.add(qQuest3);
+	    alQuestionnaires.add(qQuest4);
+
+	    // TODO: Change data in this code!!!
 	    ArrayList<Node> alInfoData = new ArrayList<Node>();	// Elements with sguid equals to inserted
 	    // ArrayList<Node> nQuestionnaire = new ArrayList<Node>(); // Element questionnaire
 
@@ -309,7 +472,7 @@ public class QuestionManager {
 
 		System.out.println("is null");
 
-		return alInfoData;
+		return alInfoData;	// IS EMPTY
 
 	    } else {
 
@@ -501,43 +664,27 @@ public class QuestionManager {
      * @author Enner Escobedo C. <email>enner.castillo@centrikal.com</email> <date>Aug 1, 2013</date>
      * @param nElementRoot, Element node, search title or execute operation
      */
-    public void GetTextOfElement(Node nElementRoot) {
+    /* public void GetTextOfElement(Node nElementRoot) {
 
-	Object oData = new Object();
-	// Is a screen question
-	if (nElementRoot.gettnTypeNode().equals(TypeNode.Q)) {
+    Object oData = new Object();
+    // Is a screen question
+    if (nElementRoot.gettnTypeNode().equals(TypeNode.Q)) {
 
-	    oData = SearchElementsOfQuestion(nElementRoot);
-
-	}
-
-	// Is a screen checkpoint
-	if (nElementRoot.gettnTypeNode().equals(TypeNode.CH)) {
-	    oData = SearchElementsOfInfo(nElementRoot);
-	}
-
-	// Is a screen info
-	if (nElementRoot.gettnTypeNode().equals(TypeNode.IN)) {
-	    oData = SearchElementsOfCH(nElementRoot);
-	    // Insert element Questionnaire Group
-	}
+        oData = SearchElementsOfQuestion(nElementRoot);
 
     }
 
-    /**
-     * Search element by question. Text of question, type of question, answers for that question
-     * 
-     * @param nElementRoot, Question root to search data
-     * @return
-     */
-    private Object SearchElementsOfQuestion(Node nElementRoot) {
-
-	// TODO: Get elements Table items, get legal value table
-	// get legal value item, screen template
-
-	// SEARCH info of questions
-
-	return null;
+    // Is a screen checkpoint
+    if (nElementRoot.gettnTypeNode().equals(TypeNode.CH)) {
+        oData = SearchElementsOfInfo(nElementRoot);
     }
+
+    // Is a screen info
+    if (nElementRoot.gettnTypeNode().equals(TypeNode.IN)) {
+        oData = SearchElementsOfCH(nElementRoot);
+        // Insert element Questionnaire Group
+    }
+
+     }*/
 
 }

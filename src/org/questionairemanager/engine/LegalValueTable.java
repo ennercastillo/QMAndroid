@@ -14,7 +14,7 @@ public class LegalValueTable {
 	/// ATTRIBUTS
 	private String sLegalValueTableGuid; // GUID
 	private String sDatatype;	// DATA TYPE
-	private ArrayList<LegalValueItem> alItems;
+	
 
 	/**
 	 * @return the sLegalValueTableGuid
@@ -30,20 +30,13 @@ public class LegalValueTable {
 		return sDatatype;
 	}
 
-	/**
-	 * @return the alItems
-	 */
-	public ArrayList<LegalValueItem> getAlItems() {
-		return alItems;
-	}
-	
+
 	/**
 	 * Class constructor
 	 */
 	public LegalValueTable(){
 		this.sLegalValueTableGuid = "";
 		this.sDatatype = "";
-		this.alItems = new ArrayList<LegalValueItem>();
 	}
 
 	/**
@@ -52,10 +45,10 @@ public class LegalValueTable {
 	 * @param sDatatype, Data type for this Legal Value Table 
 	 * @param lviList, Array list items of this table
 	 */
-	public LegalValueTable(String sLegalValueTableGuid, String sDatatype, ArrayList<LegalValueItem> lviList) {
+	public LegalValueTable(String sLegalValueTableGuid, String sDatatype) {
 		this.sLegalValueTableGuid = sLegalValueTableGuid;
 		this.sDatatype = sDatatype;
-		this.alItems = lviList;
+
 	}
 
 

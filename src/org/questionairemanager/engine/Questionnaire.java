@@ -1,16 +1,16 @@
 /**
  * 
  */
+
 package org.questionairemanager.engine;
 
 import java.util.ArrayList;
 
 /**
  * @author ennercastillo
- *
  */
-public class Questionnaire extends Node{
-    
+public class Questionnaire extends Node {
+
     private String sQuestionnaireGuid; // GUID Questionnaire
     private String sShortName; // Name of Questionnaire
     private String sOnNew; // On new
@@ -37,125 +37,153 @@ public class Questionnaire extends Node{
      * @return the alScreens
      */
     public ArrayList<Screen> getAlScreens() {
-        return alScreens;
+
+	return alScreens;
     }
 
     /**
      * @return the sQuestionnaireGuid
      */
     public String getsQuestionnaireGuid() {
-        return sQuestionnaireGuid;
+
+	return sQuestionnaireGuid;
     }
 
     /**
      * @return the sShortName
      */
     public String getsShortName() {
-        return sShortName;
+
+	return sShortName;
     }
 
     /**
      * @return the sOnNew
      */
     public String getsOnNew() {
-        return sOnNew;
+
+	return sOnNew;
     }
 
     /**
      * @return the bModifiable
      */
     public Boolean getbModifiable() {
-        return bModifiable;
+
+	return bModifiable;
     }
 
     /**
      * @return the sMultipleInstance
      */
     public Boolean getbMultipleInstance() {
-        return bMultipleInstance;
+
+	return bMultipleInstance;
     }
 
     /**
      * @return the sMultipleInstanceAbsMin
      */
     public String getsMultipleInstanceAbsMin() {
-        return sMultipleInstanceAbsMin;
+
+	return sMultipleInstanceAbsMin;
     }
 
     /**
      * @return the sMultipleInstanceAbsMax
      */
     public String getsMultipleInstanceAbsMax() {
-        return sMultipleInstanceAbsMax;
+
+	return sMultipleInstanceAbsMax;
     }
 
     /**
      * @return the sMultipleInstancePromptUnder
      */
     public String getsMultipleInstancePromptUnder() {
-        return sMultipleInstancePromptUnder;
+
+	return sMultipleInstancePromptUnder;
     }
 
     /**
      * @return the sMultipleInstancePromptOver
      */
     public String getsMultipleInstancePromptOver() {
-        return sMultipleInstancePromptOver;
+
+	return sMultipleInstancePromptOver;
     }
 
     /**
      * @return the sSearchVariables
      */
     public String getsSearchVariables() {
-        return sSearchVariables;
+
+	return sSearchVariables;
     }
 
     /**
      * @return the bConfirmVariables
      */
     public String getsConfirmVariables() {
-        return sConfirmVariables;
+
+	return sConfirmVariables;
     }
 
     /**
      * @return the bRequired
      */
     public Boolean getbRequired() {
-        return bRequired;
+
+	return bRequired;
     }
 
     /**
      * @return the unique
      */
     public String getsUnique() {
-        return sUnique;
+
+	return sUnique;
     }
 
     /**
      * @return the alQuestions
      */
     public ArrayList<Question> getAlQuestions() {
-        return alQuestions;
+
+	return alQuestions;
+    }
+
+    /**
+     * Add questions to this questionnaire
+     * 
+     * @author Enner Escobedo C. <email>enner.castillo@centrikal.com</email> <date>13/08/2013</date>
+     * @param alQuestions, array list of questions for this questionnaire
+     */
+    public void setAlQuestions(ArrayList<Question> alQuestions) {
+
+	if (this.alQuestions.isEmpty()) this.alQuestions = new ArrayList<>();
+
+	this.alQuestions = alQuestions;
     }
 
     /**
      * Constructor class
      */
     public Questionnaire() {
-        this.sQuestionnaireGuid = "";
-        this.sShortName = "";
-        this.sOnNew = "";
-        this.bModifiable = false;
-        this.bMultipleInstance = false;
-        this.sMultipleInstanceAbsMin = "";
-        this.sMultipleInstanceAbsMax = "";
-        this.sMultipleInstancePromptUnder = "";
-        this.sMultipleInstancePromptOver = "";
-        this.sSearchVariables = "";
-        this.sConfirmVariables = "";
-        this.bRequired = false;
-        this.sUnique = "";
-        this.alQuestions = new ArrayList<Question>();
+
+	this.sQuestionnaireGuid = "";
+	this.sShortName = "";
+	this.sOnNew = "";
+	this.bModifiable = false;
+	this.bMultipleInstance = false;
+	this.sMultipleInstanceAbsMin = "";
+	this.sMultipleInstanceAbsMax = "";
+	this.sMultipleInstancePromptUnder = "";
+	this.sMultipleInstancePromptOver = "";
+	this.sSearchVariables = "";
+	this.sConfirmVariables = "";
+	this.bRequired = false;
+	this.sUnique = "";
     }
 
     /**
@@ -173,34 +201,41 @@ public class Questionnaire extends Node{
      * @param bRequired
      * @param sUnique
      */
-    public Questionnaire(String sQuestionnaireGuid, String sShortName, String sOnNew,
-            Boolean bModifiable, Boolean bMultipleInstance, String sMultipleInstanceAbsMin,
-            String sMultipleInstanceAbsMax, String sMultipleInstancePromptUnder,
-            String sMultipleInstancePromptOver, String sSearchVariables, String sConfirmVariables,
-            Boolean bRequired, String sUnique, ArrayList<Question> alQuestions) {
+    public Questionnaire(Node nData, String sQuestionnaireGuid, String sShortName, String sOnNew, Boolean bModifiable, Boolean bMultipleInstance,
+	    String sMultipleInstanceAbsMin, String sMultipleInstanceAbsMax, String sMultipleInstancePromptUnder, String sMultipleInstancePromptOver,
+	    String sSearchVariables, String sConfirmVariables, Boolean bRequired, String sUnique) {
 
-        this.sQuestionnaireGuid = sQuestionnaireGuid;
-        this.sShortName = sShortName;
-        this.sOnNew = sOnNew;
-        this.bModifiable = bModifiable;
-        this.bMultipleInstance = bMultipleInstance;
-        this.sMultipleInstanceAbsMin = sMultipleInstanceAbsMin;
-        this.sMultipleInstanceAbsMax = sMultipleInstanceAbsMax;
-        this.sMultipleInstancePromptUnder = sMultipleInstancePromptUnder;
-        this.sMultipleInstancePromptOver = sMultipleInstancePromptOver;
-        this.sSearchVariables = sSearchVariables;
-        this.sConfirmVariables = sConfirmVariables;
-        this.bRequired = bRequired;
-        this.sUnique = sUnique;
-        this.alQuestions = alQuestions;
+	super(nData);
+	this.sQuestionnaireGuid = sQuestionnaireGuid;
+	this.sShortName = sShortName;
+	this.sOnNew = sOnNew;
+	this.bModifiable = bModifiable;
+	this.bMultipleInstance = bMultipleInstance;
+	this.sMultipleInstanceAbsMin = sMultipleInstanceAbsMin;
+	this.sMultipleInstanceAbsMax = sMultipleInstanceAbsMax;
+	this.sMultipleInstancePromptUnder = sMultipleInstancePromptUnder;
+	this.sMultipleInstancePromptOver = sMultipleInstancePromptOver;
+	this.sSearchVariables = sSearchVariables;
+	this.sConfirmVariables = sConfirmVariables;
+	this.bRequired = bRequired;
+	this.sUnique = sUnique;
 
     }
 
-    public String getsOrdinal(){
+    public void showInformation() {
+
+	this.PrintNodeInformation();
+
+	System.out.println("questionnaire guid" + this.getsQuestionnaireGuid());
+	System.out.println("short name " + this.getsShortName());
+	System.out.println("s on new" + this.getsOnNew());
+    }
+
+    public String getsOrdinal() {
+
 	String hola = null;
-	
+
 	return hola;
     }
-
 
 }
