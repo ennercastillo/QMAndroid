@@ -1,7 +1,7 @@
 /**
  * 
  */
-package org.questionairemanager.engine;
+package org.questionnairemanager.engine.core;
 
 import java.util.ArrayList;
 
@@ -17,7 +17,7 @@ public class User {
     private String sPDAUserName;
     private String sNameUser;
     private String sRoleName;
-    private Integer iDefaultSiteId; // C—mo usar nullable int
+    private Integer iDefaultSiteId; // C?mo usar nullable int
    
     private Site stDefaultSite;
 

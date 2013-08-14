@@ -1,4 +1,4 @@
-package org.questionairemanager.engine;
+package org.questionnairemanager.engine.core;
 
 public enum TypeNode {
 

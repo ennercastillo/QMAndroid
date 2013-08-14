@@ -2,7 +2,7 @@
  * 
  */
 
-package org.questionairemanager.engine;
+package org.questionnairemanager.engine.core;
 
 import java.util.ArrayList;
 
@@ -17,7 +17,7 @@ public class Test {
     public static void main(String[] args) {
 
 	QuestionManager qm = new QuestionManager();
-	ArrayList<Study> alStudies = new ArrayList<>();
+	ArrayList<Study> alStudies = new ArrayList<Study>();
 
 	Node alQuestion = new Node();
 
@@ -43,22 +43,25 @@ public class Test {
 	}
 
 	// Get Elements by GUID
-	ArrayList<Node> alNodeInfo2 = qm.GetElementsOfStudyByGuid(nNodeStudy);
-	Node nFirstElementQuestion = new Node();
+	ArrayList<Object> alNodeInfo2 = qm.GetElementsOfStudyByGuid(nNodeStudy);
+	Object nFirstElementQuestion = new Node();
 
 	if (!(alNodeInfo2 == null) && !alNodeInfo2.isEmpty()) {
 
 	    System.out.println("INFORMACION DE LOS HIJOS DE GUIDST ");
-	    for (Node node : alNodeInfo2) {
+	    for (Object oData : alNodeInfo2) {
+
+		// Node nTemporal = new Node();
 		System.out.println("-------- inicio hijo \n");
-		node.PrintNodeInformation();
+		((Node) oData).PrintNodeInformation();
 		System.out.println("-------- fin hijo \n");
 
-		// if (node.getsNodeguid().equalsIgnoreCase("guidq5")) {
-		if (node.getsNodeguid().equalsIgnoreCase("guidqu")) {
+		// if (node.getsNodeguid().equalsIgnoreCase("guidq5")) || guidqu {
+		if (((Node) oData).getsNodeguid().equalsIgnoreCase("guidqu")) {
 
 		    try {
-			nFirstElementQuestion = (Node) node.clone();
+			// nFirstElementQuestion = (Node) ((Node) oData).clone();
+			nFirstElementquestion = oData.clone();
 
 		    } catch (CloneNotSupportedException e) {
 			// TODO Auto-generated catch block
@@ -67,7 +70,7 @@ public class Test {
 		}
 	    }
 
-	    // nFirstElementQuestion.PrintNodeInformation();
+	    nFirstElementQuestion.PrintNodeInformation();
 	    // System.out.println("end first element questionnaire!!!!!!!-----");
 	    // ArrayList<Node> alQuestions = new ArrayList<Node>();
 	    // System.out.println();
@@ -145,7 +148,7 @@ public class Test {
 	    System.out.println("its null fifth");
 	}*/
 
-	// Ac� debe enviar el dato
+	// Ac??? debe enviar el dato
 	// Se debe validar de que tipo es (Q / QG)
 	// Si es Q debe traer la primera pregunta
 	// si es QG debe traer todos sus elementos

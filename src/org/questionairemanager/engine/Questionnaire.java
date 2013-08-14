@@ -2,7 +2,7 @@
  * 
  */
 
-package org.questionairemanager.engine;
+package org.questionnairemanager.engine.core;
 
 import java.util.ArrayList;
 
@@ -161,7 +161,7 @@ public class Questionnaire extends Node {
      */
     public void setAlQuestions(ArrayList<Question> alQuestions) {
 
-	if (this.alQuestions.isEmpty()) this.alQuestions = new ArrayList<>();
+	if (this.alQuestions.isEmpty()) this.alQuestions = new ArrayList<Question>();
 
 	this.alQuestions = alQuestions;
     }
@@ -222,6 +222,11 @@ public class Questionnaire extends Node {
 
     }
 
+    /**
+     * Show the information for Questionnaire
+     * 
+     * @author Enner Escobedo C. <email>enner.castillo@centrikal.com</email> <date>14/08/2013</date>
+     */
     public void showInformation() {
 
 	this.PrintNodeInformation();
@@ -229,6 +234,15 @@ public class Questionnaire extends Node {
 	System.out.println("questionnaire guid" + this.getsQuestionnaireGuid());
 	System.out.println("short name " + this.getsShortName());
 	System.out.println("s on new" + this.getsOnNew());
+	System.out.println("is modifiable " + this.getbModifiable());
+	System.out.println("is absmin " + this.getsMultipleInstanceAbsMin());
+	System.out.println("is absmax " + this.getsMultipleInstanceAbsMax());
+	System.out.println("prompt under " + this.getsMultipleInstancePromptUnder());
+	System.out.println("prompt over " + this.getsMultipleInstancePromptOver());
+	System.out.println("search variable" + this.getsSearchVariables());
+	System.out.println("confirm var " + this.getsConfirmVariables());
+	System.out.println("is required " + this.getbRequired());
+	System.out.println("unique " + this.getsUnique());
     }
 
     public String getsOrdinal() {

@@ -1,7 +1,7 @@
 /**
  * 
  */
-package org.questionairemanager.engine;
+package org.questionnairemanager.engine.core;
 
 import java.util.ArrayList;
 
@@ -148,7 +148,7 @@ public class Transition {
     }
    
     /**
-     * TODO: Agregar c—digo para evaluar condici—n en la transici—n
+     * TODO: Agregar c?digo para evaluar condici?n en la transici?n
     public Boolean EvaluateCondition(){
         
         return this.bCondition ? Evaluator.EvaluateCondition() : false;

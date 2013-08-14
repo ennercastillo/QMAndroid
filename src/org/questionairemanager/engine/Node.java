@@ -2,8 +2,9 @@
  * 
  */
 
-package org.questionairemanager.engine;
+package org.questionnairemanager.engine.core;
 
+import java.util.HashMap;
 import java.util.Locale;
 
 /**
@@ -28,6 +29,16 @@ public class Node implements Cloneable {
     private String sOnLoad;
     private String sOnUnload;
     private String sComment;
+
+    private HashMap<String, String> hmDictionaryMainText() {
+
+	return null;
+    }
+
+    private HashMap<String, String> hmDictionaryHelpText() {
+
+	return null;
+    }
 
     /**
      * @return the sNodeguid
@@ -273,6 +284,16 @@ public class Node implements Cloneable {
 
 	return super.clone();
 
+    }
+
+    public void SetElementMainText(String sElement, String sElement2) {
+
+	hmDictionaryMainText().put(sElement, sElement2);
+    }
+
+    public void setElementHelpText(String sElement, String sElement2) {
+
+	hmDictionaryHelpText().put(sElement, sElement2);
     }
 
 }

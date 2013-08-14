@@ -1,7 +1,7 @@
 /**
  * 
  */
-package org.questionairemanager.engine;
+package org.questionnairemanager.engine.core;
 
 /**
  * Items for a question type (radiobutton, checkbox and more) (checkpoints,

@@ -2,7 +2,7 @@
  * 
  */
 
-package org.questionairemanager.engine;
+package org.questionnairemanager.engine.core;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -314,7 +314,7 @@ public class Study extends Node {
 	this.sAnalysisSchema = "";
 	this.sSearchVariables = "";
 	this.sConfirmVariables = "";
-	this.lstReports = new ArrayList<>();
+	this.lstReports = new ArrayList<Report>();
 	this.sReportsSiteCode = "";
     }
 

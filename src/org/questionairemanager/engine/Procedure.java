@@ -1,7 +1,7 @@
 /**
  * 
  */
-package org.questionairemanager.engine;
+package org.questionnairemanager.engine.core;
 
 import java.util.HashMap;
 

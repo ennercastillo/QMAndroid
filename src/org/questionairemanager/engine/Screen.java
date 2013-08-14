@@ -1,7 +1,7 @@
 /**
  * 
  */
-package org.questionairemanager.engine;
+package org.questionnairemanager.engine.core;
 
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -356,7 +356,7 @@ public class Screen {
     }
     
     public Integer getScreen (Integer pScreenId){
-        //Obtener informaci—n de la pantalla de la base de datos
+        //Obtener informaci?n de la pantalla de la base de datos
         // DataRow = DA.Screen.GetSingle (pScreenId)
         // Get data with class StoreObject DAL
         return pScreenId;
@@ -430,7 +430,7 @@ public class Screen {
      */
     public void insLegalValueTableItem (String pTable, Integer pValue, Integer pOrder, String sText, String pShortName, String pGroup){
         
-        // Realiza la inserci—n en la tabla
+        // Realiza la inserci?n en la tabla
         //DA.Common.InsertLegalValueTableItem (table, value, order, text, shortname, group);
     }
     

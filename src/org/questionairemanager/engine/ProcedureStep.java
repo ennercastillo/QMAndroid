@@ -1,4 +1,4 @@
-package org.questionairemanager.engine;
+package org.questionnairemanager.engine.core;
 
 /**
  * Represents a single step of a Procedure

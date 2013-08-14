@@ -1,4 +1,4 @@
-package org.questionairemanager.engine;
+package org.questionnairemanager.engine.core;
 
 /*import android.os.Bundle;
 import android.app.Activity;

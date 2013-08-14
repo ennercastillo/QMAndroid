@@ -1,7 +1,7 @@
 /**
  * 
  */
-package org.questionairemanager.engine;
+package org.questionnairemanager.engine.core;
 //import org.questionairemanager.core.*;
 import java.util.ArrayList;
 import java.util.Dictionary;

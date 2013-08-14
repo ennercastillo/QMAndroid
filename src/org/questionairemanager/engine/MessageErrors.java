@@ -2,7 +2,7 @@
  * 
  */
 
-package org.questionairemanager.engine;
+package org.questionnairemanager.engine.core;
 
 /**
  * Operate the all messages of error

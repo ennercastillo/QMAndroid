@@ -1,7 +1,7 @@
 /**
  * 
  */
-package org.questionairemanager.engine;
+package org.questionnairemanager.engine.core;
 
 /**
  * Represents a Section of a Questionnaire
@@ -109,7 +109,7 @@ public class Section {
     public Boolean HasRecord(){
         return bModifiable;
         
-        // TODO: Pendiente agregar la informaci—n del datarecord
+        // TODO: Pendiente agregar la informaci?n del datarecord
         
     }
     

@@ -1,5 +1,5 @@
 
-package org.questionairemanager.engine;
+package org.questionnairemanager.engine.core;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -19,14 +19,14 @@ public class QuestionManager {
 
     public QuestionManager() {
 
-	alStudies = new ArrayList<>();
-	stScreens = new Stack<>();
+	alStudies = new ArrayList<Study>();
+	stScreens = new Stack<String>();
 
 	// add data additional
-	this.alDictionary = new ArrayList<>();
-	this.alScreenTemplate = new ArrayList<>();
-	this.alLegalValueItem = new ArrayList<>();
-	this.alLegalValueTable = new ArrayList<>();
+	this.alDictionary = new ArrayList<Dictionary>();
+	this.alScreenTemplate = new ArrayList<ScreenTemplate>();
+	this.alLegalValueItem = new ArrayList<LegalValueItem>();
+	this.alLegalValueTable = new ArrayList<LegalValueTable>();
     }
 
     /**
@@ -45,7 +45,7 @@ public class QuestionManager {
     public void SetDataDictionary() {
 
 	alDictionary.add(new Dictionary("loginguid", "lsp", "Main Text", "Login"));
-	alDictionary.add(new Dictionary("loginguid", "len", "Main Text", "Login"));
+	alDictionary.add(new Dictionary("loginguid", " ", "Main Text", "Login"));
 	alDictionary.add(new Dictionary("studyguid", "lsp", "Main Text", "Estudio"));
 	alDictionary.add(new Dictionary("studyguid", "len", "Main Text", "Study"));
 	alDictionary.add(new Dictionary("qgguid1", "lsp", "Main Text", "Grupo de Cuestionario 1"));
@@ -102,25 +102,26 @@ public class QuestionManager {
     public void setScreenTemplates() {
 
 	/*
-	    
+	    answers
 	     TEXTBOX, TEXTAREA, DROPDOWN, RADIOBUTTON, INTEGER, DECIMAL, DATETIME, DATE, TIME, CHECKBOX, GRID, NAME, GPSREADING, INFO, SECTIONEXITSCREEN;
 	*/
 	this.alScreenTemplate.add(new ScreenTemplate(ScreenTemplateTypes.INTEGER.getGuid(), ScreenTemplateTypes.INTEGER.toString(), "int", null, true));
-	this.alScreenTemplate.add(new ScreenTemplate(ScreenTemplateTypes.TEXTBOX.getGuid(), ScreenTemplateTypes.TEXTBOX.toString(), "int", null, true));
-	this.alScreenTemplate.add(new ScreenTemplate(ScreenTemplateTypes.TEXTAREA.getGuid(), ScreenTemplateTypes.TEXTAREA.toString(), "int", null, true));
-	this.alScreenTemplate.add(new ScreenTemplate(ScreenTemplateTypes.DROPDOWN.getGuid(), ScreenTemplateTypes.DROPDOWN.toString(), "int", null, true));
-	this.alScreenTemplate.add(new ScreenTemplate(ScreenTemplateTypes.RADIOBUTTON.getGuid(), ScreenTemplateTypes.RADIOBUTTON.toString(), "int", null, true));
-	this.alScreenTemplate.add(new ScreenTemplate(ScreenTemplateTypes.DECIMAL.getGuid(), ScreenTemplateTypes.DECIMAL.toString(), "int", null, true));
-	this.alScreenTemplate.add(new ScreenTemplate(ScreenTemplateTypes.DATETIME.getGuid(), ScreenTemplateTypes.DATETIME.toString(), "int", null, true));
-	this.alScreenTemplate.add(new ScreenTemplate(ScreenTemplateTypes.DATE.getGuid(), ScreenTemplateTypes.DATE.toString(), "int", null, true));
-	this.alScreenTemplate.add(new ScreenTemplate(ScreenTemplateTypes.TIME.getGuid(), ScreenTemplateTypes.TIME.toString(), "int", null, true));
-	this.alScreenTemplate.add(new ScreenTemplate(ScreenTemplateTypes.CHECKBOX.getGuid(), ScreenTemplateTypes.CHECKBOX.toString(), "int", null, true));
-	this.alScreenTemplate.add(new ScreenTemplate(ScreenTemplateTypes.GRID.getGuid(), ScreenTemplateTypes.GRID.toString(), "int", null, true));
-	this.alScreenTemplate.add(new ScreenTemplate(ScreenTemplateTypes.NAME.getGuid(), ScreenTemplateTypes.NAME.toString(), "int", null, true));
-	this.alScreenTemplate.add(new ScreenTemplate(ScreenTemplateTypes.GPSREADING.getGuid(), ScreenTemplateTypes.GPSREADING.toString(), "int", null, true));
-	this.alScreenTemplate.add(new ScreenTemplate(ScreenTemplateTypes.INFO.getGuid(), ScreenTemplateTypes.INFO.toString(), "int", null, true));
-	this.alScreenTemplate.add(new ScreenTemplate(ScreenTemplateTypes.SECTIONEXITSCREEN.getGuid(), ScreenTemplateTypes.SECTIONEXITSCREEN.toString(), "int",
-		null, true));
+	this.alScreenTemplate.add(new ScreenTemplate(ScreenTemplateTypes.TEXTBOX.getGuid(), ScreenTemplateTypes.TEXTBOX.toString(), "text", null, true));
+	this.alScreenTemplate.add(new ScreenTemplate(ScreenTemplateTypes.TEXTAREA.getGuid(), ScreenTemplateTypes.TEXTAREA.toString(), "text", null, true));
+	this.alScreenTemplate.add(new ScreenTemplate(ScreenTemplateTypes.DROPDOWN.getGuid(), ScreenTemplateTypes.DROPDOWN.toString(), "text", null, true));
+	this.alScreenTemplate
+		.add(new ScreenTemplate(ScreenTemplateTypes.RADIOBUTTON.getGuid(), ScreenTemplateTypes.RADIOBUTTON.toString(), "text", null, true));
+	this.alScreenTemplate.add(new ScreenTemplate(ScreenTemplateTypes.DECIMAL.getGuid(), ScreenTemplateTypes.DECIMAL.toString(), "float", null, true));
+	this.alScreenTemplate.add(new ScreenTemplate(ScreenTemplateTypes.DATETIME.getGuid(), ScreenTemplateTypes.DATETIME.toString(), "text", null, true));
+	this.alScreenTemplate.add(new ScreenTemplate(ScreenTemplateTypes.DATE.getGuid(), ScreenTemplateTypes.DATE.toString(), "text", null, true));
+	this.alScreenTemplate.add(new ScreenTemplate(ScreenTemplateTypes.TIME.getGuid(), ScreenTemplateTypes.TIME.toString(), "text", null, true));
+	this.alScreenTemplate.add(new ScreenTemplate(ScreenTemplateTypes.CHECKBOX.getGuid(), ScreenTemplateTypes.CHECKBOX.toString(), "text", null, true));
+	this.alScreenTemplate.add(new ScreenTemplate(ScreenTemplateTypes.GRID.getGuid(), ScreenTemplateTypes.GRID.toString(), "stringnull", null, true));
+	// this.alScreenTemplate.add(new ScreenTemplate(ScreenTemplateTypes.NAME.getGuid(), ScreenTemplateTypes.NAME.toString(), "int", null, true));
+	this.alScreenTemplate.add(new ScreenTemplate(ScreenTemplateTypes.GPSREADING.getGuid(), ScreenTemplateTypes.GPSREADING.toString(), "float", null, true));
+	this.alScreenTemplate.add(new ScreenTemplate(ScreenTemplateTypes.INFO.getGuid(), ScreenTemplateTypes.INFO.toString(), "stringnull", null, true));
+	this.alScreenTemplate.add(new ScreenTemplate(ScreenTemplateTypes.SECTIONEXITSCREEN.getGuid(), ScreenTemplateTypes.SECTIONEXITSCREEN.toString(),
+		"stringnull", null, true));
 
     }
 
@@ -396,7 +397,7 @@ public class QuestionManager {
      * @param sInfoNode, Guid to search
      * @return ArrayList Node type with information of elements of this type
      */
-    public ArrayList<Node> GetElementsOfStudyByGuid(Node nStudy) {
+    public ArrayList<Object> GetElementsOfStudyByGuid(Node nStudy) {
 
 	if (nStudy != null) {
 
@@ -411,7 +412,7 @@ public class QuestionManager {
 	    System.out.println("STACK!!!!!! _________ " + stScreens.size() + " ---- \n " + stScreens);
 
 	    /******** INFO NODES BEGIN ******/
-	    ArrayList<Node> alNode2 = new ArrayList<>();
+	    ArrayList<Node> alNode2 = new ArrayList<Node>();
 	    alNode2.add(new Node("guidqu", "guidst", "QU", "0", true, "num", true, true, true, true, "onload", "unload", "comment"));
 	    alNode2.add(new Node("guidq1", "guidsta", "QU", "0", true, "num", true, true, true, true, "onload", "unload", "comment"));
 	    alNode2.add(new Node("guidq2", "guidqu", "QG", "1", true, "num", true, true, true, true, "onload", "unload", "comment"));
@@ -426,11 +427,13 @@ public class QuestionManager {
 	    alNode2.add(new Node("guidq10", "guidst1", "QG", "4", true, "num", true, true, true, true, "onload", "unload", "comment"));
 	    alNode2.add(new Node("guidq11", "guidst1", "QG", "5", true, "num", true, true, true, true, "onload", "unload", "comment"));
 
+	    ArrayList<Object> alAllData = new ArrayList<Object>();
+
 	    /***
 	     * ELEMENTS QUESTIONNAIRE WITH DATA
 	     */
 	    // Questionnaire
-	    ArrayList<Questionnaire> alQuestionnaires = new ArrayList<>();
+	    ArrayList<Questionnaire> alQuestionnaires = new ArrayList<Questionnaire>();
 
 	    Questionnaire qQuest1;
 	    qQuest1 = new Questionnaire(alNode2.get(0), "guidqu2", "short name q2", "new", false, false, "mult inst abs min", "mult inst abs max",
@@ -446,20 +449,49 @@ public class QuestionManager {
 	    qQuest4 = new Questionnaire(alNode2.get(7), "guidqu5", "short name q5", "new", false, false, "mult inst abs min", "mult inst abs max",
 		    "prompt under", "promptover", "a1", "confirm vars", true, "unique string");
 
-	    alQuestionnaires.add(qQuest1);
-	    alQuestionnaires.add(qQuest2);
-	    alQuestionnaires.add(qQuest3);
-	    alQuestionnaires.add(qQuest4);
+	    // Array type Object with Questionnaires
+	    alAllData.add(qQuest1);
+	    alAllData.add(qQuest2);
+	    alAllData.add(qQuest3);
+	    alAllData.add(qQuest4);
+
+	    QuestionnaireGroup qg1 = new QuestionnaireGroup(alNode2.get(2), "guidq2", true, true, "is complete", true, "3", "98", "19", "34", "SEARCH",
+		    "confirm ", true);
+
+	    QuestionnaireGroup qg2 = new QuestionnaireGroup(alNode2.get(3), "guidq3", true, true, "is complete", true, "3", "98", "19", "34", "SEARCH",
+		    "confirm ", true);
+	    QuestionnaireGroup qg3 = new QuestionnaireGroup(alNode2.get(4), "guidq4", true, true, "is complete", true, "3", "98", "19", "34", "SEARCH",
+		    "confirm ", true);
+	    QuestionnaireGroup qg4 = new QuestionnaireGroup(alNode2.get(5), "guidq5", true, true, "is complete", true, "3", "98", "19", "34", "SEARCH",
+		    "confirm ", true);
+	    QuestionnaireGroup qg5 = new QuestionnaireGroup(alNode2.get(8), "guidq8", true, true, "is complete", true, "3", "98", "19", "34", "SEARCH",
+		    "confirm ", true);
+
+	    QuestionnaireGroup qg6 = new QuestionnaireGroup(alNode2.get(9), "guidq9", true, true, "is complete", true, "3", "98", "19", "34", "SEARCH",
+		    "confirm ", true);
+	    QuestionnaireGroup qg7 = new QuestionnaireGroup(alNode2.get(10), "guidq10", true, true, "is complete", true, "3", "98", "19", "34", "SEARCH",
+		    "confirm ", true);
+	    QuestionnaireGroup qg8 = new QuestionnaireGroup(alNode2.get(11), "guidq11", true, true, "is complete", true, "3", "98", "19", "34", "SEARCH",
+		    "confirm ", true);
+
+	    alAllData.add(qg1);
+	    alAllData.add(qg2);
+	    alAllData.add(qg3);
+	    alAllData.add(qg4);
+	    alAllData.add(qg5);
+	    alAllData.add(qg6);
+	    alAllData.add(qg7);
+	    alAllData.add(qg8);
 
 	    // TODO: Change data in this code!!!
-	    ArrayList<Node> alInfoData = new ArrayList<Node>();	// Elements with sguid equals to inserted
+	    ArrayList<Object> alInfoReturn = new ArrayList<Object>();	// Elements with sguid equals to inserted
 	    // ArrayList<Node> nQuestionnaire = new ArrayList<Node>(); // Element questionnaire
 
 	    // Get the elements with the guid parent equals to guidstudy inserted
-	    for (Iterator<Node> iNode = alNode2.iterator(); iNode.hasNext();) {
+	    for (Iterator<Object> iNode = alAllData.iterator(); iNode.hasNext();) {
 		Node nNodeInfo = (Node) iNode.next();
 
-		if (nNodeInfo.getsParentGuid().equalsIgnoreCase(sGuidStudy)) alInfoData.add(nNodeInfo);
+		if (nNodeInfo.getsParentGuid().equalsIgnoreCase(sGuidStudy)) alInfoReturn.add(nNodeInfo);
 
 	    }
 
@@ -468,17 +500,17 @@ public class QuestionManager {
 	    // Get length of this array list
 
 	    // Verify data return DA
-	    if (alInfoData == null || alInfoData.isEmpty()) {
+	    if (alInfoReturn == null || alInfoReturn.isEmpty()) {
 
 		System.out.println("is null");
 
-		return alInfoData;	// IS EMPTY
+		return alInfoReturn;	// IS EMPTY
 
 	    } else {
 
 		// Get size
 		int iPositionArray = 0;
-		iPositionArray = alInfoData.size();
+		iPositionArray = alInfoReturn.size();
 
 		if (iPositionArray == 1) {
 
@@ -487,7 +519,7 @@ public class QuestionManager {
 
 		    // Get the first data
 
-		    System.out.println(alInfoData.get(iPositionArray - 1).getsNodeguid());
+		    System.out.println(((Node) alInfoReturn.get(iPositionArray - 1)).getsNodeguid());
 
 		    System.out.println("tiene solo un dato");
 		    // Get elements of this Study
@@ -504,7 +536,7 @@ public class QuestionManager {
 	    }
 
 	    // Return with all elements equals to guid of study
-	    return alInfoData;
+	    return alInfoReturn;
 
 	}
 	return null;
@@ -521,27 +553,27 @@ public class QuestionManager {
 
 	ArrayList<Node> alNodes = new ArrayList<Node>();
 
-	if (nElementToVerify == null) return null;
-	else {
-
-	    /**
-	     * Type equals to Questionnaire, Get the first son
-	     */
-	    if (nElementToVerify.gettnTypeNode().equals(TypeNode.QU)) {
-		System.out.println(" is a questionnaire !");
-		alNodes.add(this.GetFirstChildQuestionnaire(nElementToVerify));
-
-	    } else {
-		/**
-		 * Type equals to QuestionnaireGroup, get the elements return all elements of questionnaire group
-		 */
-		if (nElementToVerify.gettnTypeNode().equals(TypeNode.QG)) {
-		    System.out.println("is a questionnairegroup!");
-		    alNodes = GetElementsOfStudyByGuid(nElementToVerify);
-		}
-	    }
-
-	}
+	// if (nElementToVerify == null) return null;
+	// else {
+	//
+	// /**
+	// * Type equals to Questionnaire, Get the first son
+	// */
+	// if (nElementToVerify.gettnTypeNode().equals(TypeNode.QU)) {
+	// System.out.println(" is a questionnaire !");
+	// alNodes.add(this.GetFirstChildQuestionnaire(nElementToVerify));
+	//
+	// } else {
+	// /**
+	// * Type equals to QuestionnaireGroup, get the elements return all elements of questionnaire group
+	// */
+	// if (nElementToVerify.gettnTypeNode().equals(TypeNode.QG)) {
+	// System.out.println("is a questionnairegroup!");
+	// alNodes = GetElementsOfStudyByGuid(nElementToVerify);
+	// }
+	// }
+	//
+	// }
 	return alNodes;
     }
 

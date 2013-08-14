@@ -2,7 +2,7 @@
  * 
  */
 
-package org.questionairemanager.engine;
+package org.questionnairemanager.engine.core;
 
 /**
  * @author Enner Escobedo C. <email>enner.castillo@centrikal.com</email> 
