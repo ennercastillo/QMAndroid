@@ -5,8 +5,7 @@
 package org.questionnairemanager.engine.core;
 
 /**
- * @author Enner Escobedo C. <email>enner.castillo@centrikal.com</email> 
- * <date>Jul, 30 2013 </date> Constants of type Screen Template
+ * @author Enner Escobedo C. <email>enner.castillo@centrikal.com</email> <date>Jul, 30 2013 </date> Constants of type Screen Template
  */
 public enum ScreenTemplateTypes {
 
@@ -14,11 +13,12 @@ public enum ScreenTemplateTypes {
 
     /**
      * Return signified of element enum type.
-     * @author Enner Escobedo C. <email>enner.castillo@centrikal.com</email>
-     * <date>12/08/2013</date>
-     *
+     * 
+     * @author Enner Escobedo C. <email>enner.castillo@centrikal.com</email> <date>12/08/2013</date> (non-Javadoc)
+     * @see java.lang.Enum#toString()
      * @return String with description in lowercase.
      */
+    @Override
     public String toString() {
 
 	switch (this) {
@@ -56,9 +56,6 @@ public enum ScreenTemplateTypes {
 	    case GRID:
 		return "grid"; // null
 
-	    case NAME:
-		return "name"; // nvarchar (50)
-
 	    case GPSREADING:
 		return "gpsreading"; // null
 
@@ -72,14 +69,12 @@ public enum ScreenTemplateTypes {
 		return "unspecified"; // ERROR
 
 	}
-
     }
 
     /**
      * Return guid of element
-     * @author Enner Escobedo C. <email>enner.castillo@centrikal.com</email>
-     * <date>12/08/2013</date>
-     *
+     * 
+     * @author Enner Escobedo C. <email>enner.castillo@centrikal.com</email> <date>12/08/2013</date>
      * @return String GUID of element
      */
     public String getGuid() {
@@ -118,9 +113,6 @@ public enum ScreenTemplateTypes {
 
 	    case GRID:
 		return "guidgr"; // null
-
-	    case NAME:
-		return "buidna"; // nvarchar (50)
 
 	    case GPSREADING:
 		return "guidgp"; // null

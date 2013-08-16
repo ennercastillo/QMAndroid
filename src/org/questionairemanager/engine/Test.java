@@ -17,7 +17,7 @@ public class Test {
     public static void main(String[] args) {
 
 	QuestionManager qm = new QuestionManager();
-	ArrayList<Study> alStudies = new ArrayList<Study>();
+	ArrayList<Node> alStudies = new ArrayList<Node>();
 
 	Node alQuestion = new Node();
 
@@ -28,12 +28,12 @@ public class Test {
 
 	Node nNodeStudy = new Node();
 
-	for (Study node : alStudies) {
+	for (Node node : alStudies) {
 	    if (node.getsNodeguid().equalsIgnoreCase("GUIDSt")) {
 		try {
 		    // node.PrintNodeInformation();
-
-		    node.ShowInformation();
+		    ((Study) node).ShowInformation();
+		    // node.ShowInformation();
 		    nNodeStudy = (Study) node.clone();
 		} catch (CloneNotSupportedException e) {
 		    // TODO Auto-generated catch block
@@ -43,25 +43,25 @@ public class Test {
 	}
 
 	// Get Elements by GUID
-	ArrayList<Object> alNodeInfo2 = qm.GetElementsOfStudyByGuid(nNodeStudy);
-	Object nFirstElementQuestion = new Node();
+	ArrayList<Node> alNodeInfo2 = qm.GetElementsOfStudyByGuid(nNodeStudy);
+	Node nFirstElement = new Node();
 
 	if (!(alNodeInfo2 == null) && !alNodeInfo2.isEmpty()) {
 
 	    System.out.println("INFORMACION DE LOS HIJOS DE GUIDST ");
-	    for (Object oData : alNodeInfo2) {
+	    for (Node oData : alNodeInfo2) {
 
 		// Node nTemporal = new Node();
 		System.out.println("-------- inicio hijo \n");
-		((Node) oData).PrintNodeInformation();
+		oData.PrintNodeInformation();
 		System.out.println("-------- fin hijo \n");
 
 		// if (node.getsNodeguid().equalsIgnoreCase("guidq5")) || guidqu {
-		if (((Node) oData).getsNodeguid().equalsIgnoreCase("guidqu")) {
+		if (oData.getsNodeguid().equalsIgnoreCase("guidqu")) {
 
 		    try {
 			// nFirstElementQuestion = (Node) ((Node) oData).clone();
-			nFirstElementquestion = oData.clone();
+			nFirstElement = (Node) oData.clone();
 
 		    } catch (CloneNotSupportedException e) {
 			// TODO Auto-generated catch block
@@ -70,34 +70,60 @@ public class Test {
 		}
 	    }
 
-	    nFirstElementQuestion.PrintNodeInformation();
-	    // System.out.println("end first element questionnaire!!!!!!!-----");
-	    // ArrayList<Node> alQuestions = new ArrayList<Node>();
-	    // System.out.println();
-	    //
-	    // alQuestions = qm.GetElementsOfQuestionnaireOrQuestionnaireGroup(nFirstElementQuestion);
-	    //
-	    // for (Iterator<Node> questionnaire = alQuestions.iterator(); questionnaire.hasNext();) {
-	    // Node node = (Node) questionnaire.next();
-	    //
-	    // if (node.gettnTypeNode().equals(TypeNode.QG)){
-	    // System.out.println("it is a questionnaire group****");
-	    // node.PrintNodeInformation();
-	    // System.out.println("end line \n\n");
-	    // }
-	    //
-	    // if (node.gettnTypeNode().equals(TypeNode.QU)){
-	    // System.out.println("it is a questionnaire!!!!");
-	    // node.PrintNodeInformation();
-	    // System.out.println("\n");
-	    // }
-	    //
-	    // if (node.gettnTypeNode().equals(TypeNode.Q)){
-	    // System.out.println("it is a question----");
-	    // node.PrintNodeInformation();
-	    // System.out.println("\n");
-	    // }
-	    //
+	    System.out.println(nFirstElement.getTnTypeNode());
+
+	    if (nFirstElement != null) {
+
+		switch (nFirstElement.getTnTypeNode()) {
+		    case QU:
+			((Questionnaire) nFirstElement).ShowInformation();
+			break;
+		    case QG:
+			((QuestionnaireGroup) nFirstElement).ShowInformation();
+			break;
+
+		    default:
+			System.out.println("Error!");
+			break;
+		}
+
+	    } else System.out.println("ERROR is null!!!");
+
+	    System.out.println("end first element questionnaire!!!!!!!-----");
+
+	    ArrayList<Node> alQuestions = qm.GetElementsOfQuestionnaireOrQuestionnaireGroup(nFirstElement);
+
+	    if (alQuestions == null) System.out.println("ITS NULL!!!");
+	    else {
+
+		for (Node node : alQuestions) {
+		    switch (node.getTnTypeNode()) {
+			case QG:
+			    System.out.println("Is a Questionnaire Group!!!!");
+			    node.PrintNodeInformation();
+			    break;
+			case CH:
+			    System.out.println("it is a questionnaire!!!!");
+			    node.PrintNodeInformation();
+			    break;
+			case Q:
+			    System.out.println("it is a question----");
+			    node.PrintNodeInformation();
+			    System.out.println("------- info question ------");
+			    System.out.println("end line");
+			    ((Question) node).ShowInformation();
+			    break;
+			case IN:
+			    System.out.println("it is an info----");
+			    node.PrintNodeInformation();
+			    break;
+			default:
+			    break;
+		    }
+		}
+
+	    }
+
 	}
 
 	/*// Get the first node for the questionnaire
@@ -159,5 +185,4 @@ public class Test {
 
 	System.out.println("fin");
     }
-
 }

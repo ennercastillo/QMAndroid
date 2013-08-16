@@ -12,81 +12,91 @@ package org.questionnairemanager.engine.core;
 public class ScreenTemplate {
 
     private String sScreenTemplateGuid;
-    private String sScreenTemplateName;
+    private ScreenTemplateTypes sScreenTemplateName;
     private String sDataType;
     private String sReference;
     private Boolean bVariableNameReq;
+
     /**
      * @return the sScreenTemplateGuid
      */
     public String getsScreenTemplateGuid() {
-        return sScreenTemplateGuid;
+
+	return sScreenTemplateGuid;
     }
+
     /**
      * @return the sScreenTemplateName
      */
-    public String getsScreenTemplateName() {
-        return sScreenTemplateName;
+    public ScreenTemplateTypes getsScreenTemplateName() {
+
+	return sScreenTemplateName;
     }
+
     /**
      * @return the sDataType
      */
     public String getsDataType() {
-        return sDataType;
+
+	return sDataType;
     }
+
     /**
      * @return the sReference
      */
     public String getsReference() {
-        return sReference;
+
+	return sReference;
     }
+
     /**
      * @return the sVariableNameReq
      */
     public Boolean getbVariableNameReq() {
-        return bVariableNameReq;
-    }
 
+	return bVariableNameReq;
+    }
 
     /**
      * @param sScreenTemplateGuid the sScreenTemplateGuid to set
      */
     public void setsScreenTemplateGuid(String sScreenTemplateGuid) {
-    
-        this.sScreenTemplateGuid = sScreenTemplateGuid;
+
+	this.sScreenTemplateGuid = sScreenTemplateGuid;
     }
-    
+
     /**
      * @param sScreenTemplateName the sScreenTemplateName to set
      */
-    public void setsScreenTemplateName(String sScreenTemplateName) {
-    
-        this.sScreenTemplateName = sScreenTemplateName;
+    public void setsScreenTemplateName(ScreenTemplateTypes sScreenTemplateName) {
+
+	this.sScreenTemplateName = sScreenTemplateName;
     }
-    
+
     /**
      * @param sDataType the sDataType to set
      */
     public void setsDataType(String sDataType) {
-    
-        this.sDataType = sDataType;
+
+	this.sDataType = sDataType;
     }
-    
+
     /**
      * @param sReference the sReference to set
      */
     public void setsReference(String sReference) {
-    
-        this.sReference = sReference;
+
+	this.sReference = sReference;
     }
-    
+
     /**
      * @param bVariableNameReq the bVariableNameReq to set
      */
     public void setbVariableNameReq(Boolean bVariableNameReq) {
-    
-        this.bVariableNameReq = bVariableNameReq;
+
+	this.bVariableNameReq = bVariableNameReq;
     }
+
     /**
      * @param sScreenTemplateGuid
      * @param sScreenTemplateName
@@ -94,24 +104,24 @@ public class ScreenTemplate {
      * @param sReference
      * @param sVariableNameReq
      */
-    public ScreenTemplate(String sScreenTemplateGuid, String sScreenTemplateName, String sDataType,
-            String sReference, Boolean bVariableNameReq) {
-        this.sScreenTemplateGuid = sScreenTemplateGuid;
-        this.sScreenTemplateName = sScreenTemplateName;
-        this.sDataType = sDataType;
-        this.sReference = sReference;
-        this.bVariableNameReq = bVariableNameReq;
+    public ScreenTemplate(String sScreenTemplateGuid, ScreenTemplateTypes sScreenTemplateName, String sDataType, String sReference, Boolean bVariableNameReq) {
+
+	this.sScreenTemplateGuid = sScreenTemplateGuid;
+	this.sScreenTemplateName = sScreenTemplateName;
+	this.sDataType = sDataType;
+	this.sReference = sReference;
+	this.bVariableNameReq = bVariableNameReq;
     }
-    
+
     /**
      * 
      */
-    public ScreenTemplate(){
-        this.sScreenTemplateGuid = "";
-        this.sScreenTemplateName = "";
-        this.sDataType = "";
-        this.sReference = "";
-        this.bVariableNameReq = false;
+    public ScreenTemplate() {
+
+	this.sScreenTemplateGuid = "";
+	this.sDataType = "";
+	this.sReference = "";
+	this.bVariableNameReq = false;
     }
 
 }

@@ -181,10 +181,10 @@ public class Node implements Cloneable {
      * @param sOnUnload, value of unload
      * @param sComment, comment to node
      */
-    public Node(String sNodeguid, String sParentGuid, String sTypeNode, String sOrdinal, Boolean bVisible, String sNumber, Boolean bHideNext,
+    public Node(String sNodeguid, String sParentGuid, TypeNode sTypeNode, String sOrdinal, Boolean bVisible, String sNumber, Boolean bHideNext,
 	    Boolean bHideBack, Boolean bConfirmNext, Boolean bConfirmBack, String sOnLoad, String sOnUnload, String sComment) {
 
-	this.tnTypeNode = GetTypeNodeOfString(sTypeNode);
+	this.tnTypeNode = sTypeNode;
 	this.sNodeguid = sNodeguid;
 	this.sParentGuid = sParentGuid;
 	this.sOrdinal = sOrdinal;
@@ -231,28 +231,28 @@ public class Node implements Cloneable {
 	// Get equivalent TypeNode
 
 	// ST = Study
-	if (sToCompare.equals(TypeNode.ST.ToString())) return TypeNode.ST;
+	if (sToCompare.equals(TypeNode.ST)) return TypeNode.ST;
 
 	// QG = Questionnaire Group
-	if (sToCompare.equals(TypeNode.QG.ToString())) return TypeNode.QG;
+	if (sToCompare.equals(TypeNode.QG)) return TypeNode.QG;
 
 	// QU = Questionnaire
-	if (sToCompare.equals(TypeNode.QU.ToString())) return TypeNode.QU;
+	if (sToCompare.equals(TypeNode.QU)) return TypeNode.QU;
 
 	// GR = Group
-	if (sToCompare.equals(TypeNode.GR.ToString())) return TypeNode.GR;
+	if (sToCompare.equals(TypeNode.GR)) return TypeNode.GR;
 
 	// CH = Check point
-	if (sToCompare.equals(TypeNode.CH.ToString())) return TypeNode.CH;
+	if (sToCompare.equals(TypeNode.CH)) return TypeNode.CH;
 
 	// IN = Info
-	if (sToCompare.equals(TypeNode.IN.ToString())) return TypeNode.IN;
+	if (sToCompare.equals(TypeNode.IN)) return TypeNode.IN;
 
 	// Q = Question
-	if (sToCompare.equals(TypeNode.Q.ToString())) return TypeNode.Q;
+	if (sToCompare.equals(TypeNode.Q)) return TypeNode.Q;
 
 	// EX = Expression
-	if (sToCompare.equals(TypeNode.EX.ToString())) return TypeNode.EX;
+	if (sToCompare.equals(TypeNode.EX)) return TypeNode.EX;
 
 	return null;
     }
@@ -286,14 +286,53 @@ public class Node implements Cloneable {
 
     }
 
-    public void SetElementMainText(String sElement, String sElement2) {
+    /**
+     * Add values to MainText
+     * 
+     * @author Enner Escobedo C. <email>enner.castillo@centrikal.com</email> <date>16/08/2013</date>
+     * @param sLanguage, guid for language
+     * @param sText, text for this language
+     */
+    public void setElementMainText(String sLanguage, String sText) {
 
-	hmDictionaryMainText().put(sElement, sElement2);
+	hmDictionaryMainText().put(sLanguage, sText);
     }
 
-    public void setElementHelpText(String sElement, String sElement2) {
+    /**
+     * Add values to HelpText
+     * 
+     * @author Enner Escobedo C. <email>enner.castillo@centrikal.com</email> <date>16/08/2013</date>
+     * @param sLanguage, guid for language
+     * @param sText, text for this language
+     */
+    public void setElementHelpText(String sLanguage, String sText) {
 
-	hmDictionaryHelpText().put(sElement, sElement2);
+	hmDictionaryHelpText().put(sLanguage, sText);
+    }
+
+    /**
+     * Return value for this key in Main Text Dictionary
+     * 
+     * @author Enner Escobedo C. <email>enner.castillo@centrikal.com</email> <date>16/08/2013</date>
+     * @param sGuidLanguage, guid to language to search
+     * @return value for this hashmap or null if not exists
+     */
+    public String getElementMainText(String sGuidLanguage) {
+
+	return hmDictionaryMainText().get(sGuidLanguage);
+
+    }
+
+    /**
+     * Return value for this key in HelpText dictionary
+     * 
+     * @author Enner Escobedo C. <email>enner.castillo@centrikal.com</email> <date>16/08/2013</date>
+     * @param sGuidLanguage, guid to language to search
+     * @return value for this hashmap or null if not exists
+     */
+    public String getElementHelpText(String sGuidLanguage) {
+
+	return hmDictionaryHelpText().get(sGuidLanguage);
     }
 
 }

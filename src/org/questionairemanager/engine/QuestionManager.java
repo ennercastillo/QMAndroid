@@ -3,12 +3,13 @@ package org.questionnairemanager.engine.core;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Stack;
 
 public class QuestionManager {
 
-    private ArrayList<Study> alStudies;
+    private ArrayList<Node> alStudies;
     private Stack<String> stScreens;
 
     // additional data
@@ -17,9 +18,14 @@ public class QuestionManager {
     private ArrayList<LegalValueItem> alLegalValueItem;
     private ArrayList<LegalValueTable> alLegalValueTable;
 
+    /**
+     * Constructor class QuestionManager
+     * 
+     * @author Enner Escobedo C. <email>enner.castillo@centrikal.com</email> <date>Aug 16, 2013</date>
+     */
     public QuestionManager() {
 
-	alStudies = new ArrayList<Study>();
+	alStudies = new ArrayList<Node>();
 	stScreens = new Stack<String>();
 
 	// add data additional
@@ -36,10 +42,10 @@ public class QuestionManager {
      */
     public void SetDataLanguages() {
 
-	ArrayList<Language> alLanguages = new ArrayList<Language>();
+	HashMap<String, String> hmLanguages = null;
 
-	alLanguages.add(new Language("lsp", "Spanish"));
-	alLanguages.add(new Language("len", "English"));
+	hmLanguages.put("lsp", "spanish");
+	hmLanguages.put("len", "english");
     }
 
     public void SetDataDictionary() {
@@ -105,23 +111,21 @@ public class QuestionManager {
 	    answers
 	     TEXTBOX, TEXTAREA, DROPDOWN, RADIOBUTTON, INTEGER, DECIMAL, DATETIME, DATE, TIME, CHECKBOX, GRID, NAME, GPSREADING, INFO, SECTIONEXITSCREEN;
 	*/
-	this.alScreenTemplate.add(new ScreenTemplate(ScreenTemplateTypes.INTEGER.getGuid(), ScreenTemplateTypes.INTEGER.toString(), "int", null, true));
-	this.alScreenTemplate.add(new ScreenTemplate(ScreenTemplateTypes.TEXTBOX.getGuid(), ScreenTemplateTypes.TEXTBOX.toString(), "text", null, true));
-	this.alScreenTemplate.add(new ScreenTemplate(ScreenTemplateTypes.TEXTAREA.getGuid(), ScreenTemplateTypes.TEXTAREA.toString(), "text", null, true));
-	this.alScreenTemplate.add(new ScreenTemplate(ScreenTemplateTypes.DROPDOWN.getGuid(), ScreenTemplateTypes.DROPDOWN.toString(), "text", null, true));
-	this.alScreenTemplate
-		.add(new ScreenTemplate(ScreenTemplateTypes.RADIOBUTTON.getGuid(), ScreenTemplateTypes.RADIOBUTTON.toString(), "text", null, true));
-	this.alScreenTemplate.add(new ScreenTemplate(ScreenTemplateTypes.DECIMAL.getGuid(), ScreenTemplateTypes.DECIMAL.toString(), "float", null, true));
-	this.alScreenTemplate.add(new ScreenTemplate(ScreenTemplateTypes.DATETIME.getGuid(), ScreenTemplateTypes.DATETIME.toString(), "text", null, true));
-	this.alScreenTemplate.add(new ScreenTemplate(ScreenTemplateTypes.DATE.getGuid(), ScreenTemplateTypes.DATE.toString(), "text", null, true));
-	this.alScreenTemplate.add(new ScreenTemplate(ScreenTemplateTypes.TIME.getGuid(), ScreenTemplateTypes.TIME.toString(), "text", null, true));
-	this.alScreenTemplate.add(new ScreenTemplate(ScreenTemplateTypes.CHECKBOX.getGuid(), ScreenTemplateTypes.CHECKBOX.toString(), "text", null, true));
-	this.alScreenTemplate.add(new ScreenTemplate(ScreenTemplateTypes.GRID.getGuid(), ScreenTemplateTypes.GRID.toString(), "stringnull", null, true));
-	// this.alScreenTemplate.add(new ScreenTemplate(ScreenTemplateTypes.NAME.getGuid(), ScreenTemplateTypes.NAME.toString(), "int", null, true));
-	this.alScreenTemplate.add(new ScreenTemplate(ScreenTemplateTypes.GPSREADING.getGuid(), ScreenTemplateTypes.GPSREADING.toString(), "float", null, true));
-	this.alScreenTemplate.add(new ScreenTemplate(ScreenTemplateTypes.INFO.getGuid(), ScreenTemplateTypes.INFO.toString(), "stringnull", null, true));
-	this.alScreenTemplate.add(new ScreenTemplate(ScreenTemplateTypes.SECTIONEXITSCREEN.getGuid(), ScreenTemplateTypes.SECTIONEXITSCREEN.toString(),
-		"stringnull", null, true));
+	this.alScreenTemplate.add(new ScreenTemplate(ScreenTemplateTypes.INTEGER.getGuid(), ScreenTemplateTypes.INTEGER, "int", null, true));
+	this.alScreenTemplate.add(new ScreenTemplate(ScreenTemplateTypes.TEXTBOX.getGuid(), ScreenTemplateTypes.TEXTBOX, "text", null, true));
+	this.alScreenTemplate.add(new ScreenTemplate(ScreenTemplateTypes.TEXTAREA.getGuid(), ScreenTemplateTypes.TEXTAREA, "text", null, true));
+	this.alScreenTemplate.add(new ScreenTemplate(ScreenTemplateTypes.DROPDOWN.getGuid(), ScreenTemplateTypes.DROPDOWN, "text", null, true));
+	this.alScreenTemplate.add(new ScreenTemplate(ScreenTemplateTypes.RADIOBUTTON.getGuid(), ScreenTemplateTypes.RADIOBUTTON, "text", null, true));
+	this.alScreenTemplate.add(new ScreenTemplate(ScreenTemplateTypes.DECIMAL.getGuid(), ScreenTemplateTypes.DECIMAL, "float", null, true));
+	this.alScreenTemplate.add(new ScreenTemplate(ScreenTemplateTypes.DATETIME.getGuid(), ScreenTemplateTypes.DATETIME, "text", null, true));
+	this.alScreenTemplate.add(new ScreenTemplate(ScreenTemplateTypes.DATE.getGuid(), ScreenTemplateTypes.DATE, "text", null, true));
+	this.alScreenTemplate.add(new ScreenTemplate(ScreenTemplateTypes.TIME.getGuid(), ScreenTemplateTypes.TIME, "text", null, true));
+	this.alScreenTemplate.add(new ScreenTemplate(ScreenTemplateTypes.CHECKBOX.getGuid(), ScreenTemplateTypes.CHECKBOX, "text", null, true));
+	this.alScreenTemplate.add(new ScreenTemplate(ScreenTemplateTypes.GRID.getGuid(), ScreenTemplateTypes.GRID, "stringnull", null, true));
+	this.alScreenTemplate.add(new ScreenTemplate(ScreenTemplateTypes.GPSREADING.getGuid(), ScreenTemplateTypes.GPSREADING, "float", null, true));
+	this.alScreenTemplate.add(new ScreenTemplate(ScreenTemplateTypes.INFO.getGuid(), ScreenTemplateTypes.INFO, "stringnull", null, true));
+	this.alScreenTemplate.add(new ScreenTemplate(ScreenTemplateTypes.SECTIONEXITSCREEN.getGuid(), ScreenTemplateTypes.SECTIONEXITSCREEN, "stringnull",
+		null, true));
 
     }
 
@@ -323,12 +327,22 @@ public class QuestionManager {
 	 * sPromptUnder, String sPromptOver, String
 	 * sCustomValidationExpressionGuid, String sOnChange, String sUnique)
 	 */
-	Question q1 = new Question("guidq1", "lvt1", "q1", "stg1", "arg1", true, "absmin1", "absmax1", "pu1", "po1", "custom1", "change1", "qu1");
-	Question q2 = new Question("guidq2", "lvt2", "q2", "stg2", "arg2", true, "absmin2", "absmax2", "pu2", "po2", "custom2", "change2", "qu2");
-	Question q3 = new Question("guidq3", "lvt3", "q2", "stg3", "arg3", true, "absmin3", "absmax3", "pu3", "po3", "custom3", "change3", "qu3");
-	Question q4 = new Question("guidq4", "lvt4", "q2", "stg4", "arg4", true, "absmin4", "absmax4", "pu4", "po4", "custom4", "change4", "qu4");
-	Question q5 = new Question("guidq5", "lvt5", "q2", "stg5", "arg5", true, "absmin5", "absmax5", "pu5", "po5", "custom5", "change5", "qu5");
-	Question q6 = new Question("guidq6", "lvt6", "q2", "stg6", "arg6", true, "absmin6", "absmax6", "pu6", "po6", "custom6", "change6", "qu6");
+
+	// TODO: Create elements type node HERE
+
+	Node nodeq1 = new Node("guidq1", "guidq", TypeNode.Q, "0", true, "1", false, false, false, false, "onload", "un load", "comment 1");
+	Node nodeq2 = new Node("guidq2", "guidq", TypeNode.Q, "0", true, "1", false, false, false, false, "onload", "un load", "comment 1");
+	Node nodeq3 = new Node("guidq3", "guidq", TypeNode.Q, "0", true, "1", false, false, false, false, "onload", "un load", "comment 1");
+	Node nodeq4 = new Node("guidq4", "guidq", TypeNode.Q, "0", true, "1", false, false, false, false, "onload", "un load", "comment 1");
+	Node nodeq5 = new Node("guidq5", "guidq", TypeNode.Q, "0", true, "1", false, false, false, false, "onload", "un load", "comment 1");
+	Node nodeq6 = new Node("guidq6", "guidq", TypeNode.Q, "0", true, "1", false, false, false, false, "onload", "un load", "comment 1");
+
+	Question q1 = new Question(nodeq1, "guidq1", "lvt1", "q1", "stg1", "arg1", true, "absmin1", "absmax1", "pu1", "po1", "custom1", "change1", "qu1");
+	Question q2 = new Question(nodeq2, "guidq2", "lvt2", "q2", "stg2", "arg2", true, "absmin2", "absmax2", "pu2", "po2", "custom2", "change2", "qu2");
+	Question q3 = new Question(nodeq3, "guidq3", "lvt3", "q2", "stg3", "arg3", true, "absmin3", "absmax3", "pu3", "po3", "custom3", "change3", "qu3");
+	Question q4 = new Question(nodeq4, "guidq4", "lvt4", "q2", "stg4", "arg4", true, "absmin4", "absmax4", "pu4", "po4", "custom4", "change4", "qu4");
+	Question q5 = new Question(nodeq5, "guidq5", "lvt5", "q2", "stg5", "arg5", true, "absmin5", "absmax5", "pu5", "po5", "custom5", "change5", "qu5");
+	Question q6 = new Question(nodeq6, "guidq6", "lvt6", "q2", "stg6", "arg6", true, "absmin6", "absmax6", "pu6", "po6", "custom6", "change6", "qu6");
 
 	// Questions list
 	ArrayList<Question> alQuestions = new ArrayList<Question>();
@@ -351,8 +365,8 @@ public class QuestionManager {
 	// alQuestionnaire.add(qQuestInfo);
 	// alQuestionnaire.add(qQuestionnaire);
 
-	Node node1 = new Node("guidst", null, "ST", "0", true, "num", true, true, true, true, "onload", "unload", "comment");
-	Node node2 = new Node("guidst1", null, "ST", "1", true, "num", true, true, true, true, "onload", "unload", "comment");
+	Node node1 = new Node("guidst", null, TypeNode.ST, "0", true, "num", true, true, true, true, "onload", "unload", "comment");
+	Node node2 = new Node("guidst1", null, TypeNode.ST, "1", true, "num", true, true, true, true, "onload", "unload", "comment");
 
 	// / Study
 	Study sStudy1 = new Study(node1, "study short name", "1.0", "1.0", date, date, "currentid", false, true, "schema", "logschema", "lvsschema",
@@ -376,7 +390,7 @@ public class QuestionManager {
      * @author Enner Escobedo C. <email>enner.castillo@centrikal.com</email> <date>Jul, 29 2013</date>
      * @return ArrayList<Node>, List of Studies
      */
-    public ArrayList<Study> GetListOfStudies() {
+    public ArrayList<Node> GetListOfStudies() {
 
 	// for (Iterator<Study> iNode = alStudies.iterator(); iNode.hasNext();) {
 	// Node nNodeInfo = (Node) iNode.next();
@@ -397,7 +411,7 @@ public class QuestionManager {
      * @param sInfoNode, Guid to search
      * @return ArrayList Node type with information of elements of this type
      */
-    public ArrayList<Object> GetElementsOfStudyByGuid(Node nStudy) {
+    public ArrayList<Node> GetElementsOfStudyByGuid(Node nStudy) {
 
 	if (nStudy != null) {
 
@@ -413,27 +427,27 @@ public class QuestionManager {
 
 	    /******** INFO NODES BEGIN ******/
 	    ArrayList<Node> alNode2 = new ArrayList<Node>();
-	    alNode2.add(new Node("guidqu", "guidst", "QU", "0", true, "num", true, true, true, true, "onload", "unload", "comment"));
-	    alNode2.add(new Node("guidq1", "guidsta", "QU", "0", true, "num", true, true, true, true, "onload", "unload", "comment"));
-	    alNode2.add(new Node("guidq2", "guidqu", "QG", "1", true, "num", true, true, true, true, "onload", "unload", "comment"));
-	    alNode2.add(new Node("guidq3", "guidqu", "QG", "2", true, "num", true, true, true, true, "onload", "unload", "comment"));
-	    alNode2.add(new Node("guidq4", "guidst", "QG", "3", true, "num", true, true, true, true, "onload", "unload", "comment"));
-	    alNode2.add(new Node("guidq5", "guidst", "QG", "4", true, "num", true, true, true, true, "onload", "unload", "comment"));
+	    alNode2.add(new Node("guidqu", "guidst", TypeNode.QU, "0", true, "num", true, true, true, true, "onload", "unload", "comment"));
+	    alNode2.add(new Node("guidq1", "guidsta", TypeNode.QU, "0", true, "num", true, true, true, true, "onload", "unload", "comment"));
+	    alNode2.add(new Node("guidq2", "guidqu", TypeNode.QG, "1", true, "num", true, true, true, true, "onload", "unload", "comment"));
+	    alNode2.add(new Node("guidq3", "guidqu", TypeNode.QG, "2", true, "num", true, true, true, true, "onload", "unload", "comment"));
+	    alNode2.add(new Node("guidq4", "guidst", TypeNode.QG, "3", true, "num", true, true, true, true, "onload", "unload", "comment"));
+	    alNode2.add(new Node("guidq5", "guidst", TypeNode.QG, "4", true, "num", true, true, true, true, "onload", "unload", "comment"));
 
-	    alNode2.add(new Node("guidq6", "guidq5", "QU", "0", true, "num", true, true, true, true, "onload", "unload", "comment"));
-	    alNode2.add(new Node("guidq7", "guidq5", "QU", "1", true, "num", true, true, true, true, "onload", "unload", "comment"));
-	    alNode2.add(new Node("guidq8", "guidq5", "QG", "2", true, "num", true, true, true, true, "onload", "unload", "comment"));
-	    alNode2.add(new Node("guidq9", "guidq5", "QG", "3", true, "num", true, true, true, true, "onload", "unload", "comment"));
-	    alNode2.add(new Node("guidq10", "guidst1", "QG", "4", true, "num", true, true, true, true, "onload", "unload", "comment"));
-	    alNode2.add(new Node("guidq11", "guidst1", "QG", "5", true, "num", true, true, true, true, "onload", "unload", "comment"));
+	    alNode2.add(new Node("guidq6", "guidq5", TypeNode.QU, "0", true, "num", true, true, true, true, "onload", "unload", "comment"));
+	    alNode2.add(new Node("guidq7", "guidq5", TypeNode.QU, "1", true, "num", true, true, true, true, "onload", "unload", "comment"));
+	    alNode2.add(new Node("guidq8", "guidq5", TypeNode.QG, "2", true, "num", true, true, true, true, "onload", "unload", "comment"));
+	    alNode2.add(new Node("guidq9", "guidq5", TypeNode.QG, "3", true, "num", true, true, true, true, "onload", "unload", "comment"));
+	    alNode2.add(new Node("guidq10", "guidst1", TypeNode.QG, "4", true, "num", true, true, true, true, "onload", "unload", "comment"));
+	    alNode2.add(new Node("guidq11", "guidst1", TypeNode.QG, "5", true, "num", true, true, true, true, "onload", "unload", "comment"));
 
-	    ArrayList<Object> alAllData = new ArrayList<Object>();
+	    ArrayList<Node> alAllData = new ArrayList<Node>();
 
 	    /***
 	     * ELEMENTS QUESTIONNAIRE WITH DATA
 	     */
 	    // Questionnaire
-	    ArrayList<Questionnaire> alQuestionnaires = new ArrayList<Questionnaire>();
+	    // ArrayList<Questionnaire> alQuestionnaires = new ArrayList<Questionnaire>();
 
 	    Questionnaire qQuest1;
 	    qQuest1 = new Questionnaire(alNode2.get(0), "guidqu2", "short name q2", "new", false, false, "mult inst abs min", "mult inst abs max",
@@ -484,12 +498,12 @@ public class QuestionManager {
 	    alAllData.add(qg8);
 
 	    // TODO: Change data in this code!!!
-	    ArrayList<Object> alInfoReturn = new ArrayList<Object>();	// Elements with sguid equals to inserted
+	    ArrayList<Node> alInfoReturn = new ArrayList<Node>();	// Elements with sguid equals to inserted
 	    // ArrayList<Node> nQuestionnaire = new ArrayList<Node>(); // Element questionnaire
 
 	    // Get the elements with the guid parent equals to guidstudy inserted
-	    for (Iterator<Object> iNode = alAllData.iterator(); iNode.hasNext();) {
-		Node nNodeInfo = (Node) iNode.next();
+	    for (Iterator<Node> iNode = alAllData.iterator(); iNode.hasNext();) {
+		Node nNodeInfo = iNode.next();
 
 		if (nNodeInfo.getsParentGuid().equalsIgnoreCase(sGuidStudy)) alInfoReturn.add(nNodeInfo);
 
@@ -549,31 +563,33 @@ public class QuestionManager {
      * @param nElementToVerify, Node to verify
      * @return Node, if questionnaire is true return first child, else if questionnaire group is true return all your elements
      */
-    public ArrayList<Node> GetElementsOfQuestionnaireOrQuestionnaireGroup(Node nElementToVerify) {
+    public ArrayList<Node> GetElementsOfQuestionnaireOrQuestionnaireGroup(Node nElementToSearch) {
 
 	ArrayList<Node> alNodes = new ArrayList<Node>();
 
-	// if (nElementToVerify == null) return null;
-	// else {
-	//
-	// /**
-	// * Type equals to Questionnaire, Get the first son
-	// */
-	// if (nElementToVerify.gettnTypeNode().equals(TypeNode.QU)) {
-	// System.out.println(" is a questionnaire !");
-	// alNodes.add(this.GetFirstChildQuestionnaire(nElementToVerify));
-	//
-	// } else {
-	// /**
-	// * Type equals to QuestionnaireGroup, get the elements return all elements of questionnaire group
-	// */
-	// if (nElementToVerify.gettnTypeNode().equals(TypeNode.QG)) {
-	// System.out.println("is a questionnairegroup!");
-	// alNodes = GetElementsOfStudyByGuid(nElementToVerify);
-	// }
-	// }
-	//
-	// }
+	if (nElementToSearch == null) return null;
+	else {
+
+	    /**
+	     * Type equals to Questionnaire, Get the first son
+	     */
+
+	    switch (nElementToSearch.getTnTypeNode()) {
+		case QU:
+		    System.out.println(" is a questionnaire !");
+		    alNodes.add(this.GetFirstChildQuestionnaire(nElementToSearch));
+		    break;
+		case QG:
+		    System.out.println("is a questionnairegroup!");
+		    alNodes = GetElementsOfStudyByGuid(nElementToSearch);
+		    break;
+		default:
+		    System.out.println("ERROR EN EL TIPO !!!!");
+		    break;
+	    }
+
+	}
+
 	return alNodes;
     }
 
@@ -593,26 +609,30 @@ public class QuestionManager {
 
 	ArrayList<Node> alQuestions = new ArrayList<Node>();
 
-	alQuestions.add(new Node("guidq1", "guidqu1", "Q", "0", true, "num", true, true, true, true, "onload", "unload", "comment"));
-	alQuestions.add(new Node("guidq2", "guidqu1", "Q", "1", true, "num", true, true, true, true, "onload", "unload", "comment"));
-	alQuestions.add(new Node("guidq3", "guidqu1", "Q", "2", true, "num", true, true, true, true, "onload", "unload", "comment"));
-	alQuestions.add(new Node("guidq4", "guidqu1", "Q", "3", true, "num", true, true, true, true, "onload", "unload", "comment"));
-	alQuestions.add(new Node("guidq5", "guidqu1", "Q", "4", true, "num", true, true, true, true, "onload", "unload", "comment"));
-	alQuestions.add(new Node("guidq1", "guidqu2", "Q", "0", true, "num", true, true, true, true, "onload", "unload", "comment"));
-	alQuestions.add(new Node("guidq2", "guidqu2", "Q", "1", true, "num", true, true, true, true, "onload", "unload", "comment"));
-	alQuestions.add(new Node("guidq3", "guidqu2", "Q", "2", true, "num", true, true, true, true, "onload", "unload", "comment"));
-	alQuestions.add(new Node("guidq4", "guidqu2", "Q", "3", true, "num", true, true, true, true, "onload", "unload", "comment"));
-	alQuestions.add(new Node("guidq5", "guidqu2", "Q", "4", true, "num", true, true, true, true, "onload", "unload", "comment"));
-	alQuestions.add(new Node("guidq1", "guidqu3", "Q", "0", true, "num", true, true, true, true, "onload", "unload", "comment"));
-	alQuestions.add(new Node("guidq2", "guidqu3", "Q", "1", true, "num", true, true, true, true, "onload", "unload", "comment"));
-	alQuestions.add(new Node("guidq3", "guidqu3", "Q", "2", true, "num", true, true, true, true, "onload", "unload", "comment"));
-	alQuestions.add(new Node("guidq4", "guidqu3", "Q", "3", true, "num", true, true, true, true, "onload", "unload", "comment"));
-	alQuestions.add(new Node("guidq5", "guidqu3", "Q", "4", true, "num", true, true, true, true, "onload", "unload", "comment"));
-	alQuestions.add(new Node("guidq1", "guidqu", "Q", "0", true, "num", true, true, true, true, "onload", "unload", "comment"));
-	alQuestions.add(new Node("guidq2", "guidqu", "Q", "1", true, "num", true, true, true, true, "onload", "unload", "comment"));
-	alQuestions.add(new Node("guidq3", "guidqu", "Q", "2", true, "num", true, true, true, true, "onload", "unload", "comment"));
-	alQuestions.add(new Node("guidq4", "guidqu", "CH", "3", true, "num", true, true, true, true, "onload", "unload", "comment"));
-	alQuestions.add(new Node("guidq5", "guidqu", "IN", "4", true, "num", true, true, true, true, "onload", "unload", "comment"));
+	
+	Question q1 = new (new Node("guidq1", "guidqu1", TypeNode.Q, "0", true, "num", true, true, true, true, "onload", "unload", "comment"), );
+	
+	
+	alQuestions.add();
+	alQuestions.add(new Node("guidq2", "guidqu1", TypeNode.Q, "1", true, "num", true, true, true, true, "onload", "unload", "comment"));
+	alQuestions.add(new Node("guidq3", "guidqu1", TypeNode.Q, "2", true, "num", true, true, true, true, "onload", "unload", "comment"));
+	alQuestions.add(new Node("guidq4", "guidqu1", TypeNode.Q, "3", true, "num", true, true, true, true, "onload", "unload", "comment"));
+	alQuestions.add(new Node("guidq5", "guidqu1", TypeNode.Q, "4", true, "num", true, true, true, true, "onload", "unload", "comment"));
+	alQuestions.add(new Node("guidq1", "guidqu2", TypeNode.Q, "0", true, "num", true, true, true, true, "onload", "unload", "comment"));
+	alQuestions.add(new Node("guidq2", "guidqu2", TypeNode.Q, "1", true, "num", true, true, true, true, "onload", "unload", "comment"));
+	alQuestions.add(new Node("guidq3", "guidqu2", TypeNode.Q, "2", true, "num", true, true, true, true, "onload", "unload", "comment"));
+	alQuestions.add(new Node("guidq4", "guidqu2", TypeNode.Q, "3", true, "num", true, true, true, true, "onload", "unload", "comment"));
+	alQuestions.add(new Node("guidq5", "guidqu2", TypeNode.Q, "4", true, "num", true, true, true, true, "onload", "unload", "comment"));
+	alQuestions.add(new Node("guidq1", "guidqu3", TypeNode.Q, "0", true, "num", true, true, true, true, "onload", "unload", "comment"));
+	alQuestions.add(new Node("guidq2", "guidqu3", TypeNode.Q, "1", true, "num", true, true, true, true, "onload", "unload", "comment"));
+	alQuestions.add(new Node("guidq3", "guidqu3", TypeNode.Q, "2", true, "num", true, true, true, true, "onload", "unload", "comment"));
+	alQuestions.add(new Node("guidq4", "guidqu3", TypeNode.Q, "3", true, "num", true, true, true, true, "onload", "unload", "comment"));
+	alQuestions.add(new Node("guidq5", "guidqu3", TypeNode.Q, "4", true, "num", true, true, true, true, "onload", "unload", "comment"));
+	alQuestions.add(new Node("guidq1", "guidqu", TypeNode.Q, "0", true, "num", true, true, true, true, "onload", "unload", "comment"));
+	alQuestions.add(new Node("guidq2", "guidqu", TypeNode.Q, "1", true, "num", true, true, true, true, "onload", "unload", "comment"));
+	alQuestions.add(new Node("guidq3", "guidqu", TypeNode.Q, "2", true, "num", true, true, true, true, "onload", "unload", "comment"));
+	alQuestions.add(new Node("guidq4", "guidqu", TypeNode.CH, "3", true, "num", true, true, true, true, "onload", "unload", "comment"));
+	alQuestions.add(new Node("guidq5", "guidqu", TypeNode.IN, "4", true, "num", true, true, true, true, "onload", "unload", "comment"));
 
 	// Get elements
 	for (Node node : alQuestions) {
@@ -650,26 +670,26 @@ public class QuestionManager {
 	ArrayList<Node> alQuestions = new ArrayList<Node>();
 	Node nNextElement = new Node();
 
-	alQuestions.add(new Node("guidq1", "guidqu1", "Q", "0", true, "num", true, true, true, true, "onload", "unload", "comment"));
-	alQuestions.add(new Node("guidq2", "guidqu1", "Q", "1", true, "num", true, true, true, true, "onload", "unload", "comment"));
-	alQuestions.add(new Node("guidq3", "guidqu1", "Q", "2", true, "num", true, true, true, true, "onload", "unload", "comment"));
-	alQuestions.add(new Node("guidq4", "guidqu1", "Q", "3", true, "num", true, true, true, true, "onload", "unload", "comment"));
-	alQuestions.add(new Node("guidq5", "guidqu1", "Q", "4", true, "num", true, true, true, true, "onload", "unload", "comment"));
-	alQuestions.add(new Node("guidq1", "guidqu2", "Q", "0", true, "num", true, true, true, true, "onload", "unload", "comment"));
-	alQuestions.add(new Node("guidq2", "guidqu2", "Q", "1", true, "num", true, true, true, true, "onload", "unload", "comment"));
-	alQuestions.add(new Node("guidq3", "guidqu2", "Q", "2", true, "num", true, true, true, true, "onload", "unload", "comment"));
-	alQuestions.add(new Node("guidq4", "guidqu2", "Q", "3", true, "num", true, true, true, true, "onload", "unload", "comment"));
-	alQuestions.add(new Node("guidq5", "guidqu2", "Q", "4", true, "num", true, true, true, true, "onload", "unload", "comment"));
-	alQuestions.add(new Node("guidq1", "guidqu3", "Q", "0", true, "num", true, true, true, true, "onload", "unload", "comment"));
-	alQuestions.add(new Node("guidq2", "guidqu3", "Q", "1", true, "num", true, true, true, true, "onload", "unload", "comment"));
-	alQuestions.add(new Node("guidq3", "guidqu3", "Q", "2", true, "num", true, true, true, true, "onload", "unload", "comment"));
-	alQuestions.add(new Node("guidq4", "guidqu3", "Q", "3", true, "num", true, true, true, true, "onload", "unload", "comment"));
-	alQuestions.add(new Node("guidq5", "guidqu3", "Q", "4", true, "num", true, true, true, true, "onload", "unload", "comment"));
-	alQuestions.add(new Node("guidq1", "guidqu", "Q", "0", true, "num", true, true, true, true, "onload", "unload", "comment"));
-	alQuestions.add(new Node("guidq2", "guidqu", "Q", "1", true, "num", true, true, true, true, "onload", "unload", "comment"));
-	alQuestions.add(new Node("guidq3", "guidqu", "Q", "2", true, "num", true, true, true, true, "onload", "unload", "comment"));
-	alQuestions.add(new Node("guidq4", "guidqu", "CH", "3", true, "num", true, true, true, true, "onload", "unload", "comment"));
-	alQuestions.add(new Node("guidq5", "guidqu", "IN", "4", true, "num", true, true, true, true, "onload", "unload", "comment"));
+	alQuestions.add(new Node("guidq1", "guidqu1", TypeNode.Q, "0", true, "num", true, true, true, true, "onload", "unload", "comment"));
+	alQuestions.add(new Node("guidq2", "guidqu1", TypeNode.Q, "1", true, "num", true, true, true, true, "onload", "unload", "comment"));
+	alQuestions.add(new Node("guidq3", "guidqu1", TypeNode.Q, "2", true, "num", true, true, true, true, "onload", "unload", "comment"));
+	alQuestions.add(new Node("guidq4", "guidqu1", TypeNode.Q, "3", true, "num", true, true, true, true, "onload", "unload", "comment"));
+	alQuestions.add(new Node("guidq5", "guidqu1", TypeNode.Q, "4", true, "num", true, true, true, true, "onload", "unload", "comment"));
+	alQuestions.add(new Node("guidq1", "guidqu2", TypeNode.Q, "0", true, "num", true, true, true, true, "onload", "unload", "comment"));
+	alQuestions.add(new Node("guidq2", "guidqu2", TypeNode.Q, "1", true, "num", true, true, true, true, "onload", "unload", "comment"));
+	alQuestions.add(new Node("guidq3", "guidqu2", TypeNode.Q, "2", true, "num", true, true, true, true, "onload", "unload", "comment"));
+	alQuestions.add(new Node("guidq4", "guidqu2", TypeNode.Q, "3", true, "num", true, true, true, true, "onload", "unload", "comment"));
+	alQuestions.add(new Node("guidq5", "guidqu2", TypeNode.Q, "4", true, "num", true, true, true, true, "onload", "unload", "comment"));
+	alQuestions.add(new Node("guidq1", "guidqu3", TypeNode.Q, "0", true, "num", true, true, true, true, "onload", "unload", "comment"));
+	alQuestions.add(new Node("guidq2", "guidqu3", TypeNode.Q, "1", true, "num", true, true, true, true, "onload", "unload", "comment"));
+	alQuestions.add(new Node("guidq3", "guidqu3", TypeNode.Q, "2", true, "num", true, true, true, true, "onload", "unload", "comment"));
+	alQuestions.add(new Node("guidq4", "guidqu3", TypeNode.Q, "3", true, "num", true, true, true, true, "onload", "unload", "comment"));
+	alQuestions.add(new Node("guidq5", "guidqu3", TypeNode.Q, "4", true, "num", true, true, true, true, "onload", "unload", "comment"));
+	alQuestions.add(new Node("guidq1", "guidqu", TypeNode.Q, "0", true, "num", true, true, true, true, "onload", "unload", "comment"));
+	alQuestions.add(new Node("guidq2", "guidqu", TypeNode.Q, "1", true, "num", true, true, true, true, "onload", "unload", "comment"));
+	alQuestions.add(new Node("guidq3", "guidqu", TypeNode.Q, "2", true, "num", true, true, true, true, "onload", "unload", "comment"));
+	alQuestions.add(new Node("guidq4", "guidqu", TypeNode.CH, "3", true, "num", true, true, true, true, "onload", "unload", "comment"));
+	alQuestions.add(new Node("guidq5", "guidqu", TypeNode.IN, "4", true, "num", true, true, true, true, "onload", "unload", "comment"));
 
 	Integer iNextElement = Integer.parseInt(nSearchNext.getsOrdinal().toString());
 	iNextElement++;

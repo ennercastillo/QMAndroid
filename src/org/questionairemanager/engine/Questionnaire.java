@@ -227,7 +227,7 @@ public class Questionnaire extends Node {
      * 
      * @author Enner Escobedo C. <email>enner.castillo@centrikal.com</email> <date>14/08/2013</date>
      */
-    public void showInformation() {
+    public void ShowInformation() {
 
 	this.PrintNodeInformation();
 
