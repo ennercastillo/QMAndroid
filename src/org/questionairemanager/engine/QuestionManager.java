@@ -17,6 +17,9 @@ public class QuestionManager {
     private ArrayList<ScreenTemplate> alScreenTemplate;
     private ArrayList<LegalValueItem> alLegalValueItem;
     private ArrayList<LegalValueTable> alLegalValueTable;
+    private ArrayList<Info> alInfos;
+    private ArrayList<Checkpoint> alCheckpoints;
+    private ArrayList<Question> alQuestions;
 
     /**
      * Constructor class QuestionManager
@@ -33,6 +36,10 @@ public class QuestionManager {
 	this.alScreenTemplate = new ArrayList<ScreenTemplate>();
 	this.alLegalValueItem = new ArrayList<LegalValueItem>();
 	this.alLegalValueTable = new ArrayList<LegalValueTable>();
+
+	this.alInfos = new ArrayList<Info>();
+	this.alCheckpoints = new ArrayList<Checkpoint>();
+	this.alQuestions = new ArrayList<Question>();
     }
 
     /**
@@ -368,6 +375,14 @@ public class QuestionManager {
 	Node node1 = new Node("guidst", null, TypeNode.ST, "0", true, "num", true, true, true, true, "onload", "unload", "comment");
 	Node node2 = new Node("guidst1", null, TypeNode.ST, "1", true, "num", true, true, true, true, "onload", "unload", "comment");
 
+	node1.setElementMainText("lguidesp1", "Estudio 1");
+	node1.setElementMainText("lguideng1", "Study 1");
+
+	node1.getElementMainText("lguidesp1");
+
+	node2.setElementMainText("lguidesp2", "Estudio 2");
+	node2.setElementMainText("lguideng2", "Study 2");
+
 	// / Study
 	Study sStudy1 = new Study(node1, "study short name", "1.0", "1.0", date, date, "currentid", false, true, "schema", "logschema", "lvsschema",
 		"analysisschema", "searchvars", "confirmvar", null, "report id");
@@ -425,21 +440,59 @@ public class QuestionManager {
 
 	    System.out.println("STACK!!!!!! _________ " + stScreens.size() + " ---- \n " + stScreens);
 
+	    Node n1 = new Node("guidqu", "guidst", TypeNode.QU, "0", true, "num", true, true, true, true, "onload", "unload", "comment");
+	    Node n2 = new Node("guidq1", "guidsta", TypeNode.QU, "0", true, "num", true, true, true, true, "onload", "unload", "comment");
+	    Node n3 = new Node("guidq2", "guidqu", TypeNode.QG, "1", true, "num", true, true, true, true, "onload", "unload", "comment");
+	    Node n4 = new Node("guidq3", "guidqu", TypeNode.QG, "2", true, "num", true, true, true, true, "onload", "unload", "comment");
+	    Node n5 = new Node("guidq4", "guidst", TypeNode.QG, "3", true, "num", true, true, true, true, "onload", "unload", "comment");
+	    Node n6 = new Node("guidq5", "guidst", TypeNode.QG, "4", true, "num", true, true, true, true, "onload", "unload", "comment");
+	    Node n7 = new Node("guidq6", "guidq5", TypeNode.QU, "0", true, "num", true, true, true, true, "onload", "unload", "comment");
+	    Node n8 = new Node("guidq7", "guidq5", TypeNode.QU, "1", true, "num", true, true, true, true, "onload", "unload", "comment");
+	    Node n9 = new Node("guidq8", "guidq5", TypeNode.QG, "2", true, "num", true, true, true, true, "onload", "unload", "comment");
+	    Node n10 = new Node("guidq9", "guidq5", TypeNode.QG, "3", true, "num", true, true, true, true, "onload", "unload", "comment");
+	    Node n11 = new Node("guidq10", "guidst1", TypeNode.QG, "4", true, "num", true, true, true, true, "onload", "unload", "comment");
+	    Node n12 = new Node("guidq11", "guidst1", TypeNode.QG, "5", true, "num", true, true, true, true, "onload", "unload", "comment");
+
+	    n1.setElementMainText("lguidesp1", "Cuestionario 1");
+	    n1.setElementMainText("lguideng1", "Questionnaire 1");
+
+	    n2.setElementMainText("lguidesp1", "Cuestionario 2");
+	    n2.setElementMainText("lguideng1", "Questionnaire 2");
+	    n3.setElementMainText("lguidesp1", "Cuestionario grupo 1");
+	    n3.setElementMainText("lguideng1", "Questionnaire group 1");
+	    n4.setElementMainText("lguidesp1", "Cuestionario grupo 2");
+	    n4.setElementMainText("lguideng1", "Questionnaire group 2");
+	    n5.setElementMainText("lguidesp1", "Cuestionario grupo 3");
+	    n5.setElementMainText("lguideng1", "Questionnaire group 3");
+	    n6.setElementMainText("lguidesp1", "Cuestionario grupo 4");
+	    n6.setElementMainText("lguideng1", "Questionnaire group 4");
+	    n7.setElementMainText("lguidesp1", "Cuestionario 3");
+	    n7.setElementMainText("lguideng1", "Questionnaire 3");
+	    n8.setElementMainText("lguidesp1", "Cuestionario 4");
+	    n8.setElementMainText("lguideng1", "Questionnaire 4");
+	    n9.setElementMainText("lguidesp1", "Cuestionario grupo 5");
+	    n9.setElementMainText("lguideng1", "Questionnaire group 5");
+	    n10.setElementMainText("lguidesp1", "Cuestionario grupo 6");
+	    n10.setElementMainText("lguideng1", "Questionnaire group 6");
+	    n11.setElementMainText("lguidesp1", "Cuestionario grupo 7");
+	    n11.setElementMainText("lguideng1", "Questionnaire group 7");
+	    n12.setElementMainText("lguidesp1", "Cuestionario grupo 8");
+	    n12.setElementMainText("lguideng1", "Questionnaire group 8");
+
 	    /******** INFO NODES BEGIN ******/
 	    ArrayList<Node> alNode2 = new ArrayList<Node>();
-	    alNode2.add(new Node("guidqu", "guidst", TypeNode.QU, "0", true, "num", true, true, true, true, "onload", "unload", "comment"));
-	    alNode2.add(new Node("guidq1", "guidsta", TypeNode.QU, "0", true, "num", true, true, true, true, "onload", "unload", "comment"));
-	    alNode2.add(new Node("guidq2", "guidqu", TypeNode.QG, "1", true, "num", true, true, true, true, "onload", "unload", "comment"));
-	    alNode2.add(new Node("guidq3", "guidqu", TypeNode.QG, "2", true, "num", true, true, true, true, "onload", "unload", "comment"));
-	    alNode2.add(new Node("guidq4", "guidst", TypeNode.QG, "3", true, "num", true, true, true, true, "onload", "unload", "comment"));
-	    alNode2.add(new Node("guidq5", "guidst", TypeNode.QG, "4", true, "num", true, true, true, true, "onload", "unload", "comment"));
-
-	    alNode2.add(new Node("guidq6", "guidq5", TypeNode.QU, "0", true, "num", true, true, true, true, "onload", "unload", "comment"));
-	    alNode2.add(new Node("guidq7", "guidq5", TypeNode.QU, "1", true, "num", true, true, true, true, "onload", "unload", "comment"));
-	    alNode2.add(new Node("guidq8", "guidq5", TypeNode.QG, "2", true, "num", true, true, true, true, "onload", "unload", "comment"));
-	    alNode2.add(new Node("guidq9", "guidq5", TypeNode.QG, "3", true, "num", true, true, true, true, "onload", "unload", "comment"));
-	    alNode2.add(new Node("guidq10", "guidst1", TypeNode.QG, "4", true, "num", true, true, true, true, "onload", "unload", "comment"));
-	    alNode2.add(new Node("guidq11", "guidst1", TypeNode.QG, "5", true, "num", true, true, true, true, "onload", "unload", "comment"));
+	    alNode2.add(n1);
+	    alNode2.add(n2);
+	    alNode2.add(n3);
+	    alNode2.add(n4);
+	    alNode2.add(n5);
+	    alNode2.add(n6);
+	    alNode2.add(n7);
+	    alNode2.add(n8);
+	    alNode2.add(n9);
+	    alNode2.add(n10);
+	    alNode2.add(n11);
+	    alNode2.add(n12);
 
 	    ArrayList<Node> alAllData = new ArrayList<Node>();
 
@@ -593,6 +646,132 @@ public class QuestionManager {
 	return alNodes;
     }
 
+    public void SetElementsQuestion() {
+
+	Node node1 = new Node("guidq1", "guidqu1", TypeNode.Q, "0", true, "num", true, true, true, true, "onload", "unload", "comment");
+	Node node2 = new Node("guidq", "guidqu1", TypeNode.Q, "1", true, "num", true, true, true, true, "onload", "unload", "comment");
+	Node node3 = new Node("guidq3", "guidqu1", TypeNode.Q, "2", true, "num", true, true, true, true, "onload", "unload", "comment");
+	Node node4 = new Node("guidq4", "guidqu1", TypeNode.Q, "3", true, "num", true, true, true, true, "onload", "unload", "comment");
+	Node node5 = new Node("guidq5", "guidqu1", TypeNode.Q, "4", true, "num", true, true, true, true, "onload", "unload", "comment");
+	Node node6 = new Node("guidq6", "guidqu2", TypeNode.Q, "0", true, "num", true, true, true, true, "onload", "unload", "comment");
+	Node node7 = new Node("guidq7", "guidqu2", TypeNode.Q, "1", true, "num", true, true, true, true, "onload", "unload", "comment");
+	Node node8 = new Node("guidq8", "guidqu2", TypeNode.Q, "2", true, "num", true, true, true, true, "onload", "unload", "comment");
+	Node node9 = new Node("guidq9", "guidqu2", TypeNode.Q, "3", true, "num", true, true, true, true, "onload", "unload", "comment");
+	Node node10 = new Node("guidq10", "guidqu2", TypeNode.Q, "4", true, "num", true, true, true, true, "onload", "unload", "comment");
+	Node node11 = new Node("guidq11", "guidqu3", TypeNode.Q, "0", true, "num", true, true, true, true, "onload", "unload", "comment");
+	Node node12 = new Node("guidq12", "guidqu3", TypeNode.Q, "1", true, "num", true, true, true, true, "onload", "unload", "comment");
+	Node node13 = new Node("guidq13", "guidqu3", TypeNode.Q, "2", true, "num", true, true, true, true, "onload", "unload", "comment");
+	Node node14 = new Node("guidq14", "guidqu3", TypeNode.Q, "3", true, "num", true, true, true, true, "onload", "unload", "comment");
+	Node node15 = new Node("guidq15", "guidqu3", TypeNode.Q, "4", true, "num", true, true, true, true, "onload", "unload", "comment");
+	Node node16 = new Node("guidq16", "guidqu", TypeNode.Q, "0", true, "num", true, true, true, true, "onload", "unload", "comment");
+	Node node17 = new Node("guidq17", "guidqu", TypeNode.Q, "1", true, "num", true, true, true, true, "onload", "unload", "comment");
+	Node node18 = new Node("guidq18", "guidqu", TypeNode.Q, "2", true, "num", true, true, true, true, "onload", "unload", "comment");
+	Node node19 = new Node("guidq19", "guidqu", TypeNode.CH, "3", true, "num", true, true, true, true, "onload", "unload", "comment");
+	Node node20 = new Node("guidq20", "guidqu", TypeNode.IN, "4", true, "num", true, true, true, true, "onload", "unload", "comment");
+
+	node1.setElementMainText("lguidesp1", "Pregunta 1");
+	node1.setElementMainText("lguideng1", "Question 1");
+
+	node2.setElementMainText("lguidesp1", "Pregunta 2");
+	node2.setElementMainText("lguideng1", "Question 2");
+
+	node3.setElementMainText("lguidesp1", "Pregunta 3");
+	node3.setElementMainText("lguideng1", "Question 3");
+
+	node4.setElementMainText("lguidesp1", "Pregunta 4");
+	node4.setElementMainText("lguideng1", "Question 4");
+
+	node5.setElementMainText("lguidesp1", "Pregunta  5");
+	node5.setElementMainText("lguideng1", "Question 5");
+
+	node6.setElementMainText("lguidesp1", "Pregunta 6");
+	node6.setElementMainText("lguideng1", "Question 6");
+
+	node7.setElementMainText("lguidesp1", "Pregunta 7");
+	node7.setElementMainText("lguideng1", "Question 7");
+
+	node8.setElementMainText("lguidesp1", "Pregunta 8");
+	node8.setElementMainText("lguideng1", "Question 8");
+
+	node9.setElementMainText("lguidesp1", "Pregunta 9");
+	node9.setElementMainText("lguideng1", "Question 9");
+
+	node10.setElementMainText("lguidesp1", "Pregunta 10");
+	node10.setElementMainText("lguideng1", "Question 10");
+
+	node11.setElementMainText("lguidesp1", "Pregunta 11");
+	node11.setElementMainText("lguideng1", "Question 11");
+
+	node12.setElementMainText("lguidesp1", "Pregunta 12");
+	node12.setElementMainText("lguideng1", "Question 12");
+
+	node13.setElementMainText("lguidesp1", "Pregunta 13");
+	node13.setElementMainText("lguideng1", "Question 13");
+
+	node14.setElementMainText("lguidesp1", "Pregunta 14");
+	node14.setElementMainText("lguideng1", "Question 14");
+
+	node15.setElementMainText("lguidesp1", "Pregunta 15");
+	node15.setElementMainText("lguideng1", "Question 15");
+
+	node16.setElementMainText("lguidesp1", "Pregunta 16");
+	node16.setElementMainText("lguideng1", "Question 16");
+
+	node17.setElementMainText("lguidesp1", "Pregunta 17");
+	node17.setElementMainText("lguideng1", "Question 17");
+
+	node18.setElementMainText("lguidesp1", "Pregunta 18");
+	node18.setElementMainText("lguideng1", "Question 18");
+
+	node19.setElementMainText("lguidesp1", "Checkpoint 19");
+	node19.setElementMainText("lguideng1", "checkpoint 19");
+
+	node20.setElementMainText("lguidesp1", "informacion 6");
+	node20.setElementMainText("lguideng1", "information 6");
+
+	Question q1 = new Question(node1, "guidqu1", "guidlvt1", "q1", "guidscrt1", "args1", true, "20", "80", "30", "70", "guidvalexp1", "onchange", "uniq1");
+	Question q2 = new Question(node2, "guidqu1", "guidlvt1", "q1", "guidscrt1", "args1", true, "20", "80", "30", "70", "guidvalexp1", "onchange", "uniq1");
+	Question q3 = new Question(node3, "guidqu1", "guidlvt1", "q1", "guidscrt1", "args1", true, "20", "80", "30", "70", "guidvalexp1", "onchange", "uniq1");
+	Question q4 = new Question(node4, "guidqu1", "guidlvt1", "q1", "guidscrt1", "args1", true, "20", "80", "30", "70", "guidvalexp1", "onchange", "uniq1");
+	Question q5 = new Question(node5, "guidqu1", "guidlvt1", "q1", "guidscrt1", "args1", true, "20", "80", "30", "70", "guidvalexp1", "onchange", "uniq1");
+	Question q6 = new Question(node6, "guidqu2", "guidlvt1", "q1", "guidscrt1", "args1", true, "20", "80", "30", "70", "guidvalexp1", "onchange", "uniq1");
+	Question q7 = new Question(node7, "guidqu2", "guidlvt1", "q1", "guidscrt1", "args1", true, "20", "80", "30", "70", "guidvalexp1", "onchange", "uniq1");
+	Question q8 = new Question(node8, "guidqu2", "guidlvt1", "q1", "guidscrt1", "args1", true, "20", "80", "30", "70", "guidvalexp1", "onchange", "uniq1");
+	Question q9 = new Question(node9, "guidqu2", "guidlvt1", "q1", "guidscrt1", "args1", true, "20", "80", "30", "70", "guidvalexp1", "onchange", "uniq1");
+	Question q10 = new Question(node10, "guidqu2", "guidlvt1", "q1", "guidscrt1", "args1", true, "20", "80", "30", "70", "guidvalexp1", "onchange", "uniq1");
+	Question q11 = new Question(node11, "guidqu3", "guidlvt1", "q1", "guidscrt1", "args1", true, "20", "80", "30", "70", "guidvalexp1", "onchange", "uniq1");
+	Question q12 = new Question(node12, "guidqu3", "guidlvt1", "q1", "guidscrt1", "args1", true, "20", "80", "30", "70", "guidvalexp1", "onchange", "uniq1");
+	Question q13 = new Question(node13, "guidqu3", "guidlvt1", "q1", "guidscrt1", "args1", true, "20", "80", "30", "70", "guidvalexp1", "onchange", "uniq1");
+	Question q14 = new Question(node14, "guidqu3", "guidlvt1", "q1", "guidscrt1", "args1", true, "20", "80", "30", "70", "guidvalexp1", "onchange", "uniq1");
+	Question q15 = new Question(node15, "guidqu3", "guidlvt1", "q1", "guidscrt1", "args1", true, "20", "80", "30", "70", "guidvalexp1", "onchange", "uniq1");
+	Question q16 = new Question(node16, "guidqu", "guidlvt1", "q1", "guidscrt1", "args1", true, "20", "80", "30", "70", "guidvalexp1", "onchange", "uniq1");
+	Question q17 = new Question(node17, "guidqu", "guidlvt1", "q1", "guidscrt1", "args1", true, "20", "80", "30", "70", "guidvalexp1", "onchange", "uniq1");
+	Question q18 = new Question(node18, "guidqu", "guidlvt1", "q1", "guidscrt1", "args1", true, "20", "80", "30", "70", "guidvalexp1", "onchange", "uniq1");
+	Question q19 = new Question(node19, "guidqu", "guidlvt1", "q1", "guidscrt1", "args1", true, "20", "80", "30", "70", "guidvalexp1", "onchange", "uniq1");
+	Question q20 = new Question(node20, "guidqu", "guidlvt1", "q1", "guidscrt1", "args1", true, "20", "80", "30", "70", "guidvalexp1", "onchange", "uniq1");
+
+	this.alQuestions.add(q1);
+	this.alQuestions.add(q2);
+	this.alQuestions.add(q3);
+	this.alQuestions.add(q4);
+	this.alQuestions.add(q5);
+	this.alQuestions.add(q6);
+	this.alQuestions.add(q7);
+	this.alQuestions.add(q8);
+	this.alQuestions.add(q9);
+	this.alQuestions.add(q10);
+	this.alQuestions.add(q11);
+	this.alQuestions.add(q12);
+	this.alQuestions.add(q13);
+	this.alQuestions.add(q14);
+	this.alQuestions.add(q15);
+	this.alQuestions.add(q16);
+	this.alQuestions.add(q17);
+	this.alQuestions.add(q18);
+	this.alQuestions.add(q19);
+	this.alQuestions.add(q20);
+    }
+
     /**
      * Return the first element of this Questionnaire
      * 
@@ -607,35 +786,10 @@ public class QuestionManager {
 	System.out.println("elemento a buscar " + sElementSearch);
 	Node nFirstElement = new Node();
 
-	ArrayList<Node> alQuestions = new ArrayList<Node>();
-
-	
-	Question q1 = new (new Node("guidq1", "guidqu1", TypeNode.Q, "0", true, "num", true, true, true, true, "onload", "unload", "comment"), );
-	
-	
-	alQuestions.add();
-	alQuestions.add(new Node("guidq2", "guidqu1", TypeNode.Q, "1", true, "num", true, true, true, true, "onload", "unload", "comment"));
-	alQuestions.add(new Node("guidq3", "guidqu1", TypeNode.Q, "2", true, "num", true, true, true, true, "onload", "unload", "comment"));
-	alQuestions.add(new Node("guidq4", "guidqu1", TypeNode.Q, "3", true, "num", true, true, true, true, "onload", "unload", "comment"));
-	alQuestions.add(new Node("guidq5", "guidqu1", TypeNode.Q, "4", true, "num", true, true, true, true, "onload", "unload", "comment"));
-	alQuestions.add(new Node("guidq1", "guidqu2", TypeNode.Q, "0", true, "num", true, true, true, true, "onload", "unload", "comment"));
-	alQuestions.add(new Node("guidq2", "guidqu2", TypeNode.Q, "1", true, "num", true, true, true, true, "onload", "unload", "comment"));
-	alQuestions.add(new Node("guidq3", "guidqu2", TypeNode.Q, "2", true, "num", true, true, true, true, "onload", "unload", "comment"));
-	alQuestions.add(new Node("guidq4", "guidqu2", TypeNode.Q, "3", true, "num", true, true, true, true, "onload", "unload", "comment"));
-	alQuestions.add(new Node("guidq5", "guidqu2", TypeNode.Q, "4", true, "num", true, true, true, true, "onload", "unload", "comment"));
-	alQuestions.add(new Node("guidq1", "guidqu3", TypeNode.Q, "0", true, "num", true, true, true, true, "onload", "unload", "comment"));
-	alQuestions.add(new Node("guidq2", "guidqu3", TypeNode.Q, "1", true, "num", true, true, true, true, "onload", "unload", "comment"));
-	alQuestions.add(new Node("guidq3", "guidqu3", TypeNode.Q, "2", true, "num", true, true, true, true, "onload", "unload", "comment"));
-	alQuestions.add(new Node("guidq4", "guidqu3", TypeNode.Q, "3", true, "num", true, true, true, true, "onload", "unload", "comment"));
-	alQuestions.add(new Node("guidq5", "guidqu3", TypeNode.Q, "4", true, "num", true, true, true, true, "onload", "unload", "comment"));
-	alQuestions.add(new Node("guidq1", "guidqu", TypeNode.Q, "0", true, "num", true, true, true, true, "onload", "unload", "comment"));
-	alQuestions.add(new Node("guidq2", "guidqu", TypeNode.Q, "1", true, "num", true, true, true, true, "onload", "unload", "comment"));
-	alQuestions.add(new Node("guidq3", "guidqu", TypeNode.Q, "2", true, "num", true, true, true, true, "onload", "unload", "comment"));
-	alQuestions.add(new Node("guidq4", "guidqu", TypeNode.CH, "3", true, "num", true, true, true, true, "onload", "unload", "comment"));
-	alQuestions.add(new Node("guidq5", "guidqu", TypeNode.IN, "4", true, "num", true, true, true, true, "onload", "unload", "comment"));
-
 	// Get elements
-	for (Node node : alQuestions) {
+	for (Node node : this.alQuestions) {
+
+	    System.out.println("entro al for ");
 
 	    if (node.getsParentGuid() != null) {
 		if (node.getsParentGuid().equals(sElementSearch) && (node.getsOrdinal().equalsIgnoreCase("0"))) {
@@ -667,34 +821,13 @@ public class QuestionManager {
 
 	System.out.println("node guid " + sElementSearch);
 
-	ArrayList<Node> alQuestions = new ArrayList<Node>();
+	// ArrayList<Node> alQuestions = new ArrayList<Node>();
 	Node nNextElement = new Node();
-
-	alQuestions.add(new Node("guidq1", "guidqu1", TypeNode.Q, "0", true, "num", true, true, true, true, "onload", "unload", "comment"));
-	alQuestions.add(new Node("guidq2", "guidqu1", TypeNode.Q, "1", true, "num", true, true, true, true, "onload", "unload", "comment"));
-	alQuestions.add(new Node("guidq3", "guidqu1", TypeNode.Q, "2", true, "num", true, true, true, true, "onload", "unload", "comment"));
-	alQuestions.add(new Node("guidq4", "guidqu1", TypeNode.Q, "3", true, "num", true, true, true, true, "onload", "unload", "comment"));
-	alQuestions.add(new Node("guidq5", "guidqu1", TypeNode.Q, "4", true, "num", true, true, true, true, "onload", "unload", "comment"));
-	alQuestions.add(new Node("guidq1", "guidqu2", TypeNode.Q, "0", true, "num", true, true, true, true, "onload", "unload", "comment"));
-	alQuestions.add(new Node("guidq2", "guidqu2", TypeNode.Q, "1", true, "num", true, true, true, true, "onload", "unload", "comment"));
-	alQuestions.add(new Node("guidq3", "guidqu2", TypeNode.Q, "2", true, "num", true, true, true, true, "onload", "unload", "comment"));
-	alQuestions.add(new Node("guidq4", "guidqu2", TypeNode.Q, "3", true, "num", true, true, true, true, "onload", "unload", "comment"));
-	alQuestions.add(new Node("guidq5", "guidqu2", TypeNode.Q, "4", true, "num", true, true, true, true, "onload", "unload", "comment"));
-	alQuestions.add(new Node("guidq1", "guidqu3", TypeNode.Q, "0", true, "num", true, true, true, true, "onload", "unload", "comment"));
-	alQuestions.add(new Node("guidq2", "guidqu3", TypeNode.Q, "1", true, "num", true, true, true, true, "onload", "unload", "comment"));
-	alQuestions.add(new Node("guidq3", "guidqu3", TypeNode.Q, "2", true, "num", true, true, true, true, "onload", "unload", "comment"));
-	alQuestions.add(new Node("guidq4", "guidqu3", TypeNode.Q, "3", true, "num", true, true, true, true, "onload", "unload", "comment"));
-	alQuestions.add(new Node("guidq5", "guidqu3", TypeNode.Q, "4", true, "num", true, true, true, true, "onload", "unload", "comment"));
-	alQuestions.add(new Node("guidq1", "guidqu", TypeNode.Q, "0", true, "num", true, true, true, true, "onload", "unload", "comment"));
-	alQuestions.add(new Node("guidq2", "guidqu", TypeNode.Q, "1", true, "num", true, true, true, true, "onload", "unload", "comment"));
-	alQuestions.add(new Node("guidq3", "guidqu", TypeNode.Q, "2", true, "num", true, true, true, true, "onload", "unload", "comment"));
-	alQuestions.add(new Node("guidq4", "guidqu", TypeNode.CH, "3", true, "num", true, true, true, true, "onload", "unload", "comment"));
-	alQuestions.add(new Node("guidq5", "guidqu", TypeNode.IN, "4", true, "num", true, true, true, true, "onload", "unload", "comment"));
 
 	Integer iNextElement = Integer.parseInt(nSearchNext.getsOrdinal().toString());
 	iNextElement++;
 
-	for (Node node : alQuestions) {
+	for (Node node : this.alQuestions) {
 
 	    if (node.getsParentGuid() != null) {
 		if (node.getsParentGuid().equals(sElementSearch) && (node.getsOrdinal().equalsIgnoreCase(iNextElement.toString()))) {
@@ -708,6 +841,83 @@ public class QuestionManager {
 	// Return value of node
 	return (nNextElement.getsNodeguid().isEmpty()) ? null : nNextElement;
 
+    }
+
+    public void setCheckpoint() {
+
+	Node n1 = new Node("guidch1", "guidqu", TypeNode.CH, "0", true, "0", true, true, true, true, "onload 1", "onload1", "comment1");
+	Node n2 = new Node("guidch2", "guidqu", TypeNode.CH, "1", true, "0", true, true, true, true, "onload 1", "onload1", "comment1");
+	Node n3 = new Node("guidch3", "guidqu", TypeNode.CH, "2", true, "0", true, true, true, true, "onload 1", "onload1", "comment1");
+	Node n4 = new Node("guidch4", "guidqu", TypeNode.CH, "3", true, "0", true, true, true, true, "onload 1", "onload1", "comment1");
+	Node n5 = new Node("guidch5", "guidqu", TypeNode.CH, "4", true, "0", true, true, true, true, "onload 1", "onload1", "comment1");
+
+	Checkpoint ch1 = new Checkpoint(n1, "guidch1", "if a > b", "hola", "onbranch");
+	Checkpoint ch2 = new Checkpoint(n2, "guidch2", "if b < c", "hola", "onbranch");
+	Checkpoint ch3 = new Checkpoint(n3, "guidch3", "a < c", "hola", "onbranch");
+	Checkpoint ch4 = new Checkpoint(n4, "guidch4", "j = 10", "hola", "onbranch");
+	Checkpoint ch5 = new Checkpoint(n5, "guidch5", "a = 1", "hoal", "onbranch");
+
+	this.alCheckpoints.add(ch1);
+	this.alCheckpoints.add(ch2);
+	this.alCheckpoints.add(ch3);
+	this.alCheckpoints.add(ch4);
+	this.alCheckpoints.add(ch5);
+    }
+
+    public void setInfo() {
+
+	Node n1 = new Node("guidch1", "guidqu", TypeNode.CH, "0", true, "0", true, true, true, true, "onload 1", "onload1", "comment1");
+	Node n2 = new Node("guidch2", "guidqu", TypeNode.CH, "1", true, "0", true, true, true, true, "onload 1", "onload1", "comment1");
+	Node n3 = new Node("guidch3", "guidqu", TypeNode.CH, "2", true, "0", true, true, true, true, "onload 1", "onload1", "comment1");
+	Node n4 = new Node("guidch4", "guidqu", TypeNode.CH, "3", true, "0", true, true, true, true, "onload 1", "onload1", "comment1");
+	Node n5 = new Node("guidch5", "guidqu", TypeNode.CH, "4", true, "0", true, true, true, true, "onload 1", "onload1", "comment1");
+
+	n1.setElementMainText("lguidesp1", "Informacion 1");
+	n1.setElementMainText("lguidesp1", "Information 1");
+	n2.setElementMainText("lguidesp1", "Informacion 2");
+	n2.setElementMainText("lguidesp1", "Information 2");
+	n3.setElementMainText("lguidesp1", "Informacion 3");
+	n3.setElementMainText("lguidesp1", "Information 3");
+	n4.setElementMainText("lguidesp1", "Informacion 4");
+	n4.setElementMainText("lguidesp1", "Information 4");
+	n5.setElementMainText("lguidesp1", "Informacion 5");
+	n5.setElementMainText("lguidesp1", "Information 5");
+
+	Info i1 = new Info(n1, "guidi1", "info1");
+	Info i2 = new Info(n2, "guidi2", "info2");
+	Info i3 = new Info(n3, "guidi3", "info3");
+	Info i4 = new Info(n4, "guidi4", "info4");
+	Info i5 = new Info(n5, "guidi5", "info5");
+
+	this.alInfos.add(i1);
+	this.alInfos.add(i2);
+	this.alInfos.add(i3);
+	this.alInfos.add(i4);
+	this.alInfos.add(i5);
+
+    }
+
+    public ArrayList<Node> getCheckpoint(String sGuid) {
+
+	ArrayList<Node> alCheckpointReturn = new ArrayList<Node>();
+
+	for (Node node : this.alCheckpoints) {
+	    if (node.getsNodeguid().equalsIgnoreCase(sGuid)) alCheckpointReturn.add(node);
+	}
+
+	return alCheckpointReturn;
+
+    }
+
+    public ArrayList<Node> getInfo(String sGuid) {
+
+	ArrayList<Node> alInfoReturn = new ArrayList<Node>();
+
+	for (Node node : this.alInfos) {
+	    if (node.getsNodeguid().equalsIgnoreCase(sGuid)) alInfoReturn.add(node);
+	}
+
+	return alInfoReturn;
     }
 
     /**

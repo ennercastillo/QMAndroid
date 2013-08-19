@@ -72,6 +72,9 @@ public class Test {
 
 	    System.out.println(nFirstElement.getTnTypeNode());
 
+	    // inicia los elementos de tipo question
+	    qm.SetElementsQuestion();
+
 	    if (nFirstElement != null) {
 
 		switch (nFirstElement.getTnTypeNode()) {
@@ -103,19 +106,21 @@ public class Test {
 			    node.PrintNodeInformation();
 			    break;
 			case CH:
-			    System.out.println("it is a questionnaire!!!!");
+			    System.out.println("it is a checkpoint!!!!");
 			    node.PrintNodeInformation();
+			    // TODO: ADD ELEMENT TYPE CHECKPOINT
 			    break;
 			case Q:
 			    System.out.println("it is a question----");
 			    node.PrintNodeInformation();
-			    System.out.println("------- info question ------");
+			    System.out.println("------- info question ------++++++++++++++++++++++");
 			    System.out.println("end line");
 			    ((Question) node).ShowInformation();
 			    break;
 			case IN:
 			    System.out.println("it is an info----");
 			    node.PrintNodeInformation();
+			    // TODO: add element tipo info
 			    break;
 			default:
 			    break;
@@ -126,60 +131,45 @@ public class Test {
 
 	}
 
-	/*// Get the first node for the questionnaire
+	// Get the first node for the questionnaire
 	// No se ha verificado si pertenece al tipo Q o QG
-	alQuestion = qm.GetFirstChildQuestionnaire(nFirstElementQuestion);
+	alQuestion = qm.GetFirstChildQuestionnaire(nFirstElement);
 
 	if (alQuestion == null) {
-	System.out.println("no hay informacion de un hijo ");
+	    System.out.println("no hay informacion de un hijo ");
 	} else {
-	alQuestion.PrintNodeInformation();
-	Node nTemp = new Node();
-	
-	System.out.println("first!!!!! \n");		
-	nTemp = qm.GetNextChildQuestionnaire(alQuestion);
-	
-	if (nTemp != null)
-	    nTemp.PrintNodeInformation();
-	else
-	    System.out.println("its null first");
-	
-	System.out.println("second!!!! \n");
-	nTemp = qm.GetNextChildQuestionnaire(nTemp);
-	if (nTemp != null)
-	    nTemp.PrintNodeInformation();
-	else
-	    System.out.println("its null second");
-	
-	System.out.println("third!!!! \n");
-	nTemp = qm.GetNextChildQuestionnaire(nTemp);
-	if (nTemp != null)
-	    nTemp.PrintNodeInformation();
-	else
-	    System.out.println("its null third");
-	
-	
-	System.out.println("fourth!!!! \n");
-	nTemp = qm.GetNextChildQuestionnaire(nTemp);
-	if (nTemp != null)
-	    nTemp.PrintNodeInformation();
-	else
-	    System.out.println("its null fourth!");
-	
-	System.out.println("fifth!!!! \n"); //TODO: RETURN NULL ELEMENT
-	nTemp = qm.GetNextChildQuestionnaire(nTemp);
-	if (nTemp != null)
-	    nTemp.PrintNodeInformation();
-	else
-	    System.out.println("its null fifth");
-	}*/
+	    alQuestion.PrintNodeInformation();
+	    Node nTemp = new Node();
 
-	// Ac??? debe enviar el dato
-	// Se debe validar de que tipo es (Q / QG)
-	// Si es Q debe traer la primera pregunta
-	// si es QG debe traer todos sus elementos
+	    System.out.println("first!!!!! \n");
+	    nTemp = qm.GetNextChildQuestionnaire(alQuestion);
 
-	// alQuestion = qm.GetElementsQuestionnaire("guidst");
+	    if (nTemp != null) {
+		nTemp.PrintNodeInformation();
+		((Question) nTemp).ShowInformation();
+
+	    } else System.out.println("its null first");
+
+	    System.out.println("second!!!! \n");
+	    nTemp = qm.GetNextChildQuestionnaire(nTemp);
+	    if (nTemp != null) nTemp.PrintNodeInformation();
+	    else System.out.println("its null second");
+
+	    System.out.println("third!!!! \n");
+	    nTemp = qm.GetNextChildQuestionnaire(nTemp);
+	    if (nTemp != null) nTemp.PrintNodeInformation();
+	    else System.out.println("its null third");
+
+	    System.out.println("fourth!!!! \n");
+	    nTemp = qm.GetNextChildQuestionnaire(nTemp);
+	    if (nTemp != null) nTemp.PrintNodeInformation();
+	    else System.out.println("its null fourth!");
+
+	    System.out.println("fifth!!!! \n"); // TODO: RETURN NULL ELEMENT
+	    nTemp = qm.GetNextChildQuestionnaire(nTemp);
+	    if (nTemp != null) nTemp.PrintNodeInformation();
+	    else System.out.println("its null fifth");
+	}
 
 	// } else System.out.println("No hay nodo");
 
