@@ -4,7 +4,11 @@
 
 package org.questionnairemanager.engine.core;
 
+import java.util.ArrayList;
+
 /**
+ * Class for Questionnaire Group
+ * 
  * @author Enner Escobedo C. <email>enner.castillo@centrikal.com</email> <date>Aug 14, 2013</date>
  */
 public class QuestionnaireGroup extends Node {
@@ -21,6 +25,53 @@ public class QuestionnaireGroup extends Node {
     private String sSearchVariables;
     private String sConfirmVariables;
     private Boolean bRequired;
+
+    private ArrayList<Questionnaire> qElements;
+    private ArrayList<QuestionnaireGroup> qgElements;
+
+    /**
+     * Return elements of type Questionnaire
+     * 
+     * @author Enner Escobedo C. <email>enner.castillo@centrikal.com</email> <date>Aug 20, 2013</date>
+     * @return ArrayList with all elements of type Questionnaire
+     */
+    public ArrayList<Questionnaire> getElementsTypeQuestionnaire() {
+
+	return this.qElements;
+    }
+
+    /**
+     * Set elements of type Questionnaire
+     * 
+     * @author Enner Escobedo C. <email>enner.castillo@centrikal.com</email> <date>Aug 20, 2013</date>
+     * @param alQuestionnaires, Add questionnaires to this class
+     */
+    public void setElementsTypeQuestionnaire(ArrayList<Questionnaire> alQuestionnaires) {
+
+	this.qElements = alQuestionnaires;
+    }
+
+    /**
+     * Return elements of type QuestionnaireGroup
+     * 
+     * @author Enner Escobedo C. <email>enner.castillo@centrikal.com</email> <date>Aug 20, 2013</date>
+     * @return ArrayList with all elements type QuestionnaireGroup
+     */
+    public ArrayList<QuestionnaireGroup> getElementsTypeQuestionnaireGroup() {
+
+	return this.qgElements;
+    }
+
+    /**
+     * Set elements of type Questionnaire Group
+     * 
+     * @author Enner Escobedo C. <email>enner.castillo@centrikal.com</email> <date>Aug 20, 2013</date>
+     * @param alQuestionnaireGroup, all elements of type questionnaire group
+     */
+    public void setElementsTypeQuestionnaireGroup(ArrayList<QuestionnaireGroup> alQuestionnaireGroup) {
+
+	this.qgElements = alQuestionnaireGroup;
+    }
 
     /**
      * @return the iQuestionnaireGroupGuid
@@ -161,6 +212,17 @@ public class QuestionnaireGroup extends Node {
 	this.sSearchVariables = sSearchVariables;
 	this.sConfirmVariables = sConfirmVariables;
 	this.bRequired = bRequired;
+    }
+
+    /**
+     * Constructor for class with element type node
+     * 
+     * @author Enner Escobedo C. <email>enner.castillo@centrikal.com</email> <date>Aug 20, 2013</date>
+     * @param nData, Node to insert in the class
+     */
+    public QuestionnaireGroup(Node nData) {
+
+	super(nData);
     }
 
     /**

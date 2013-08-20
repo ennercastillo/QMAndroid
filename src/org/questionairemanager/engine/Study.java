@@ -30,10 +30,13 @@ public class Study extends Node {
     private String sSearchVariables;
     private String sConfirmVariables;
 
-    private ArrayList<Questionnaire> alQuestionnaires;
-
-    private ArrayList<Report> lstReports;
+    // Element ?
     private String sReportsSiteCode;
+
+    // Array Elements QUESTIONNAIRE, QUESTIONNAIRE GROUP, REPORTS
+    private ArrayList<Questionnaire> alQuestionnaires;
+    private ArrayList<QuestionnaireGroup> alQuestionnaireGroup;
+    private ArrayList<Report> lstReports;
 
     /**
      * @return the sStudyGuid
@@ -156,6 +159,15 @@ public class Study extends Node {
     }
 
     /**
+     * @author Enner Escobedo C. <email>enner.castillo@centrikal.com</email> <date>20/08/2013</date>
+     * @return the alQuestionnaireGroup
+     */
+    public ArrayList<QuestionnaireGroup> getAlQuestionnaireGroup() {
+
+	return this.alQuestionnaireGroup;
+    }
+
+    /**
      * @return the alQuestionnaires
      */
     public ArrayList<Questionnaire> getAlQuestionnaires() {
@@ -172,6 +184,17 @@ public class Study extends Node {
     public void setAlQuestionnaires(ArrayList<Questionnaire> alQuestionnaire) {
 
 	this.alQuestionnaires = alQuestionnaire;
+    }
+
+    /**
+     * Add questionaries group to Study.
+     * 
+     * @author Enner Escobedo C. <email>enner.castillo@centrikal.com</email> <date>Aug 20, 2013</date>
+     * @param alQuestionnaire, Questionnaires group to add
+     */
+    public void setAlQuestionnaireGroup(ArrayList<QuestionnaireGroup> alQuestionnaireGroup) {
+
+	this.alQuestionnaireGroup = alQuestionnaireGroup;
     }
 
     /**
